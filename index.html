@@ -1,0 +1,23 @@
+<!doctype html><meta charset="utf-8">
+<title>Interactive Cross-Sections — Index</title>
+<h1 style="font-family:system-ui;margin:20px 24px;">Reactions</h1>
+<ul id="list" style="font-family:system-ui;font-size:16px;line-height:1.7;margin:0 24px 24px;"></ul>
+<p style="font-family:system-ui;color:#666;margin:0 24px 24px;">
+  • Щоб додати нову реакцію: поклади <code>data/your_id.json</code> і додай рядок у <code>data/manifest.json</code>.<br>
+  • Або відкривай напряму: <code>viewer.html?id=your_id</code> (без .json).
+</p>
+<script>
+(async function(){
+  const ul = document.getElementById('list');
+  try {
+    const m = await (await fetch('data/manifest.json')).json();
+    m.items.forEach(it=>{
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="viewer.html?id=${encodeURIComponent(it.id)}">${it.title||it.id}</a>`;
+      ul.appendChild(li);
+    });
+  } catch(e){
+    ul.innerHTML = `<li><a href="viewer.html?id=ga69_pn">69Ga(p,n)69Ge</a></li>`;
+  }
+})();
+</script>
