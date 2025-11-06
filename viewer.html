@@ -1,16 +1,9 @@
-<!doctype html><meta charset="utf-8">
-<title>Cross-section viewer</title>
-<h2 style="font-family:system-ui;margin:16px 24px;">Interactive Cross-Sections</h2>
-<div id="chart" style="height:620px;width:95%;margin:0 auto;"></div>
-<pre id="meta" style="white-space:pre-wrap;font:12px system-ui;margin:16px 24px;background:#fafafa;border:1px solid #eee;padding:10px;border-radius:8px"></pre>
-
-<!-- Можеш замінити на локальний файл: <script src="lib/plotly.min.js"></script> -->
 <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
 <script src="lib/parser.js"></script>
 <script>
   // Режими:
   // 1) Онлайн: ?id=ga69_pn -> завантажить data/ga69_pn.json через fetch()
-  // 2) Офлайн: якщо вбудований <script id="x4json" type="application/json">...</script> — рендерить з нього
+  // 2) Офлайн: якщо вбудований &lt;script id="x4json" type="application/json"&gt;...&lt;/script&gt; — рендерить з нього
   (function(){
     const embedded = document.getElementById('x4json');
     if (embedded) {
