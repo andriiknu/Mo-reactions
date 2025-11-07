@@ -1,26 +1,112 @@
 <!doctype html><meta charset="utf-8">
-<title>Cross-section viewer</title>
-<h2 style="font-family:system-ui;margin:16px 24px;">Interactive Cross-Sections</h2>
-<div id="chart" style="height:620px;width:95%;margin:0 auto;"></div>
-<pre id="meta" style="white-space:pre-wrap;font:12px system-ui;margin:16px 24px;background:#fafafa;border:1px solid #eee;padding:10px;border-radius:8px"></pre>
+<title>Interactive Cross-Sections</title>
+
+
+<style>
+  body{ margin:0; background:#fafafa; font:14px system-ui,Segoe UI,Roboto; }
+  .wrap{ max-width:1140px; margin:24px auto 32px; padding:0 16px;}
+  h1{ font-weight:600; font-size:22px; margin:0 0 8px; }
+  .sub{ color:#555; font-size:13px; margin:0 0 16px; }
+  #chart{ height:640px; background:#fff; border:1px solid #eee; border-radius:8px; }
+  #meta{ white-space:pre-wrap; font:12px/1.4 system-ui; color:#444; background:#fff;
+         border:1px solid #eee; border-radius:8px; padding:10px; margin-top:12px;}
+</style>
+
+<div class="wrap">
+  <h1 id="pageTitle"></h1>
+  <div id="toolbar" style="font:13px system-ui;margin:6px 16px 0;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+    <span>Axis:</span>
+    <label><input id="xlog" type="checkbox">x:log</label>
+    <label><input id="ylog" type="checkbox">y:log</label>
+    <label><input id="grid" type="checkbox" checked>grid</label>
+
+    <span>Range x:</span>
+    <input id="xmin" type="number" step="any" style="width:88px">
+    <input id="xmax" type="number" step="any" style="width:88px">
+    <span>y:</span>
+    <input id="ymin" type="number" step="any" style="width:88px">
+    <input id="ymax" type="number" step="any" style="width:88px">
+
+    <span>Size:</span>
+    <input id="w" type="number" placeholder="width" style="width:78px">
+    <input id="h" type="number" placeholder="height" style="width:78px">
+
+    <button id="apply">Repaint</button>
+    <button id="csv">csv</button>
+
+    <span>Legend:</span>
+    <label><input id="legend" type="checkbox" checked>on</label>
+  </div>
+
+  <div id="chart"></div>
+  <pre id="meta"></pre>
+</div>
 
 <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
 <script src="lib/parser.js"></script>
 <script>
 (function(){
   const embedded = document.getElementById('x4json');
-  if (embedded) {
-    try { window.__renderX4(JSON.parse(embedded.textContent)); }
-    catch(e){ document.getElementById('meta').textContent = 'Invalid embedded JSON: '+e.message; }
+  const metaEl = document.getElementById('meta');
+
+  function layoutEXFOR(){
+    return {
+      title: { text: '', x:0.02, xanchor:'left', font:{size:18, weight:600} },
+      template: 'plotly_white',
+      hovermode: 'closest',
+      legend: { x:1.02, y:1, xanchor:'left', yanchor:'top', bgcolor:'rgba(255,255,255,.8)', bordercolor:'#eee', borderwidth:1 },
+      margin: { l:70, r:140, t:60, b:70 },
+      xaxis: {
+        title: { text:'Incident Energy (MeV)' },
+        showgrid:true, gridcolor:'#eee', zeroline:false, ticks:'outside'
+      },
+      yaxis: {
+        title: { text:'Cross section (barns)' },
+        showgrid:true, gridcolor:'#eee', zeroline:false, ticks:'outside'
+      },
+      updatemenus: [{
+        type:'buttons', x:0.02, y:1.13, xanchor:'left', yanchor:'top',
+        pad:{r:8, t:0}, direction:'right',
+      }]
+    };
+  }
+
+  function configEXFOR(){
+    return {
+      responsive:true,
+      displaylogo:false,
+      modeBarButtonsToRemove:[
+        'select2d','lasso2d','zoomIn2d','zoomOut2d','autoScale2d',
+        'toggleSpikelines','hoverClosestCartesian','hoverCompareCartesian'
+      ]
+    };
+  }
+
+  // 1) offline вбудований JSON
+  if (embedded){
+    try{
+      const x4 = JSON.parse(embedded.textContent);
+  const {traces, title} = window.__renderX4(x4, {returnTraces:true});
+  Plotly.newPlot('chart', traces, layoutEXFOR(), configEXFOR());
+  document.getElementById('pageTitle').innerHTML = title || '';
+    }catch(e){ metaEl.textContent = 'Invalid embedded JSON: '+e.message; }
     return;
   }
+
+  // 2) online за ?id=
   const params = new URLSearchParams(location.search);
   const id = params.get('id');
-  if (!id) { document.getElementById('meta').textContent = 'Add ?id=ga69_pn to URL (expects /data/ga69_pn.json)'; return; }
+  if (!id){ metaEl.textContent = 'Add ?id=ga69_pn (expects /data/ga69_pn.json)'; return; }
   const url = `data/${encodeURIComponent(id)}.json`;
-  fetch(url)
-    .then(r => r.json())
-    .then(x4 => { window.__renderX4(x4); })
-    .catch(err => { document.getElementById('meta').textContent = 'Failed to load '+url+': '+err; });
+
+  fetch(url).then(r => {
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    return r.json();
+  }).then(x4 => {
+  const {traces, title, meta} = window.__renderX4(x4, {returnTraces:true});
+  Plotly.newPlot('chart', traces, layoutEXFOR(), configEXFOR());
+  document.getElementById('pageTitle').innerHTML = title || '';
+  metaEl.textContent = meta?.length ? 'Datasets included:\n'+meta.join('\n') : '';
+  }).catch(err => metaEl.textContent = 'Failed to load '+url+': '+err);
 })();
 </script>
