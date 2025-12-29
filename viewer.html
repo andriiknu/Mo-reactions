@@ -10,6 +10,14 @@
   #chart{ height:640px; background:#fff; border:1px solid #eee; border-radius:8px; }
   #meta{ white-space:pre-wrap; font:12px/1.4 system-ui; color:#444; background:#fff;
          border:1px solid #eee; border-radius:8px; padding:10px; margin-top:12px;}
+  #renormBadge{ font:11px system-ui; color:#666; background:#ffe6e6; border:1px solid #ffcccc; border-radius:4px; padding:6px 8px; margin-top:8px; display:none; }
+  #renormBadge strong{ color:#c00; }
+  #settingsPanel{ display:none; background:#fff; border:1px solid #eee; border-radius:8px;
+                  margin:12px 16px 0; padding:12px; font:13px system-ui; gap:12px; flex-wrap:wrap; }
+  #settingsPanel.active{ display:flex; }
+  #settingsPanel label{ display:flex; flex-direction:column; font-size:12px; color:#555; gap:4px; min-width:160px; }
+  #settingsPanel input{ padding:4px 6px; border:1px solid #ccc; border-radius:4px; font:13px system-ui; }
+  #settingsPanel .settings-actions{ display:flex; gap:8px; align-items:center; }
 </style>
 
 <div class="wrap">
@@ -33,12 +41,40 @@
 
     <button id="apply">Repaint</button>
     <button id="csv">csv</button>
+    <button id="settingsBtn" type="button">Settings</button>
 
     <span>Legend:</span>
     <label><input id="legend" type="checkbox" checked>on</label>
   </div>
 
+  <div id="settingsPanel">
+    <label>
+      Marker size
+      <input id="settingMarkerSize" type="number" min="1" step="1" placeholder="15">
+    </label>
+    <label>
+      Font size
+      <input id="settingFontSize" type="number" min="8" step="1" placeholder="22">
+    </label>
+    <label>
+      Font family
+      <input id="settingFontFamily" type="text" placeholder="e.g. Segoe UI">
+    </label>
+    <label>
+      Canvas width
+      <input id="settingCanvasWidth" type="number" min="300" step="20" placeholder="Auto">
+    </label>
+    <label>
+      Y label offset
+      <input id="settingYLabelPadding" type="number" min="0" step="2" placeholder="8">
+    </label>
+    <div class="settings-actions">
+      <button id="settingsApply" type="button">Apply</button>
+      <button id="settingsReset" type="button">Reset</button>
+    </div>
+  </div>
   <div id="chart"></div>
+  <div id="renormBadge"></div>
   <pre id="meta"></pre>
 </div>
 
@@ -49,12 +85,143 @@
   const embedded = document.getElementById('x4json');
   const metaEl = document.getElementById('meta');
 
+  // load renormalization map (optional)
+  let renormMap = {};
+  function loadRenorm(){
+    return fetch('data/renorm.json', { cache: 'no-store' })
+      .then(r => r.ok ? r.json() : {})
+      .then(j => { renormMap = j || {}; return renormMap; })
+      .catch(()=>{ renormMap = {}; return renormMap; });
+  }
+  
+  
+   // Глобальний стан (в межах цього замикання)
+   const defaultSettings = { markerSize:15, fontSize:22, fontFamily:'', canvasWidth:null, yLabelPadding:8 };
+   const appState = {
+     traces: [],
+     originalTitle: '',
+     meta: [],
+     settings: { ...defaultSettings }
+   };
+  
+   // Debug: логуємо на сторінку
+   function dbgLog(msg) {
+     console.log(msg);
+     if (!metaEl) return;
+     const line = document.createElement('div');
+     line.style.cssText = 'font-size:11px;color:#666;font-family:monospace;margin:4px 0';
+     line.textContent = msg;
+     metaEl.appendChild(line);
+   }
+  
+  function toggleLegendGroup(gd, groupName){
+    if (!gd || !groupName) return;
+    const traces = gd.data || [];
+    const indices = [];
+    for (let i=0;i<traces.length;i++){
+      if (traces[i].legendgroup === groupName) indices.push(i);
+    }
+    if (!indices.length) return;
+    const anyVisible = indices.some(idx => traces[idx].visible !== 'legendonly');
+    const target = anyVisible ? 'legendonly' : true;
+    Plotly.restyle(gd, { visible: target }, indices);
+  }
+
+  function setupLegendGroupToggle(gd){
+    if (!gd) return;
+    if (!gd.__legendGroupHandler){
+      gd.on('plotly_legendgroupclick', evt => {
+        const groupName = evt?.legendgroup || evt?.group || evt?.data?.[evt.curveNumber]?.legendgroup || '';
+        if (!groupName) return;
+        toggleLegendGroup(gd, groupName);
+        return false;
+      });
+      gd.__legendGroupHandler = true;
+    }
+    requestAnimationFrame(()=>{
+      const titles = document.querySelectorAll('#chart .legendgrouptitle');
+      const groups = [];
+      (gd.data||[]).forEach(tr => {
+        const g = tr.legendgroup;
+        if (g && !groups.includes(g)) groups.push(g);
+      });
+      titles.forEach((el, idx)=>{
+        if (el.__legendGroupClick) {
+          el.removeEventListener('click', el.__legendGroupClick);
+          el.__legendGroupClick = null;
+        }
+        const groupName = groups[idx];
+        if (!groupName){
+          el.style.pointerEvents = '';
+          el.style.cursor = '';
+          return;
+        }
+        const handler = evt => {
+          evt.preventDefault();
+          evt.stopPropagation();
+          toggleLegendGroup(gd, groupName);
+        };
+        el.style.pointerEvents = 'auto';
+        el.style.cursor = 'pointer';
+        el.__legendGroupClick = handler;
+        el.addEventListener('click', handler);
+      });
+    });
+  }
+
+  // --- Конфігурація Plotly ---
+  function applyFontSettingsToLayout(layout){
+    if (!layout) return layout;
+    const { fontFamily, fontSize } = appState.settings || {};
+    const fontUpdates = {};
+    if (fontFamily) fontUpdates.family = fontFamily;
+    if (typeof fontSize === 'number' && !Number.isNaN(fontSize)) fontUpdates.size = fontSize;
+    const hasUpdates = Object.keys(fontUpdates).length > 0;
+    if (!hasUpdates) return layout;
+    layout.title.font = { ...(layout.title?.font || {}), ...fontUpdates };
+    layout.legend.font = { ...(layout.legend?.font || {}), ...fontUpdates };
+    ['xaxis','yaxis'].forEach(axis => {
+      layout[axis] = layout[axis] || {};
+      layout[axis].title = layout[axis].title || {};
+      layout[axis].title.font = { ...(layout[axis].title.font || {}), ...fontUpdates };
+      layout[axis].tickfont = { ...(layout[axis].tickfont || {}), ...fontUpdates };
+    });
+    return layout;
+  }
+
+  function getEffectiveFontSize(){
+    const size = appState.settings?.fontSize;
+    return (typeof size === 'number' && Number.isFinite(size) && size > 0) ? size : 18;
+  }
+
+  function computeAutoYLabelPadding(){
+    const fontSize = getEffectiveFontSize();
+    return 10 + Math.max(0, (fontSize - 18) * 2);
+  }
+
+  function getYLabelPadding(){
+    const setting = appState.settings?.yLabelPadding;
+    if (typeof setting === 'number' && setting >= 0 && Number.isFinite(setting)) return setting;
+    return computeAutoYLabelPadding();
+  }
+
+  function computeAutoLeftMargin(){
+    const fontSize = getEffectiveFontSize();
+    const yPad = getYLabelPadding();
+    const extra = Math.max(0, (fontSize - 18) * 5);
+    return 70 + extra + Math.min(yPad, 40);
+  }
+
   function layoutEXFOR(){
-    return {
-      title: { text: '', x:0.02, xanchor:'left', font:{size:18, weight:600} },
+    const layout = {
+       title: { text: appState.originalTitle || '', x:0.02, xanchor:'left', font:{size:18, weight:600} },
       template: 'plotly_white',
       hovermode: 'closest',
-      legend: { x:1.02, y:1, xanchor:'left', yanchor:'top', bgcolor:'rgba(255,255,255,.8)', bordercolor:'#eee', borderwidth:1 },
+      legend: {
+        x:1.02, y:1, xanchor:'left', yanchor:'top',
+        bgcolor:'rgba(255,255,255,.8)', bordercolor:'#eee', borderwidth:1,
+        groupclick:'toggleitem'
+      },
       margin: { l:70, r:140, t:60, b:70 },
       xaxis: {
         title: { text:'Incident Energy (MeV)' },
@@ -69,6 +236,58 @@
         pad:{r:8, t:0}, direction:'right',
       }]
     };
+    const yLabelPadding = getYLabelPadding();
+    layout.yaxis.title = layout.yaxis.title || {};
+    layout.yaxis.title.standoff = yLabelPadding;
+    layout.margin.l = Math.max(layout.margin.l, computeAutoLeftMargin());
+    const canvasWidth = appState.settings?.canvasWidth;
+    if (!layout.width && typeof canvasWidth === 'number' && canvasWidth > 0) {
+      layout.width = canvasWidth;
+    }
+    return applyFontSettingsToLayout(layout);
+  }
+
+  function copyPlotToClipboard(gd){
+    const graphDiv = gd && gd.nodeType ? gd : document.getElementById('chart');
+    if (!graphDiv){
+      dbgLog('✗ copyPlotToClipboard: graph div not found');
+      return;
+    }
+    if (!navigator.clipboard || typeof ClipboardItem === 'undefined'){
+      alert('Clipboard copy is not supported in this browser');
+      return;
+    }
+    const exportOpts = { format:'png', scale:2 };
+    const layout = graphDiv._fullLayout;
+    if (layout){
+      exportOpts.width = layout.width;
+      exportOpts.height = layout.height;
+    }
+    Plotly.toImage(graphDiv, exportOpts)
+      .then(dataUrl => fetch(dataUrl))
+      .then(res => res.blob())
+      .then(blob => navigator.clipboard.write([new ClipboardItem({ [blob.type]: blob })]))
+      .then(() => dbgLog('📋 Plot copied to clipboard'))
+      .catch(err => {
+        console.error('copyPlotToClipboard error:', err);
+        alert('Failed to copy plot: ' + (err && err.message ? err.message : err));
+      });
+  }
+
+  function applyStyleOverrides(traces){
+    const { markerSize } = appState.settings || {};
+    const numericMarkerSize = (typeof markerSize === 'number' && markerSize > 0) ? markerSize : null;
+    if (!numericMarkerSize) return traces;
+    return (traces || []).map(tr => {
+      if (!tr) return tr;
+      const usesMarkers = typeof tr.mode === 'string' && tr.mode.includes('markers');
+      const hasMarkerObj = tr.marker && typeof tr.marker === 'object';
+      if (!usesMarkers && !hasMarkerObj) return tr;
+      const copy = { ...tr };
+      copy.marker = { ...(tr.marker || {}) };
+      copy.marker.size = numericMarkerSize;
+      return copy;
+    });
   }
 
   function configEXFOR(){
@@ -77,36 +296,236 @@
       displaylogo:false,
       modeBarButtonsToRemove:[
         'select2d','lasso2d','zoomIn2d','zoomOut2d','autoScale2d',
-        'toggleSpikelines','hoverClosestCartesian','hoverCompareCartesian'
-      ]
+       'toggleSpikelines','hoverClosestCartesian','hoverCompareCartesian'
+      ],
+      modeBarButtonsToAdd: [{
+        name:'Copy to clipboard',
+        title:'Copy plot PNG to clipboard',
+        icon:Plotly.Icons.camera,
+        click:gd => copyPlotToClipboard(gd)
+      }]
     };
   }
 
-  // 1) offline вбудований JSON
-  if (embedded){
+   // --- Головна функція перемальовки ---
+   function repaintChart() {
+     dbgLog('🖌️ Repaint triggered');
+  
+     // Якщо даних немає, пробуємо взяти поточні з графіка (fallback)
+     const gd = document.getElementById('chart');
+     const tracesToUse = (appState.traces && appState.traces.length > 0) 
+                         ? appState.traces 
+                         : (gd && gd.data ? gd.data : []);
+  
+     if (!tracesToUse || tracesToUse.length === 0) {
+       dbgLog('⚠️ No traces to plot');
+       return;
+     }
+  
+     const layout = layoutEXFOR();
+  
+     // 1. Осі (Log/Linear)
+     layout.xaxis.type = document.getElementById('xlog').checked ? 'log' : 'linear';
+     layout.yaxis.type = document.getElementById('ylog').checked ? 'log' : 'linear';
+  
+     // 2. Сітка
+     const grid = document.getElementById('grid').checked;
+     layout.xaxis.showgrid = grid; 
+     layout.yaxis.showgrid = grid;
+  
+     // 3. Діапазони (з перевіркою на валідне число)
+     const getVal = (id) => {
+       const v = document.getElementById(id).value.trim();
+       return (v !== '' && !isNaN(Number(v))) ? Number(v) : null;
+     };
+  
+     const xmin = getVal('xmin'), xmax = getVal('xmax');
+     if (xmin !== null || xmax !== null) layout.xaxis.range = [xmin, xmax];
+  
+     const ymin = getVal('ymin'), ymax = getVal('ymax');
+     if (ymin !== null || ymax !== null) layout.yaxis.range = [ymin, ymax];
+  
+     // 4. Розміри
+     const w = getVal('w'), h = getVal('h');
+     if (w) layout.width = w;
+     if (h) layout.height = h;
+  
+     // 5. Легенда
+     layout.showlegend = document.getElementById('legend').checked;
+  
+     // Виконуємо реактивне оновлення (швидше за newPlot)
+     Plotly.react('chart', applyStyleOverrides(tracesToUse), layout, configEXFOR())
+       .then(setupLegendGroupToggle)
+       .catch(e => {
+         dbgLog('❌ Plotly error: ' + e.message);
+         console.error('Plotly error:', e);
+       });
+   }
+  
+   // --- Display renormalization badge ---
+   function showRenormBadge(renormApplied){
+     const badge = document.getElementById('renormBadge');
+     if (!badge) return;
+     if (!renormApplied || renormApplied.length === 0){
+       badge.style.display = 'none';
+       return;
+     }
+     const items = renormApplied.map(r => `${r.entry} ×${r.factor}`).join(', ');
+     badge.innerHTML = `<strong>Renormalized:</strong> ${items}`;
+     badge.style.display = 'block';
+   }
+  
+   // --- Ініціалізація даних ---
+   function initData(traces, title, meta, renormApplied) {
+     // Зберігаємо в стан
+     appState.traces = traces;
+     appState.originalTitle = title;
+     appState.meta = meta;
+  
+     // Оновлюємо DOM
+     document.getElementById('pageTitle').innerHTML = title || '';
+     if(metaEl) metaEl.textContent = meta?.length ? 'Datasets included:\n' + meta.join('\n') : '';
+     showRenormBadge(renormApplied);
+  
+     // Перше малювання
+     Plotly.newPlot('chart', applyStyleOverrides(traces), layoutEXFOR(), configEXFOR()).then(setupLegendGroupToggle);
+     dbgLog('✅ Chart initialized with ' + traces.length + ' traces');
+   }
+  
+   // --- Прив'язка подій ---
+   document.getElementById('apply').addEventListener('click', repaintChart);
+   
+   const btnCsv = document.getElementById('csv');
+   if(btnCsv) {
+       btnCsv.addEventListener('click', () => {
+           dbgLog('📊 CSV export clicked (not yet implemented)');
+           alert('CSV export logic needs to be implemented');
+       });
+   }
+
+  const settingsBtn = document.getElementById('settingsBtn');
+  const settingsPanel = document.getElementById('settingsPanel');
+  const markerSizeInput = document.getElementById('settingMarkerSize');
+  const fontSizeInput = document.getElementById('settingFontSize');
+  const fontFamilyInput = document.getElementById('settingFontFamily');
+  const canvasWidthInput = document.getElementById('settingCanvasWidth');
+  const yLabelPaddingInput = document.getElementById('settingYLabelPadding');
+  const settingsApplyBtn = document.getElementById('settingsApply');
+  const settingsResetBtn = document.getElementById('settingsReset');
+
+  function normalizeNumberInput(value){
+    if (value === null || value === undefined) return null;
+    const trimmed = String(value).trim();
+    if (trimmed === '') return null;
+    const num = Number(trimmed);
+    return Number.isFinite(num) ? num : null;
+  }
+
+  function normalizePositiveNumberInput(value, min = 0){
+    const num = normalizeNumberInput(value);
+    if (num === null) return null;
+    return num > min ? num : null;
+  }
+
+  function syncSettingsInputs(){
+    if (markerSizeInput) markerSizeInput.value = appState.settings.markerSize ?? '';
+    if (fontSizeInput) fontSizeInput.value = appState.settings.fontSize ?? '';
+    if (fontFamilyInput) fontFamilyInput.value = appState.settings.fontFamily || '';
+    if (canvasWidthInput) canvasWidthInput.value = appState.settings.canvasWidth ?? '';
+    if (yLabelPaddingInput) yLabelPaddingInput.value = appState.settings.yLabelPadding ?? '';
+  }
+
+  function applySettingsFromInputs(){
+    const canvasWidth = normalizePositiveNumberInput(canvasWidthInput?.value, 200);
+    const yLabelPadNum = normalizeNumberInput(yLabelPaddingInput?.value);
+    const yLabelPadding = (yLabelPadNum !== null && yLabelPadNum >= 0) ? yLabelPadNum : null;
+    appState.settings = {
+      markerSize: normalizeNumberInput(markerSizeInput?.value),
+      fontSize: normalizeNumberInput(fontSizeInput?.value),
+      fontFamily: (fontFamilyInput?.value || '').trim(),
+      canvasWidth,
+      yLabelPadding
+    };
+    repaintChart();
+  }
+
+  if (settingsBtn && settingsPanel){
+    settingsBtn.addEventListener('click', ()=>{
+      const isOpen = settingsPanel.classList.toggle('active');
+      if (isOpen) syncSettingsInputs();
+    });
+  }
+
+  if (settingsApplyBtn){
+    settingsApplyBtn.addEventListener('click', ()=>{
+      applySettingsFromInputs();
+      syncSettingsInputs();
+    });
+  }
+
+  if (settingsResetBtn){
+    settingsResetBtn.addEventListener('click', ()=>{
+      appState.settings = { ...defaultSettings };
+      syncSettingsInputs();
+      repaintChart();
+    });
+  }
+  
+  loadRenorm().finally(()=>{
+    dbgLog('🔧 viewer.html script loaded, window.__renderX4 type: ' + (typeof window.__renderX4));
+
+    // --- Логіка завантаження (Embedded vs Fetch) ---
+   // 1) offline вбудований JSON
+   if (embedded){
     try{
       const x4 = JSON.parse(embedded.textContent);
-  const {traces, title} = window.__renderX4(x4, {returnTraces:true});
-  Plotly.newPlot('chart', traces, layoutEXFOR(), configEXFOR());
-  document.getElementById('pageTitle').innerHTML = title || '';
-    }catch(e){ metaEl.textContent = 'Invalid embedded JSON: '+e.message; }
-    return;
+      if (typeof window.__renderX4 !== 'function') throw new Error('parser.js not loaded');
+      const {traces, title, meta, renormApplied} = window.__renderX4(x4, {returnTraces:true, renormMap});
+      initData(traces, title, meta, renormApplied);
+      return;
+    }catch(e){
+      metaEl.textContent = 'Invalid embedded JSON: '+(e && e.message ? e.message : String(e));
+      return;
+    }
   }
 
   // 2) online за ?id=
   const params = new URLSearchParams(location.search);
   const id = params.get('id');
   if (!id){ metaEl.textContent = 'Add ?id=ga69_pn (expects /data/ga69_pn.json)'; return; }
-  const url = `data/${encodeURIComponent(id)}.json`;
+  const safeId = id.trim();
+  if (!/^[\w(),.\-\/]+$/.test(safeId)){
+    metaEl.textContent = 'Invalid dataset id. Allowed characters: letters, digits, _, -, ., /, (, ), ,';
+    return;
+  }
+  const url = `data/${safeId}.json`;
 
-  fetch(url).then(r => {
+  fetch(url, { cache: 'no-store' }).then(r => {
     if(!r.ok) throw new Error('HTTP '+r.status);
     return r.json();
   }).then(x4 => {
-  const {traces, title, meta} = window.__renderX4(x4, {returnTraces:true});
-  Plotly.newPlot('chart', traces, layoutEXFOR(), configEXFOR());
-  document.getElementById('pageTitle').innerHTML = title || '';
-  metaEl.textContent = meta?.length ? 'Datasets included:\n'+meta.join('\n') : '';
-  }).catch(err => metaEl.textContent = 'Failed to load '+url+': '+err);
+    dbgLog('✓ JSON loaded, type=' + (Array.isArray(x4) ? 'array' : 'object'));
+    dbgLog('✓ x4 keys: ' + Object.keys(x4).join(', '));
+    if (x4.datasets) dbgLog('✓ datasets.length = ' + x4.datasets.length);
+
+    if (typeof window.__renderX4 !== 'function') {
+      dbgLog('✗ ERROR: window.__renderX4 is not a function!');
+      dbgLog('✗ Type: ' + typeof window.__renderX4);
+      throw new Error('window.__renderX4 is not a function');
+    }
+
+    dbgLog('🔨 Calling __renderX4...');
+    const {traces, title, meta, renormApplied} = window.__renderX4(x4, {returnTraces:true, renormMap});
+    dbgLog('✓ __renderX4 returned: traces=' + traces.length + ', title_len=' + (title ? title.length : 0));
+
+    initData(traces, title, meta, renormApplied);
+    dbgLog('✓ Chart initialized via initData');
+  }).catch(err => {
+    console.error('Error:', err);
+    const msg = 'Failed to load '+url+': '+(err && err.message ? err.message : String(err));
+    dbgLog('✗ ' + msg);
+    metaEl.textContent = msg;
+  });
+  });
 })();
 </script>

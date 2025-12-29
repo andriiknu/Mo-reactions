@@ -1,0 +1,2257 @@
+{
+ "format":"X4JSON.0.1.2" 
+ ,"now":"2025-12-16T10:59:41.000Z" 
+ ,"program":"EXFOR converter, by V.Zerkin, IAEA-NDS, 2007-2019 (ver.2020-05-11)" 
+ ,"input": {  "files": [ { "name":"X4R67716_x4.txt"  ,"format":"EXFOR"  ,"created":"2025-12-16T10:59:09.000Z"  } ] }
+ ,"output": { "files": [ { "name":"X4R67716_x4.txt.x4t"  ,"format":"JSON"  ,"outBib":"0"  ,"created":"2025-12-16T10:59:41.000Z"  } ] }
+ ,"datasets": [
+ 
+ {"id":"A0510022"
+  ,"subent": {"id":"A0510022", "updated":"20231226" }
+  ,"entry": {"id":"A0510", "updated":"20250804" }
+  ,"author1":"V.N.Levkovski"
+  ,"year":"1991"
+  ,"ref1":{ "code":"B,LEVKOVSKIJ,,,1991" ,"std":"C,LEVKOVSKIJ,,,1991"
+            ,"exp":"Book: Levkovskij,Act.Cs.By Protons and Alphas,Moscow 1991,  (1991)"
+          }
+  ,"reaction": {
+     "code": "22-TI-48(P,N)23-V-48,,SIG"
+    ,"C4Reaction":"(P,N),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"22-TI-48" ,"TargZA":"22048"
+    ,"MF": 3 ,"MT": 4
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 6
+    ,"row": 25
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":23   ,"minval":"43."   ,"maxval":"646."
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"022" ,"expansion":"Data: data"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"10."   ,"maxval":"10."
+    ,"varSorted":"0.911" ,"what":"Y.Err+-"
+    ,"dataType":"21"  ,"numVar":"0.911"
+    ,"x4Header":"DATA-ERR" ,"SAN":"001" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":3 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"10."   ,"maxval":"10."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"MONIT-ERR" ,"SAN":"022" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":4 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":25   ,"minval":"7.7"   ,"maxval":"29.5"
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"022" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+
+   , { "ii":5 ,"varType":"Data" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"30."   ,"maxval":"30."
+    ,"varSorted":"" ,"what":"ZZZ"
+    ,"dataType":"1"  ,"numVar":"ZZZ"
+    ,"x4Header":"EN-NRM" ,"SAN":"022" ,"expansion":"Assumed values"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+
+   , { "ii":6 ,"varType":"Data" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"250."   ,"maxval":"250."
+    ,"varSorted":"" ,"what":"ZZZ"
+    ,"dataType":"11"  ,"numVar":"ZZZ"
+    ,"x4Header":"MONIT" ,"SAN":"022" ,"expansion":"Assumed values: monitor"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+   ]
+  ,"data": [
+	 [457.0,10.0,10.0,7.7,30.0,250.0]
+	,[479.0,10.0,10.0,8.6,30.0,250.0]
+	,[589.0,10.0,10.0,9.5,30.0,250.0]
+	,[646.0,10.0,10.0,10.4,30.0,250.0]
+	,[617.0,10.0,10.0,11.3,30.0,250.0]
+	,[646.0,10.0,10.0,12.1,30.0,250.0]
+	,[631.0,10.0,10.0,12.8,30.0,250.0]
+	,[602.0,10.0,10.0,13.8,30.0,250.0]
+	,[525.0,10.0,10.0,14.8,30.0,250.0]
+	,[371.0,10.0,10.0,15.8,30.0,250.0]
+	,[257.0,10.0,10.0,16.7,30.0,250.0]
+	,[219.0,10.0,10.0,17.5,30.0,250.0]
+	,[178.0,10.0,10.0,18.3,30.0,250.0]
+	,[141.0,10.0,10.0,19.3,30.0,250.0]
+	,[110.0,10.0,10.0,20.3,30.0,250.0]
+	,[85.0,10.0,10.0,21.4,30.0,250.0]
+	,[71.0,10.0,10.0,22.2,30.0,250.0]
+	,[68.0,10.0,10.0,23.1,30.0,250.0]
+	,[60.0,10.0,10.0,24.0,30.0,250.0]
+	,[51.0,10.0,10.0,24.8,30.0,250.0]
+	,[56.0,10.0,10.0,25.7,30.0,250.0]
+	,[44.0,10.0,10.0,26.6,30.0,250.0]
+	,[45.0,10.0,10.0,27.7,30.0,250.0]
+	,[43.0,10.0,10.0,28.5,30.0,250.0]
+	,[43.0,10.0,10.0,29.5,30.0,250.0]
+   ]
+ }
+,
+ {"id":"B0043002"
+  ,"subent": {"id":"B0043002", "updated":"20011220" }
+  ,"entry": {"id":"B0043", "updated":"20011220" }
+  ,"author1":"S.Tanaka+"
+  ,"year":"1959"
+  ,"ref1":{ "code":"J,JPJ,14,1269,1959" ,"std":"J,JPJ,14,1269,1959"
+            ,"exp":"Jour: Journal of the Physical Society of Japan, Vol.14, p.1269 (1959)"
+          }
+  ,"reaction": {
+     "code": "22-TI-48(P,N)23-V-48,,SIG,,,EXP"
+    ,"C4Reaction":"(P,N),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"22-TI-48" ,"TargZA":"22048"
+    ,"MF": 3 ,"MT": 4
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 4
+    ,"row": 15
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":15   ,"minval":"2.8"   ,"maxval":"510."
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"002" ,"expansion":"Data: data"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":1   ,"minval":"40."   ,"maxval":"40."
+    ,"varSorted":"0.901" ,"what":"Y.Err-"
+    ,"dataType":"21"  ,"numVar":"0.901"
+    ,"x4Header":"-DATA-ERR" ,"SAN":"002" ,"expansion":"Uncertainty: -error"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":3 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":1   ,"minval":"34."   ,"maxval":"34."
+    ,"varSorted":"0.91" ,"what":"Y.Err+"
+    ,"dataType":"21"  ,"numVar":"0.91"
+    ,"x4Header":"+DATA-ERR" ,"SAN":"002" ,"expansion":"Uncertainty: +error"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":4 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":15   ,"minval":"5.1"   ,"maxval":"14."
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"002" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+   ]
+  ,"data": [
+	 [2.8,null,null,5.1]
+	,[138.0,null,null,5.7]
+	,[258.0,null,null,6.5]
+	,[341.0,null,null,7.2]
+	,[368.0,null,null,7.9]
+	,[423.0,null,null,8.6]
+	,[446.0,null,null,9.2]
+	,[461.0,40.0,34.0,9.9]
+	,[473.0,null,null,10.1]
+	,[496.0,null,null,10.7]
+	,[497.0,null,null,11.3]
+	,[483.0,null,null,11.9]
+	,[510.0,null,null,12.6]
+	,[501.0,null,null,13.3]
+	,[460.0,null,null,14.0]
+   ]
+ }
+,
+ {"id":"C0522003"
+  ,"subent": {"id":"C0522003", "updated":"19990628" }
+  ,"entry": {"id":"C0522", "updated":"20110601" }
+  ,"author1":"H.I.West jr+"
+  ,"year":"1993"
+  ,"ref1":{ "code":"R,UCRL-ID-115738,(3),1,199311" ,"std":"R,UCRL-ID-115738,(3),1,1993"
+            ,"exp":"Rept: U.C., Lawrence Rad.Lab. (Berkeley and Livermore), No.115738, Vol.(3), p.1 (1993)"
+          }
+  ,"reaction": {
+     "code": "22-TI-48(P,N)23-V-48,,SIG"
+    ,"C4Reaction":"(P,N),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"22-TI-48" ,"TargZA":"22048"
+    ,"MF": 3 ,"MT": 4
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 3
+    ,"row": 18
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":17   ,"minval":"1.6"   ,"maxval":"508."
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"003" ,"expansion":"Data: data"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":18   ,"minval":"0.17"   ,"maxval":"16."
+    ,"varSorted":"0.911" ,"what":"Y.Err+-"
+    ,"dataType":"21"  ,"numVar":"0.911"
+    ,"x4Header":"DATA-ERR" ,"SAN":"003" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":3 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":18   ,"minval":"4.96"   ,"maxval":"15."
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"003" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+   ]
+  ,"data": [
+	 [1.6,0.17,4.96]
+	,[4.64,0.48,5.11]
+	,[31.04,1.0,5.27]
+	,[63.1,2.0,5.37]
+	,[134.3,4.0,5.66]
+	,[171.3,5.1,5.86]
+	,[276.0,8.0,6.37]
+	,[309.0,9.0,6.94]
+	,[323.0,10.0,7.07]
+	,[366.0,11.0,7.48]
+	,[399.0,12.2,8.05]
+	,[424.0,13.0,8.26]
+	,[451.0,14.0,8.89]
+	,[463.0,14.2,9.56]
+	,[508.0,15.5,10.82]
+	,[508.0,15.2,11.68]
+	,[504.0,16.0,13.2]
+	,[371.0,12.0,15.0]
+   ]
+ }
+,
+ {"id":"C1909002"
+  ,"subent": {"id":"C1909002", "updated":"20120324" }
+  ,"entry": {"id":"C1909", "updated":"20120324" }
+  ,"author1":"M.E.Bennett+"
+  ,"year":"2012"
+  ,"ref1":{ "code":"J,NIM/B,276,62,2012" ,"std":"J,NIM_B,276,62,2012"
+            ,"exp":"Jour: Nucl. Instrum. Methods in Physics Res., Sect.B, Vol.276, p.62 (2012)"
+          }
+  ,"reaction": {
+     "code": "22-TI-0(P,X)23-V-48,,SIG"
+    ,"C4Reaction":"(P,X),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"22-TI-0" ,"TargZA":"22000"
+    ,"MF": 3 ,"MT": 9000
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 3
+    ,"row": 6
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":5   ,"minval":"221."   ,"maxval":"368."
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"002" ,"expansion":"Data: data"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":5   ,"minval":"16."   ,"maxval":"26."
+    ,"varSorted":"0.911" ,"what":"Y.Err+-"
+    ,"dataType":"21"  ,"numVar":"0.911"
+    ,"x4Header":"DATA-ERR" ,"SAN":"002" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":3 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":6   ,"minval":"6.9"   ,"maxval":"16."
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"002" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+   ]
+  ,"data": [
+	 [239.0,17.0,6.9]
+	,[346.0,25.0,9.7]
+	,[368.0,26.0,11.5]
+	,[368.0,26.0,13.1]
+	,[307.0,22.0,14.6]
+	,[221.0,16.0,16.0]
+   ]
+ }
+,
+ {"id":"D0433002"
+  ,"subent": {"id":"D0433002", "updated":"20100319" }
+  ,"entry": {"id":"D0433", "updated":"20100319" }
+  ,"author1":"K.Zarie+"
+  ,"year":"2006"
+  ,"ref1":{ "code":"J,RCA,94,795,2006" ,"std":"J,RCA,94,795,2006"
+            ,"exp":"Jour: Radiochimica Acta, Vol.94, p.795 (2006)"
+          }
+  ,"reaction": {
+     "code": "22-TI-0(P,X)23-V-48,,SIG"
+    ,"C4Reaction":"(P,X),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"22-TI-0" ,"TargZA":"22000"
+    ,"MF": 3 ,"MT": 9000
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 4
+    ,"row": 41
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":41   ,"minval":"0.31"   ,"maxval":"402.26"
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"002" ,"expansion":"Data: data"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":41   ,"minval":"0.05"   ,"maxval":"60.34"
+    ,"varSorted":"0.911" ,"what":"Y.Err+-"
+    ,"dataType":"21"  ,"numVar":"0.911"
+    ,"x4Header":"ERR-T" ,"SAN":"002" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":3 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":40   ,"minval":"4.64"   ,"maxval":"27.35"
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"002" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+
+   , { "ii":4 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":3   ,"minval":"0.4"   ,"maxval":"0.5"
+    ,"varSorted":"1.911" ,"what":"X1.Err+-"
+    ,"dataType":"41"  ,"numVar":"2.911"
+    ,"x4Header":"EN-ERR" ,"SAN":"002" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+   ]
+  ,"data": [
+	 [0.31,0.05,4.64,0.4]
+	,[98.4,14.76,5.67,0.4]
+	,[136.48,20.47,6.57,0.4]
+	,[266.15,39.92,7.39,0.4]
+	,[285.51,42.83,8.14,0.4]
+	,[338.03,50.7,8.85,0.4]
+	,[361.71,54.26,9.51,0.4]
+	,[364.18,54.63,10.15,0.4]
+	,[373.04,55.96,10.75,0.4]
+	,[382.72,56.41,11.33,0.4]
+	,[397.75,59.66,11.88,0.4]
+	,[402.26,60.34,12.42,0.4]
+	,[387.95,58.19,12.94,0.45]
+	,[376.32,56.45,13.44,0.45]
+	,[334.33,50.15,13.93,0.45]
+	,[328.64,49.3,14.41,0.45]
+	,[303.06,45.46,14.87,0.45]
+	,[251.96,37.79,15.41,0.45]
+	,[168.38,25.26,16.26,0.45]
+	,[125.19,18.78,17.25,0.45]
+	,[102.46,15.37,18.2,0.45]
+	,[110.62,16.59,18.74,0.45]
+	,[88.88,13.33,19.12,0.45]
+	,[63.42,9.51,20.0,0.45]
+	,[64.97,9.75,20.86,0.45]
+	,[55.9,8.39,21.69,0.45]
+	,[50.99,7.65,22.5,0.45]
+	,[49.92,7.5,23.28,0.45]
+	,[50.46,7.57,23.97,0.5]
+	,[51.75,7.76,24.05,0.5]
+	,[48.86,7.33,24.12,0.5]
+	,[45.42,6.81,24.49,0.5]
+	,[43.39,6.51,24.86,0.5]
+	,[43.16,6.47,25.23,0.5]
+	,[41.55,6.23,25.59,0.5]
+	,[39.89,5.98,25.95,0.5]
+	,[38.73,5.81,26.3,0.5]
+	,[37.26,5.59,26.66,0.5]
+	,[36.19,5.43,27.0,0.5]
+	,[36.77,5.52,27.35,0.5]
+	,[30.59,4.58,27.35,0.5]
+   ]
+ }
+,
+ {"id":"D0569002"
+  ,"subent": {"id":"D0569002", "updated":"20090518" }
+  ,"entry": {"id":"D0569", "updated":"20090518" }
+  ,"author1":"M.U.Khandaker+"
+  ,"year":"2009"
+  ,"ref1":{ "code":"J,ARI,67,1348,2009" ,"std":"J,ARI,67,1348,2009"
+            ,"exp":"Jour: Applied Radiation and Isotopes, Vol.67, p.1348 (2009)"
+          }
+  ,"reaction": {
+     "code": "22-TI-0(P,X)23-V-48,,SIG"
+    ,"C4Reaction":"(P,X),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"22-TI-0" ,"TargZA":"22000"
+    ,"MF": 3 ,"MT": 9000
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 6
+    ,"row": 22
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":22   ,"minval":"4.3"   ,"maxval":"383.8"
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"002" ,"expansion":"Data: data"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":19   ,"minval":"0.9"   ,"maxval":"35.7"
+    ,"varSorted":"0.911" ,"what":"Y.Err+-"
+    ,"dataType":"21"  ,"numVar":"0.911"
+    ,"x4Header":"ERR-T" ,"SAN":"002" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":3 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"7."   ,"maxval":"7."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-1" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":4 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"4."   ,"maxval":"4."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-2" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":5 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":22   ,"minval":"3.9"   ,"maxval":"37.8"
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"002" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+
+   , { "ii":6 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":8   ,"minval":"0.3"   ,"maxval":"1."
+    ,"varSorted":"1.911" ,"what":"X1.Err+-"
+    ,"dataType":"41"  ,"numVar":"2.911"
+    ,"x4Header":"EN-ERR" ,"SAN":"002" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+   ]
+  ,"data": [
+	 [44.0,3.7,7.0,4.0,37.8,0.3]
+	,[45.5,4.0,7.0,4.0,36.1,0.3]
+	,[40.6,4.4,7.0,4.0,35.5,0.3]
+	,[43.7,3.8,7.0,4.0,33.8,0.4]
+	,[41.9,3.7,7.0,4.0,33.0,0.4]
+	,[41.0,3.8,7.0,4.0,31.2,0.4]
+	,[46.7,4.0,7.0,4.0,30.6,0.4]
+	,[50.4,4.2,7.0,4.0,28.6,0.5]
+	,[50.3,5.5,7.0,4.0,27.8,0.5]
+	,[56.4,6.0,7.0,4.0,25.8,0.5]
+	,[57.7,6.2,7.0,4.0,25.1,0.5]
+	,[68.6,7.3,7.0,4.0,22.9,0.6]
+	,[76.0,8.3,7.0,4.0,22.0,0.6]
+	,[110.7,11.9,7.0,4.0,19.6,0.6]
+	,[144.2,14.6,7.0,4.0,18.7,0.7]
+	,[268.5,27.4,7.0,4.0,16.1,0.7]
+	,[330.5,33.3,7.0,4.0,14.9,0.7]
+	,[383.8,35.7,7.0,4.0,11.9,0.8]
+	,[361.8,32.5,7.0,4.0,10.6,0.8]
+	,[62.5,5.4,7.0,4.0,6.7,0.9]
+	,[23.1,2.5,7.0,4.0,5.8,0.9]
+	,[4.3,0.9,7.0,4.0,3.9,1.0]
+   ]
+ }
+,
+ {"id":"D0683003"
+  ,"subent": {"id":"D0683003", "updated":"20120606" }
+  ,"entry": {"id":"D0683", "updated":"20120606" }
+  ,"author1":"S.R.Kennett+"
+  ,"year":"1981"
+  ,"ref1":{ "code":"J,NP/A,368,337,1981" ,"std":"J,NP_A,368,337,1981"
+            ,"exp":"Jour: Nuclear Physics, Section A, Vol.368, p.337 (1981)"
+          }
+  ,"reaction": {
+     "code": "22-TI-47(P,G)23-V-48,,SIG"
+    ,"C4Reaction":"(P,G),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"22-TI-47" ,"TargZA":"22047"
+    ,"MF": 3 ,"MT": 102
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 7
+    ,"row": 82
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":81   ,"minval":"2.912e-06"   ,"maxval":"0.0009565"
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"003" ,"expansion":"Data: data"
+    ,"x4Units":"B" ,"hlpUnits":"barns"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":13   ,"minval":"8.052e-07"   ,"maxval":"0.0003057"
+    ,"varSorted":"0.944" ,"what":"Y.sErr+-"
+    ,"dataType":"21"  ,"numVar":"0.944"
+    ,"x4Header":"ERR-S" ,"SAN":"003" ,"expansion":"Uncertainty: +-statistical error"
+    ,"x4Units":"B" ,"hlpUnits":"barns"
+    }
+
+   , { "ii":3 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"7."   ,"maxval":"7."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-1" ,"SAN":"003" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":4 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"6."   ,"maxval":"6."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-2" ,"SAN":"003" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":5 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"5."   ,"maxval":"5."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-3" ,"SAN":"003" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":6 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"5."   ,"maxval":"5."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-4" ,"SAN":"003" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":7 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":82   ,"minval":"0.76"   ,"maxval":"4.1"
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"003" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+   ]
+  ,"data": [
+	 [3.697E-6,8.052E-7,7.0,6.0,5.0,5.0,0.76]
+	,[2.912E-6,1.543E-6,7.0,6.0,5.0,5.0,0.79]
+	,[9.601E-6,null,7.0,6.0,5.0,5.0,0.85]
+	,[1.563E-5,null,7.0,6.0,5.0,5.0,0.87]
+	,[2.709E-5,null,7.0,6.0,5.0,5.0,0.91]
+	,[4.744E-5,null,7.0,6.0,5.0,5.0,0.96]
+	,[4.103E-5,null,7.0,6.0,5.0,5.0,1.0]
+	,[6.612E-5,null,7.0,6.0,5.0,5.0,1.03]
+	,[1.001E-4,null,7.0,6.0,5.0,5.0,1.08]
+	,[1.735E-4,null,7.0,6.0,5.0,5.0,1.15]
+	,[1.245E-4,null,7.0,6.0,5.0,5.0,1.23]
+	,[1.396E-4,null,7.0,6.0,5.0,5.0,1.27]
+	,[1.867E-4,null,7.0,6.0,5.0,5.0,1.3]
+	,[2.136E-4,null,7.0,6.0,5.0,5.0,1.35]
+	,[2.602E-4,null,7.0,6.0,5.0,5.0,1.4]
+	,[2.204E-4,null,7.0,6.0,5.0,5.0,1.43]
+	,[2.471E-4,null,7.0,6.0,5.0,5.0,1.48]
+	,[1.967E-4,null,7.0,6.0,5.0,5.0,1.52]
+	,[2.603E-4,null,7.0,6.0,5.0,5.0,1.56]
+	,[2.472E-4,null,7.0,6.0,5.0,5.0,1.6]
+	,[2.888E-4,null,7.0,6.0,5.0,5.0,1.63]
+	,[3.983E-4,null,7.0,6.0,5.0,5.0,1.67]
+	,[3.204E-4,null,7.0,6.0,5.0,5.0,1.7]
+	,[3.139E-4,null,7.0,6.0,5.0,5.0,1.76]
+	,[3.705E-4,null,7.0,6.0,5.0,5.0,1.79]
+	,[3.903E-4,null,7.0,6.0,5.0,5.0,1.84]
+	,[5.165E-4,null,7.0,6.0,5.0,5.0,1.87]
+	,[3.944E-4,null,7.0,6.0,5.0,5.0,1.91]
+	,[4.804E-4,null,7.0,6.0,5.0,5.0,1.94]
+	,[4.855E-4,null,7.0,6.0,5.0,5.0,1.99]
+	,[4.028E-4,null,7.0,6.0,5.0,5.0,2.02]
+	,[5.276E-4,null,7.0,6.0,5.0,5.0,2.08]
+	,[5.499E-4,null,7.0,6.0,5.0,5.0,2.11]
+	,[4.756E-4,null,7.0,6.0,5.0,5.0,2.14]
+	,[3.826E-4,null,7.0,6.0,5.0,5.0,2.19]
+	,[4.66E-4,null,7.0,6.0,5.0,5.0,2.22]
+	,[6.231E-4,null,7.0,6.0,5.0,5.0,2.26]
+	,[6.231E-4,null,7.0,6.0,5.0,5.0,2.32]
+	,[5.446E-4,null,7.0,6.0,5.0,5.0,2.35]
+	,[6.297E-4,null,7.0,6.0,5.0,5.0,2.38]
+	,[4.859E-4,null,7.0,6.0,5.0,5.0,2.41]
+	,[5.28E-4,null,7.0,6.0,5.0,5.0,2.46]
+	,[6.299E-4,null,7.0,6.0,5.0,5.0,2.5]
+	,[6.3E-4,null,7.0,6.0,5.0,5.0,2.55]
+	,[7.672E-4,null,7.0,6.0,5.0,5.0,2.58]
+	,[4.964E-4,null,7.0,6.0,5.0,5.0,2.64]
+	,[6.236E-4,null,7.0,6.0,5.0,5.0,2.66]
+	,[6.847E-4,null,7.0,6.0,5.0,5.0,2.7]
+	,[5.984E-4,null,7.0,6.0,5.0,5.0,2.74]
+	,[6.303E-4,null,7.0,6.0,5.0,5.0,2.78]
+	,[7.139E-4,null,7.0,6.0,5.0,5.0,2.81]
+	,[7.442E-4,null,7.0,6.0,5.0,5.0,2.85]
+	,[5.625E-4,null,7.0,6.0,5.0,5.0,2.9]
+	,[6.24E-4,null,7.0,6.0,5.0,5.0,2.93]
+	,[6.851E-4,null,7.0,6.0,5.0,5.0,2.97]
+	,[7.292E-4,null,7.0,6.0,5.0,5.0,3.01]
+	,[6.996E-4,null,7.0,6.0,5.0,5.0,3.07]
+	,[6.374E-4,null,7.0,6.0,5.0,5.0,3.12]
+	,[6.309E-4,null,7.0,6.0,5.0,5.0,3.18]
+	,[6.714E-4,null,7.0,6.0,5.0,5.0,3.21]
+	,[6.376E-4,null,7.0,6.0,5.0,5.0,3.26]
+	,[6.245E-4,null,7.0,6.0,5.0,5.0,3.3]
+	,[4.869E-4,null,7.0,6.0,5.0,5.0,3.33]
+	,[7.847E-4,null,7.0,6.0,5.0,5.0,3.37]
+	,[7.529E-4,null,7.0,6.0,5.0,5.0,3.42]
+	,[5.81E-4,null,7.0,6.0,5.0,5.0,3.44]
+	,[5.238E-4,null,7.0,6.0,5.0,5.0,3.5]
+	,[6.184E-4,null,7.0,6.0,5.0,5.0,3.52]
+	,[6.65E-4,null,7.0,6.0,5.0,5.0,3.57]
+	,[9.269E-4,null,7.0,6.0,5.0,5.0,3.62]
+	,[7.152E-4,null,7.0,6.0,5.0,5.0,3.65]
+	,[7.853E-4,7.682E-5,7.0,6.0,5.0,5.0,3.69]
+	,[9.565E-4,9.357E-5,7.0,6.0,5.0,5.0,3.74]
+	,[4.824E-4,1.024E-4,7.0,6.0,5.0,5.0,3.79]
+	,[5.814E-4,1.49E-4,7.0,6.0,5.0,5.0,3.8]
+	,[7.23E-4,3.057E-4,7.0,6.0,5.0,5.0,3.84]
+	,[6.937E-4,2.933E-4,7.0,6.0,5.0,5.0,3.9]
+	,[2.617E-4,1.937E-4,7.0,6.0,5.0,5.0,3.94]
+	,[3.963E-4,1.617E-4,7.0,6.0,5.0,5.0,3.97]
+	,[6.127E-4,1.181E-4,7.0,6.0,5.0,5.0,4.01]
+	,[4.631E-4,1.508E-4,7.0,6.0,5.0,5.0,4.06]
+	,[5.138E-4,2.723E-4,7.0,6.0,5.0,5.0,4.1]
+   ]
+ }
+,
+ {"id":"D0978005"
+  ,"subent": {"id":"D0978005", "updated":"20200410" }
+  ,"entry": {"id":"D0978", "updated":"20200410" }
+  ,"author1":"A.Azzam+"
+  ,"year":"2020"
+  ,"ref1":{ "code":"J,NP/A,999,121790,2020" ,"std":"J,NP_A,999,121790,2020"
+            ,"exp":"Jour: Nuclear Physics, Section A, Vol.999, p.121790 (2020)"
+          }
+  ,"reaction": {
+     "code": "22-TI-0(P,X)23-V-48,,SIG"
+    ,"C4Reaction":"(P,X),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"22-TI-0" ,"TargZA":"22000"
+    ,"MF": 3 ,"MT": 9000
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 6
+    ,"row": 12
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":12   ,"minval":"10.73"   ,"maxval":"391.37"
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"005" ,"expansion":"Data: data"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":12   ,"minval":"1.61"   ,"maxval":"58.71"
+    ,"varSorted":"0.911" ,"what":"Y.Err+-"
+    ,"dataType":"21"  ,"numVar":"0.911"
+    ,"x4Header":"ERR-T" ,"SAN":"005" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":3 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"5."   ,"maxval":"5."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-1" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":4 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"5."   ,"maxval":"5."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-2" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":5 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"7."   ,"maxval":"7."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-3" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":6 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":12   ,"minval":"4.4"   ,"maxval":"13.1"
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"005" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+   ]
+  ,"data": [
+	 [10.73,1.61,5.0,5.0,7.0,4.4]
+	,[21.37,3.21,5.0,5.0,7.0,5.4]
+	,[135.75,20.36,5.0,5.0,7.0,6.7]
+	,[237.48,35.62,5.0,5.0,7.0,7.6]
+	,[308.22,46.23,5.0,5.0,7.0,8.4]
+	,[352.95,52.94,5.0,5.0,7.0,9.1]
+	,[358.26,53.74,5.0,5.0,7.0,9.8]
+	,[382.31,57.35,5.0,5.0,7.0,10.8]
+	,[387.78,58.17,5.0,5.0,7.0,11.5]
+	,[391.37,58.71,5.0,5.0,7.0,12.1]
+	,[378.84,56.83,5.0,5.0,7.0,12.6]
+	,[365.26,54.79,5.0,5.0,7.0,13.1]
+   ]
+ }
+,
+ {"id":"D0985002"
+  ,"subent": {"id":"D0985002", "updated":"20200904" }
+  ,"entry": {"id":"D0985", "updated":"20200904" }
+  ,"author1":"J.Cervenak+"
+  ,"year":"2020"
+  ,"ref1":{ "code":"J,NIM/B,480,78,2020" ,"std":"J,NIM_B,480,78,2020"
+            ,"exp":"Jour: Nucl. Instrum. Methods in Physics Res., Sect.B, Vol.480, p.78 (2020)"
+          }
+  ,"reaction": {
+     "code": "22-TI-0(P,X)23-V-48,,SIG"
+    ,"C4Reaction":"(P,X),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"22-TI-0" ,"TargZA":"22000"
+    ,"MF": 3 ,"MT": 9000
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 7
+    ,"row": 22
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":22   ,"minval":"28.2"   ,"maxval":"379."
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"002" ,"expansion":"Data: data"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":21   ,"minval":"1.9"   ,"maxval":"26."
+    ,"varSorted":"0.911" ,"what":"Y.Err+-"
+    ,"dataType":"21"  ,"numVar":"0.911"
+    ,"x4Header":"ERR-T" ,"SAN":"002" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":3 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"1.5"   ,"maxval":"1.5"
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-1" ,"SAN":"002" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":4 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"6."   ,"maxval":"6."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-2" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":5 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"1."   ,"maxval":"1."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-3" ,"SAN":"002" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":6 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":22   ,"minval":"6.44"   ,"maxval":"35.97"
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"002" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+
+   , { "ii":7 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":19   ,"minval":"0.3"   ,"maxval":"0.91"
+    ,"varSorted":"1.933" ,"what":"X1.hRes+-"
+    ,"dataType":"41"  ,"numVar":"2.933"
+    ,"x4Header":"EN-RSL-HW" ,"SAN":"002" ,"expansion":"Uncertainty: +-half resolution"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+   ]
+  ,"data": [
+	 [28.2,1.9,1.5,6.0,1.0,35.97,0.3]
+	,[29.5,2.0,1.5,6.0,1.0,34.57,0.33]
+	,[31.0,2.1,1.5,6.0,1.0,33.1,0.35]
+	,[32.2,2.2,1.5,6.0,1.0,31.61,0.38]
+	,[33.8,2.3,1.5,6.0,1.0,30.04,0.42]
+	,[35.9,2.4,1.5,6.0,1.0,28.43,0.46]
+	,[40.3,2.6,1.5,6.0,1.0,26.72,0.5]
+	,[45.4,3.1,1.5,6.0,1.0,24.95,0.55]
+	,[49.9,3.3,1.5,6.0,1.0,23.79,0.58]
+	,[55.7,3.8,1.5,6.0,1.0,22.58,0.61]
+	,[57.2,3.9,1.5,6.0,1.0,22.09,0.63]
+	,[64.7,4.4,1.5,6.0,1.0,21.31,0.3]
+	,[79.9,5.4,1.5,6.0,1.0,19.98,0.33]
+	,[104.2,7.1,1.5,6.0,1.0,18.59,0.36]
+	,[151.0,10.0,1.5,6.0,1.0,17.13,0.4]
+	,[232.0,16.0,1.5,6.0,1.0,15.59,0.44]
+	,[343.0,23.0,1.5,6.0,1.0,13.91,0.5]
+	,[379.0,26.0,1.5,6.0,1.0,12.1,0.57]
+	,[363.0,25.0,1.5,6.0,1.0,10.04,0.67]
+	,[338.0,23.0,1.5,6.0,1.0,8.86,0.73]
+	,[275.0,19.0,1.5,6.0,1.0,7.57,0.82]
+	,[190.0,13.0,1.5,6.0,1.0,6.44,0.91]
+   ]
+ }
+,
+ {"id":"D1033004"
+  ,"subent": {"id":"D1033004", "updated":"20221116" }
+  ,"entry": {"id":"D1033", "updated":"20221116" }
+  ,"author1":"M.Anwer+"
+  ,"year":"2022"
+  ,"ref1":{ "code":"J,RCA,110,799,2022" ,"std":"J,RCA,110,799,2022"
+            ,"exp":"Jour: Radiochimica Acta, Vol.110, p.799 (2022)"
+          }
+  ,"reaction": {
+     "code": "22-TI-0(P,X)23-V-48,,SIG"
+    ,"C4Reaction":"(P,X),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"22-TI-0" ,"TargZA":"22000"
+    ,"MF": 3 ,"MT": 9000
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 8
+    ,"row": 2
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":2   ,"minval":"112.7"   ,"maxval":"136.5"
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"004" ,"expansion":"Data: data"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":2   ,"minval":"11.4"   ,"maxval":"13.8"
+    ,"varSorted":"0.911" ,"what":"Y.Err+-"
+    ,"dataType":"21"  ,"numVar":"0.911"
+    ,"x4Header":"ERR-T" ,"SAN":"004" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":3 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"0.23"   ,"maxval":"0.23"
+    ,"varSorted":"0.944" ,"what":"Y.sErr+-"
+    ,"dataType":"21"  ,"numVar":"0.944"
+    ,"x4Header":"ERR-S" ,"SAN":"004" ,"expansion":"Uncertainty: +-statistical error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":4 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"2."   ,"maxval":"2."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-1" ,"SAN":"004" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":5 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"3."   ,"maxval":"3."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-2" ,"SAN":"004" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":6 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"1."   ,"maxval":"1."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-3" ,"SAN":"004" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":7 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":2   ,"minval":"5.38"   ,"maxval":"5.8"
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"004" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+
+   , { "ii":8 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":2   ,"minval":"0.2"   ,"maxval":"0.21"
+    ,"varSorted":"1.911" ,"what":"X1.Err+-"
+    ,"dataType":"41"  ,"numVar":"2.911"
+    ,"x4Header":"EN-ERR" ,"SAN":"004" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+   ]
+  ,"data": [
+	 [136.5,13.8,0.23,2.0,3.0,1.0,5.8,0.2]
+	,[112.7,11.4,0.23,2.0,3.0,1.0,5.38,0.21]
+   ]
+ }
+,
+ {"id":"D1067002"
+  ,"subent": {"id":"D1067002", "updated":"20250409" }
+  ,"entry": {"id":"D1067", "updated":"20250409" }
+  ,"author1":"N.Muhammad+"
+  ,"year":"2025"
+  ,"ref1":{ "code":"J,RCA,113,9,2025" ,"std":"J,RCA,113,9,2025"
+            ,"exp":"Jour: Radiochimica Acta, Vol.113, p.9 (2025)"
+          }
+  ,"reaction": {
+     "code": "22-TI-0(P,X)23-V-48,,SIG"
+    ,"C4Reaction":"(P,X),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"22-TI-0" ,"TargZA":"22000"
+    ,"MF": 3 ,"MT": 9000
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 8
+    ,"row": 3
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":3   ,"minval":"8.4"   ,"maxval":"125.8"
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"002" ,"expansion":"Data: data"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":2   ,"minval":"9.7"   ,"maxval":"10.1"
+    ,"varSorted":"0.911" ,"what":"Y.Err+-"
+    ,"dataType":"21"  ,"numVar":"0.911"
+    ,"x4Header":"ERR-T" ,"SAN":"002" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":3 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"0.23"   ,"maxval":"0.23"
+    ,"varSorted":"0.944" ,"what":"Y.sErr+-"
+    ,"dataType":"21"  ,"numVar":"0.944"
+    ,"x4Header":"ERR-S" ,"SAN":"002" ,"expansion":"Uncertainty: +-statistical error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":4 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"2."   ,"maxval":"2."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-1" ,"SAN":"002" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":5 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"3."   ,"maxval":"3."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-2" ,"SAN":"002" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":6 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"1."   ,"maxval":"1."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-3" ,"SAN":"002" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":7 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":3   ,"minval":"5."   ,"maxval":"5.83"
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"002" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+
+   , { "ii":8 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":2   ,"minval":"0.21"   ,"maxval":"0.22"
+    ,"varSorted":"1.911" ,"what":"X1.Err+-"
+    ,"dataType":"41"  ,"numVar":"2.911"
+    ,"x4Header":"EN-ERR" ,"SAN":"002" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+   ]
+  ,"data": [
+	 [125.8,10.1,0.23,2.0,3.0,1.0,5.83,0.21]
+	,[54.8,9.7,0.23,2.0,3.0,1.0,5.44,0.21]
+	,[8.4,9.7,0.23,2.0,3.0,1.0,5.0,0.22]
+   ]
+ }
+,
+ {"id":"D4001002"
+  ,"subent": {"id":"D4001002", "updated":"20231023" }
+  ,"entry": {"id":"D4001", "updated":"20231023" }
+  ,"author1":"P.Kopecky+"
+  ,"year":"1993"
+  ,"ref1":{ "code":"J,ARI,44,687,1993" ,"std":"J,ARI,44,687,1993"
+            ,"exp":"Jour: Applied Radiation and Isotopes, Vol.44, p.687 (1993)"
+          }
+  ,"reaction": {
+     "code": "22-TI-0(P,X)23-V-48,,SIG"
+    ,"C4Reaction":"(P,X),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"22-TI-0" ,"TargZA":"22000"
+    ,"MF": 3 ,"MT": 9000
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 4
+    ,"row": 69
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":66   ,"minval":"0.463"   ,"maxval":"386."
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"002" ,"expansion":"Data: data"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":40   ,"minval":"0.042"   ,"maxval":"30."
+    ,"varSorted":"0.911" ,"what":"Y.Err+-"
+    ,"dataType":"21"  ,"numVar":"0.911"
+    ,"x4Header":"DATA-ERR" ,"SAN":"002" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":3 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":69   ,"minval":"4.5"   ,"maxval":"29.98"
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"002" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+
+   , { "ii":4 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":29   ,"minval":"0.2"   ,"maxval":"0.5"
+    ,"varSorted":"1.911" ,"what":"X1.Err+-"
+    ,"dataType":"41"  ,"numVar":"2.911"
+    ,"x4Header":"EN-ERR" ,"SAN":"002" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+   ]
+  ,"data": [
+	 [0.463,0.042,4.5,0.41]
+	,[36.79,2.79,5.31,0.39]
+	,[103.2,7.8,5.76,0.37]
+	,[163.0,12.0,6.18,0.37]
+	,[212.0,17.0,6.85,0.35]
+	,[244.0,19.0,7.23,0.35]
+	,[279.0,22.0,7.59,0.34]
+	,[318.0,26.0,8.57,0.32]
+	,[341.0,27.0,8.88,0.31]
+	,[362.0,28.0,8.96,0.4]
+	,[344.0,27.0,9.19,0.31]
+	,[371.0,29.0,9.47,0.39]
+	,[347.0,27.0,9.97,0.38]
+	,[353.0,28.0,10.05,0.29]
+	,[369.0,29.0,10.34,0.28]
+	,[357.0,28.0,10.45,0.37]
+	,[363.0,28.0,10.61,0.28]
+	,[364.0,24.0,10.78,0.5]
+	,[362.0,28.0,10.91,0.36]
+	,[366.0,29.0,11.35,0.35]
+	,[386.0,30.0,11.39,0.26]
+	,[377.0,30.0,11.64,0.26]
+	,[366.0,23.0,11.73,0.49]
+	,[368.0,28.0,11.78,0.34]
+	,[374.0,30.0,11.89,0.25]
+	,[373.0,29.0,12.19,0.33]
+	,[376.0,29.0,12.6,0.32]
+	,[381.0,30.0,12.61,0.24]
+	,[378.0,25.0,12.62,0.47]
+	,[372.0,29.0,13.28,0.3]
+	,[380.0,29.0,13.29,0.22]
+	,[377.0,25.0,13.47,0.46]
+	,[339.0,26.0,13.95,0.29]
+	,[338.0,26.0,13.96,0.21]
+	,[331.0,22.0,14.27,0.45]
+	,[302.0,24.0,14.59,0.27]
+	,[264.0,18.0,15.05,0.44]
+	,[262.0,20.0,15.22,0.26]
+	,[223.0,15.0,15.79,0.42]
+	,[219.0,17.0,15.82,0.25]
+	,[190.0,15.0,16.41,0.23]
+	,[172.0,12.0,16.5,0.41]
+	,[164.0,13.0,16.98,0.22]
+	,[153.0,11.0,17.19,0.4]
+	,[141.0,11.0,17.54,0.21]
+	,[131.0,9.0,17.86,0.39]
+	,[115.0,8.0,18.51,0.38]
+	,[98.6,7.2,19.14,0.37]
+	,[86.4,6.2,19.76,0.36]
+	,[82.1,5.9,20.36,0.35]
+	,[76.5,5.5,20.95,0.34]
+	,[68.2,5.0,21.53,0.33]
+	,[63.4,4.6,22.1,0.32]
+	,[58.6,4.3,22.65,0.32]
+	,[54.2,4.0,23.2,0.31]
+	,[52.6,3.9,23.53,0.3]
+	,[50.1,3.7,24.26,0.29]
+	,[48.6,3.6,24.77,0.28]
+	,[44.2,3.3,25.28,0.27]
+	,[42.6,3.2,25.78,0.27]
+	,[40.8,3.0,26.27,0.26]
+	,[39.4,2.9,26.76,0.25]
+	,[37.3,2.8,27.23,0.24]
+	,[36.8,2.8,27.71,0.24]
+	,[36.0,2.7,28.17,0.23]
+	,[35.2,2.6,28.63,0.22]
+	,[34.2,2.6,29.08,0.21]
+	,[34.8,2.6,29.53,0.21]
+	,[34.3,2.6,29.98,0.2]
+   ]
+ }
+,
+ {"id":"D40580381" ,"pointer":"1"
+  ,"subent": {"id":"D4058038", "updated":"20150504" }
+  ,"entry": {"id":"D4058", "updated":"20230720" }
+  ,"author1":"P.Jung"
+  ,"year":"1991"
+  ,"ref1":{ "code":"C,91JUELIC,,352,1991" ,"std":"C,91JUELIC,,352,1991"
+            ,"exp":"Conf: Conf.on Nucl.Data for Sci.and Technol.,Juelich 1991, p.352 (1991)"
+          }
+  ,"reaction": {
+     "code": "22-TI-0(P,X)23-V-48,,SIG"
+    ,"C4Reaction":"(P,X),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"22-TI-0" ,"TargZA":"22000"
+    ,"MF": 3 ,"MT": 9000
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 3
+    ,"row": 3
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":3   ,"minval":"61.6"   ,"maxval":"302."
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"038" ,"expansion":"Data: data"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":2 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":3   ,"minval":"7.6"   ,"maxval":"23.8"
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"038" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+
+   , { "ii":3 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":2   ,"minval":"0.2"   ,"maxval":"0.4"
+    ,"varSorted":"1.911" ,"what":"X1.Err+-"
+    ,"dataType":"41"  ,"numVar":"2.911"
+    ,"x4Header":"EN-ERR" ,"SAN":"038" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+   ]
+  ,"data": [
+	 [219.0,7.6,0.4]
+	,[302.0,15.8,0.2]
+	,[61.6,23.8,0.2]
+   ]
+ }
+,
+ {"id":"D4060002"
+  ,"subent": {"id":"D4060002", "updated":"20250129" }
+  ,"entry": {"id":"D4060", "updated":"20250129" }
+  ,"author1":"E.Gadioli+"
+  ,"year":"1981"
+  ,"ref1":{ "code":"J,ZP/A,301,289,1981" ,"std":"J,ZP_A,301,289,1981"
+            ,"exp":"Jour: Zeitschrift fuer Physik A, Hadrons and Nuclei, Vol.301, p.289 (1981)"
+          }
+  ,"reaction": {
+     "code": "22-TI-48(P,N)23-V-48,,SIG"
+    ,"C4Reaction":"(P,N),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"22-TI-48" ,"TargZA":"22048"
+    ,"MF": 3 ,"MT": 4
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 5
+    ,"row": 14
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":14   ,"minval":"7."   ,"maxval":"577."
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"002" ,"expansion":"Data: data"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":13   ,"minval":"0.9"   ,"maxval":"25."
+    ,"varSorted":"0.911" ,"what":"Y.Err+-"
+    ,"dataType":"21"  ,"numVar":"0.911"
+    ,"x4Header":"DATA-ERR" ,"SAN":"002" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":3 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":14   ,"minval":"7."   ,"maxval":"85."
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"002" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+
+   , { "ii":4 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":4   ,"minval":"63.7"   ,"maxval":"415."
+    ,"varSorted":"" ,"what":"ZZZ"
+    ,"dataType":"11"  ,"numVar":"ZZZ"
+    ,"x4Header":"MONIT1" ,"SAN":"002" ,"expansion":"Assumed values: monitor"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":5 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":9   ,"minval":"145."   ,"maxval":"430."
+    ,"varSorted":"" ,"what":"ZZZ"
+    ,"dataType":"11"  ,"numVar":"ZZZ"
+    ,"x4Header":"MONIT2" ,"SAN":"002" ,"expansion":"Assumed values: monitor"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+   ]
+  ,"data": [
+	 [333.0,13.0,7.0,249.0,null]
+	,[577.0,25.0,10.0,415.0,null]
+	,[425.0,20.0,15.0,330.0,null]
+	,[110.0,6.0,20.0,63.7,null]
+	,[36.4,4.0,25.0,null,430.0]
+	,[29.2,3.6,30.0,null,410.0]
+	,[22.5,3.0,35.0,null,250.0]
+	,[15.4,1.9,40.0,null,245.0]
+	,[16.1,2.0,45.0,null,195.0]
+	,[15.9,2.0,50.0,null,190.0]
+	,[13.2,1.8,55.0,null,165.0]
+	,[11.5,1.5,60.0,null,165.0]
+	,[9.5,1.1,70.0,null,154.0]
+	,[7.0,0.9,85.0,null,145.0]
+   ]
+ }
+,
+ {"id":"D4080003"
+  ,"subent": {"id":"D4080003", "updated":"20100614" }
+  ,"entry": {"id":"D4080", "updated":"20100614" }
+  ,"author1":"F.Tarkanyi+"
+  ,"year":"1991"
+  ,"ref1":{ "code":"C,91JUELIC,,529,1991" ,"std":"C,91JUELIC,,529,1991"
+            ,"exp":"Conf: Conf.on Nucl.Data for Sci.and Technol.,Juelich 1991, p.529 (1991)"
+          }
+  ,"reaction": {
+     "code": "22-TI-0(P,X)23-V-48,,SIG"
+    ,"C4Reaction":"(P,X),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"22-TI-0" ,"TargZA":"22000"
+    ,"MF": 3 ,"MT": 9000
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 9
+    ,"row": 69
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":66   ,"minval":"0.463"   ,"maxval":"386."
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"003" ,"expansion":"Data: data"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":40   ,"minval":"0.042"   ,"maxval":"30."
+    ,"varSorted":"0.911" ,"what":"Y.Err+-"
+    ,"dataType":"21"  ,"numVar":"0.911"
+    ,"x4Header":"ERR-T" ,"SAN":"003" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":3 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"1."   ,"maxval":"1."
+    ,"varSorted":"0.944" ,"what":"Y.sErr+-"
+    ,"dataType":"21"  ,"numVar":"0.944"
+    ,"x4Header":"ERR-S" ,"SAN":"003" ,"expansion":"Uncertainty: +-statistical error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":4 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"5."   ,"maxval":"5."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-1" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":5 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"3."   ,"maxval":"3."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-2" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":6 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"1."   ,"maxval":"1."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-3" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":7 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"7."   ,"maxval":"7."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-4" ,"SAN":"003" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":8 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":69   ,"minval":"4.5"   ,"maxval":"29.98"
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"003" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+
+   , { "ii":9 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":29   ,"minval":"0.2"   ,"maxval":"0.5"
+    ,"varSorted":"1.911" ,"what":"X1.Err+-"
+    ,"dataType":"41"  ,"numVar":"2.911"
+    ,"x4Header":"EN-ERR" ,"SAN":"003" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+   ]
+  ,"data": [
+	 [0.463,0.042,1.0,5.0,3.0,1.0,7.0,4.5,0.41]
+	,[36.79,2.79,1.0,5.0,3.0,1.0,7.0,5.31,0.39]
+	,[103.2,7.8,1.0,5.0,3.0,1.0,7.0,5.76,0.37]
+	,[163.0,12.0,1.0,5.0,3.0,1.0,7.0,6.18,0.37]
+	,[212.0,17.0,1.0,5.0,3.0,1.0,7.0,6.85,0.35]
+	,[244.0,19.0,1.0,5.0,3.0,1.0,7.0,7.23,0.35]
+	,[279.0,22.0,1.0,5.0,3.0,1.0,7.0,7.59,0.34]
+	,[318.0,26.0,1.0,5.0,3.0,1.0,7.0,8.57,0.32]
+	,[341.0,27.0,1.0,5.0,3.0,1.0,7.0,8.88,0.31]
+	,[362.0,28.0,1.0,5.0,3.0,1.0,7.0,8.96,0.4]
+	,[344.0,27.0,1.0,5.0,3.0,1.0,7.0,9.19,0.31]
+	,[371.0,29.0,1.0,5.0,3.0,1.0,7.0,9.47,0.39]
+	,[347.0,27.0,1.0,5.0,3.0,1.0,7.0,9.97,0.38]
+	,[353.0,28.0,1.0,5.0,3.0,1.0,7.0,10.05,0.29]
+	,[369.0,29.0,1.0,5.0,3.0,1.0,7.0,10.34,0.28]
+	,[357.0,28.0,1.0,5.0,3.0,1.0,7.0,10.45,0.37]
+	,[363.0,28.0,1.0,5.0,3.0,1.0,7.0,10.61,0.28]
+	,[364.0,24.0,1.0,5.0,3.0,1.0,7.0,10.78,0.5]
+	,[362.0,28.0,1.0,5.0,3.0,1.0,7.0,10.91,0.36]
+	,[366.0,29.0,1.0,5.0,3.0,1.0,7.0,11.35,0.35]
+	,[386.0,30.0,1.0,5.0,3.0,1.0,7.0,11.39,0.26]
+	,[377.0,30.0,1.0,5.0,3.0,1.0,7.0,11.64,0.26]
+	,[366.0,23.0,1.0,5.0,3.0,1.0,7.0,11.73,0.49]
+	,[368.0,28.0,1.0,5.0,3.0,1.0,7.0,11.78,0.34]
+	,[374.0,30.0,1.0,5.0,3.0,1.0,7.0,11.89,0.25]
+	,[373.0,29.0,1.0,5.0,3.0,1.0,7.0,12.19,0.33]
+	,[376.0,29.0,1.0,5.0,3.0,1.0,7.0,12.6,0.32]
+	,[381.0,30.0,1.0,5.0,3.0,1.0,7.0,12.61,0.24]
+	,[378.0,25.0,1.0,5.0,3.0,1.0,7.0,12.62,0.47]
+	,[372.0,29.0,1.0,5.0,3.0,1.0,7.0,13.28,0.3]
+	,[380.0,29.0,1.0,5.0,3.0,1.0,7.0,13.29,0.22]
+	,[377.0,25.0,1.0,5.0,3.0,1.0,7.0,13.47,0.46]
+	,[339.0,26.0,1.0,5.0,3.0,1.0,7.0,13.95,0.29]
+	,[338.0,26.0,1.0,5.0,3.0,1.0,7.0,13.96,0.21]
+	,[331.0,22.0,1.0,5.0,3.0,1.0,7.0,14.27,0.45]
+	,[302.0,24.0,1.0,5.0,3.0,1.0,7.0,14.59,0.27]
+	,[264.0,18.0,1.0,5.0,3.0,1.0,7.0,15.05,0.44]
+	,[262.0,20.0,1.0,5.0,3.0,1.0,7.0,15.22,0.26]
+	,[223.0,15.0,1.0,5.0,3.0,1.0,7.0,15.79,0.42]
+	,[219.0,17.0,1.0,5.0,3.0,1.0,7.0,15.82,0.25]
+	,[190.0,15.0,1.0,5.0,3.0,1.0,7.0,16.41,0.23]
+	,[172.0,12.0,1.0,5.0,3.0,1.0,7.0,16.5,0.41]
+	,[164.0,13.0,1.0,5.0,3.0,1.0,7.0,16.98,0.22]
+	,[153.0,11.0,1.0,5.0,3.0,1.0,7.0,17.19,0.4]
+	,[141.0,11.0,1.0,5.0,3.0,1.0,7.0,17.54,0.21]
+	,[131.0,9.0,1.0,5.0,3.0,1.0,7.0,17.86,0.39]
+	,[115.0,8.0,1.0,5.0,3.0,1.0,7.0,18.51,0.38]
+	,[98.6,7.2,1.0,5.0,3.0,1.0,7.0,19.14,0.37]
+	,[86.4,6.2,1.0,5.0,3.0,1.0,7.0,19.76,0.36]
+	,[82.1,5.9,1.0,5.0,3.0,1.0,7.0,20.36,0.35]
+	,[76.5,5.5,1.0,5.0,3.0,1.0,7.0,20.95,0.34]
+	,[68.2,5.0,1.0,5.0,3.0,1.0,7.0,21.53,0.33]
+	,[63.4,4.6,1.0,5.0,3.0,1.0,7.0,22.1,0.32]
+	,[58.6,4.3,1.0,5.0,3.0,1.0,7.0,22.65,0.32]
+	,[54.2,4.0,1.0,5.0,3.0,1.0,7.0,23.2,0.31]
+	,[52.6,3.9,1.0,5.0,3.0,1.0,7.0,23.53,0.3]
+	,[50.1,3.7,1.0,5.0,3.0,1.0,7.0,24.26,0.29]
+	,[48.6,3.6,1.0,5.0,3.0,1.0,7.0,24.77,0.28]
+	,[44.2,3.3,1.0,5.0,3.0,1.0,7.0,25.28,0.27]
+	,[42.6,3.2,1.0,5.0,3.0,1.0,7.0,25.78,0.27]
+	,[40.8,3.0,1.0,5.0,3.0,1.0,7.0,26.27,0.26]
+	,[39.4,2.9,1.0,5.0,3.0,1.0,7.0,26.76,0.25]
+	,[37.3,2.8,1.0,5.0,3.0,1.0,7.0,27.23,0.24]
+	,[36.8,2.8,1.0,5.0,3.0,1.0,7.0,27.71,0.24]
+	,[36.0,2.7,1.0,5.0,3.0,1.0,7.0,28.17,0.23]
+	,[35.2,2.6,1.0,5.0,3.0,1.0,7.0,28.63,0.22]
+	,[34.2,2.6,1.0,5.0,3.0,1.0,7.0,29.08,0.21]
+	,[34.8,2.6,1.0,5.0,3.0,1.0,7.0,29.53,0.21]
+	,[34.3,2.6,1.0,5.0,3.0,1.0,7.0,29.98,0.2]
+   ]
+ }
+,
+ {"id":"D4083002"
+  ,"subent": {"id":"D4083002", "updated":"20010913" }
+  ,"entry": {"id":"D4083", "updated":"20160518" }
+  ,"author1":"F.Szelecsenyi+"
+  ,"year":"2001"
+  ,"ref1":{ "code":"J,NIM/B,174,47,2001" ,"std":"J,NIM_B,174,47,2001"
+            ,"exp":"Jour: Nucl. Instrum. Methods in Physics Res., Sect.B, Vol.174, p.47 (2001)"
+          }
+  ,"reaction": {
+     "code": "22-TI-0(P,X)23-V-48,,SIG"
+    ,"C4Reaction":"(P,X),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"22-TI-0" ,"TargZA":"22000"
+    ,"MF": 3 ,"MT": 9000
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 4
+    ,"row": 42
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":37   ,"minval":"143."   ,"maxval":"412."
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"002" ,"expansion":"Data: data"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":23   ,"minval":"16."   ,"maxval":"47."
+    ,"varSorted":"0.911" ,"what":"Y.Err+-"
+    ,"dataType":"21"  ,"numVar":"0.911"
+    ,"x4Header":"ERR-T" ,"SAN":"002" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":3 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":40   ,"minval":"6.1"   ,"maxval":"17.9"
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"002" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+
+   , { "ii":4 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":8   ,"minval":"0.1"   ,"maxval":"0.8"
+    ,"varSorted":"1.911" ,"what":"X1.Err+-"
+    ,"dataType":"41"  ,"numVar":"2.911"
+    ,"x4Header":"EN-ERR" ,"SAN":"002" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+   ]
+  ,"data": [
+	 [149.0,17.0,6.1,0.4]
+	,[230.0,26.0,6.8,0.4]
+	,[230.0,16.0,6.9,0.8]
+	,[260.0,18.0,7.3,0.8]
+	,[280.0,32.0,7.5,0.4]
+	,[287.0,20.0,7.8,0.8]
+	,[297.0,21.0,8.1,0.7]
+	,[346.0,39.0,8.5,0.3]
+	,[338.0,24.0,8.5,0.7]
+	,[340.0,24.0,8.9,0.3]
+	,[350.0,25.0,9.3,0.6]
+	,[371.0,42.0,9.4,0.3]
+	,[366.0,26.0,9.6,0.6]
+	,[358.0,25.0,10.0,0.6]
+	,[389.0,44.0,10.2,0.3]
+	,[377.0,26.0,10.3,0.6]
+	,[377.0,26.0,10.6,0.5]
+	,[375.0,26.0,10.9,0.5]
+	,[400.0,45.0,11.0,0.3]
+	,[386.0,27.0,11.3,0.5]
+	,[384.0,27.0,11.6,0.5]
+	,[402.0,45.0,11.8,0.3]
+	,[382.0,27.0,11.9,0.5]
+	,[382.0,27.0,12.1,0.4]
+	,[412.0,47.0,12.5,0.2]
+	,[389.0,27.0,12.7,0.4]
+	,[395.0,28.0,13.0,0.2]
+	,[409.0,46.0,13.2,0.2]
+	,[392.0,27.0,13.3,0.3]
+	,[374.0,26.0,13.5,0.3]
+	,[358.0,25.0,13.8,0.3]
+	,[380.0,43.0,13.8,0.2]
+	,[330.0,23.0,14.1,0.3]
+	,[324.0,23.0,14.3,0.3]
+	,[347.0,39.0,14.5,0.2]
+	,[304.0,21.0,14.6,0.2]
+	,[305.0,35.0,15.1,0.2]
+	,[265.0,30.0,15.7,0.2]
+	,[223.0,25.0,16.3,0.1]
+	,[191.0,22.0,16.8,0.1]
+	,[165.0,19.0,17.4,0.1]
+	,[143.0,16.0,17.9,0.1]
+   ]
+ }
+,
+ {"id":"D4106002"
+  ,"subent": {"id":"D4106002", "updated":"20030408" }
+  ,"entry": {"id":"D4106", "updated":"20030408" }
+  ,"author1":"S.Takacs+"
+  ,"year":"2002"
+  ,"ref1":{ "code":"J,NIM/B,188,106,2002" ,"std":"J,NIM_B,188,106,2002"
+            ,"exp":"Jour: Nucl. Instrum. Methods in Physics Res., Sect.B, Vol.188, p.106 (2002)"
+          }
+  ,"reaction": {
+     "code": "22-TI-0(P,X)23-V-48,,SIG"
+    ,"C4Reaction":"(P,X),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"22-TI-0" ,"TargZA":"22000"
+    ,"MF": 3 ,"MT": 9000
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 4
+    ,"row": 31
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":31   ,"minval":"36.5"   ,"maxval":"385.88"
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"002" ,"expansion":"Data: data"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":31   ,"minval":"4.14"   ,"maxval":"43.5"
+    ,"varSorted":"0.911" ,"what":"Y.Err+-"
+    ,"dataType":"21"  ,"numVar":"0.911"
+    ,"x4Header":"ERR-T" ,"SAN":"002" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":3 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":31   ,"minval":"5.52"   ,"maxval":"31.51"
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"002" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+
+   , { "ii":4 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":25   ,"minval":"0.3"   ,"maxval":"0.65"
+    ,"varSorted":"1.911" ,"what":"X1.Err+-"
+    ,"dataType":"41"  ,"numVar":"2.911"
+    ,"x4Header":"EN-ERR" ,"SAN":"002" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+   ]
+  ,"data": [
+	 [79.68,9.0,5.52,0.58]
+	,[272.42,30.68,7.67,0.56]
+	,[342.41,38.55,9.45,0.53]
+	,[359.52,40.59,11.01,0.5]
+	,[385.88,43.5,12.42,0.48]
+	,[372.82,42.08,13.73,0.46]
+	,[298.05,33.53,14.88,0.65]
+	,[293.94,33.21,14.94,0.44]
+	,[210.28,23.75,16.09,0.42]
+	,[204.29,22.99,16.28,0.62]
+	,[161.05,18.18,17.17,0.4]
+	,[142.88,16.11,17.59,0.59]
+	,[129.28,14.62,18.21,0.38]
+	,[109.0,12.27,18.84,0.57]
+	,[99.88,11.3,19.21,0.36]
+	,[86.8,9.79,20.02,0.54]
+	,[84.1,9.51,20.16,0.34]
+	,[74.23,8.4,21.09,0.33]
+	,[72.37,8.16,21.16,0.51]
+	,[67.16,7.57,21.98,0.31]
+	,[64.78,7.34,22.25,0.49]
+	,[55.38,6.29,23.3,0.47]
+	,[51.33,5.81,24.31,0.44]
+	,[48.01,5.43,25.3,0.42]
+	,[46.63,5.27,26.25,0.4]
+	,[43.32,4.9,27.18,0.38]
+	,[42.97,4.86,28.09,0.36]
+	,[39.15,4.42,28.97,0.35]
+	,[36.5,4.14,29.84,0.33]
+	,[37.36,4.24,30.68,0.32]
+	,[38.8,4.39,31.51,0.3]
+   ]
+ }
+,
+ {"id":"D7033002"
+  ,"subent": {"id":"D7033002", "updated":"20220318" }
+  ,"entry": {"id":"D7033", "updated":"20220318" }
+  ,"author1":"M.Shahid+"
+  ,"year":"2018"
+  ,"ref1":{ "code":"J,JRN,318,2049,2018" ,"std":"J,JRN,318,2049,2018"
+            ,"exp":"Jour: Journal of Radioanalytical and Nuclear Chemistry, Vol.318, p.2049 (2018)"
+          }
+  ,"reaction": {
+     "code": "22-TI-0(P,X)23-V-48,,SIG"
+    ,"C4Reaction":"(P,X),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"22-TI-0" ,"TargZA":"22000"
+    ,"MF": 3 ,"MT": 9000
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 8
+    ,"row": 27
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":27   ,"minval":"28.46"   ,"maxval":"369.46"
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"002" ,"expansion":"Data: data"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":23   ,"minval":"2.07"   ,"maxval":"26.63"
+    ,"varSorted":"0.911" ,"what":"Y.Err+-"
+    ,"dataType":"21"  ,"numVar":"0.911"
+    ,"x4Header":"ERR-T" ,"SAN":"002" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":3 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"0.14"   ,"maxval":"0.14"
+    ,"varSorted":"0.944" ,"what":"Y.sErr+-"
+    ,"dataType":"21"  ,"numVar":"0.944"
+    ,"x4Header":"ERR-S" ,"SAN":"002" ,"expansion":"Uncertainty: +-statistical error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":4 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"5.18"   ,"maxval":"5.18"
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-1" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":5 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"4."   ,"maxval":"4."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-2" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":6 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"3."   ,"maxval":"3."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-3" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":7 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":27   ,"minval":"7.4"   ,"maxval":"43.2"
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"002" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+
+   , { "ii":8 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":7   ,"minval":"0.2"   ,"maxval":"0.9"
+    ,"varSorted":"1.911" ,"what":"X1.Err+-"
+    ,"dataType":"41"  ,"numVar":"2.911"
+    ,"x4Header":"EN-ERR" ,"SAN":"002" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+   ]
+  ,"data": [
+	 [28.51,2.07,0.14,5.18,4.0,3.0,43.2,0.2]
+	,[28.96,2.1,0.14,5.18,4.0,3.0,42.3,0.2]
+	,[29.38,2.13,0.14,5.18,4.0,3.0,41.4,0.2]
+	,[29.61,2.15,0.14,5.18,4.0,3.0,40.5,0.2]
+	,[29.72,2.16,0.14,5.18,4.0,3.0,39.5,0.2]
+	,[29.73,2.16,0.14,5.18,4.0,3.0,38.5,0.3]
+	,[29.93,2.17,0.14,5.18,4.0,3.0,37.5,0.3]
+	,[29.88,2.17,0.14,5.18,4.0,3.0,36.5,0.3]
+	,[28.46,2.07,0.14,5.18,4.0,3.0,35.5,0.3]
+	,[30.64,2.22,0.14,5.18,4.0,3.0,34.5,0.3]
+	,[29.14,2.12,0.14,5.18,4.0,3.0,33.4,0.3]
+	,[29.6,2.15,0.14,5.18,4.0,3.0,32.3,0.3]
+	,[33.06,2.4,0.14,5.18,4.0,3.0,31.1,0.3]
+	,[33.5,2.43,0.14,5.18,4.0,3.0,29.9,0.3]
+	,[34.46,2.5,0.14,5.18,4.0,3.0,28.7,0.3]
+	,[36.54,2.65,0.14,5.18,4.0,3.0,27.5,0.3]
+	,[41.47,3.0,0.14,5.18,4.0,3.0,26.2,0.3]
+	,[45.63,3.3,0.14,5.18,4.0,3.0,24.8,0.4]
+	,[53.59,3.88,0.14,5.18,4.0,3.0,23.4,0.4]
+	,[62.22,4.5,0.14,5.18,4.0,3.0,21.9,0.4]
+	,[79.63,5.75,0.14,5.18,4.0,3.0,20.4,0.4]
+	,[102.13,7.38,0.14,5.18,4.0,3.0,18.7,0.4]
+	,[161.57,11.66,0.14,5.18,4.0,3.0,16.9,0.5]
+	,[275.8,19.89,0.14,5.18,4.0,3.0,15.0,0.5]
+	,[369.46,26.63,0.14,5.18,4.0,3.0,12.9,0.6]
+	,[343.76,24.78,0.14,5.18,4.0,3.0,10.4,0.7]
+	,[250.69,18.08,0.14,5.18,4.0,3.0,7.4,0.9]
+   ]
+ }
+,
+ {"id":"D7047009"
+  ,"subent": {"id":"D7047009", "updated":"20250902" }
+  ,"entry": {"id":"D7047", "updated":"20250902" }
+  ,"author1":"D.H.Moon+"
+  ,"year":"2024"
+  ,"ref1":{ "code":"J,NET,56,5022,2024" ,"std":"J,NET,56,5022,2024"
+            ,"exp":"Jour: Nuclear Engineering and Technology, Vol.56, p.5022 (2024)"
+          }
+  ,"reaction": {
+     "code": "22-TI-0(P,X)23-V-48,,SIG"
+    ,"C4Reaction":"(P,X),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"22-TI-0" ,"TargZA":"22000"
+    ,"MF": 3 ,"MT": 9000
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 10
+    ,"row": 22
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":22   ,"minval":"11.95"   ,"maxval":"336.66"
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"009" ,"expansion":"Data: data"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":21   ,"minval":"0.77"   ,"maxval":"20.22"
+    ,"varSorted":"0.911" ,"what":"Y.Err+-"
+    ,"dataType":"21"  ,"numVar":"0.911"
+    ,"x4Header":"ERR-T" ,"SAN":"009" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":3 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"0.7"   ,"maxval":"0.7"
+    ,"varSorted":"0.944" ,"what":"Y.sErr+-"
+    ,"dataType":"21"  ,"numVar":"0.944"
+    ,"x4Header":"ERR-S" ,"SAN":"009" ,"expansion":"Uncertainty: +-statistical error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":4 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"1."   ,"maxval":"1."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-1" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":5 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"6."   ,"maxval":"6."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-2" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":6 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"1.3"   ,"maxval":"1.3"
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-3" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":7 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"4."   ,"maxval":"4."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-4" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":8 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"1."   ,"maxval":"1."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-5" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":9 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":22   ,"minval":"3.7"   ,"maxval":"50.9"
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"009" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+
+   , { "ii":10 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":9   ,"minval":"0.2"   ,"maxval":"1.9"
+    ,"varSorted":"1.911" ,"what":"X1.Err+-"
+    ,"dataType":"41"  ,"numVar":"2.911"
+    ,"x4Header":"EN-ERR" ,"SAN":"009" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+   ]
+  ,"data": [
+	 [21.63,1.31,0.7,1.0,6.0,1.3,4.0,1.0,50.9,0.2]
+	,[21.85,1.33,0.7,1.0,6.0,1.3,4.0,1.0,50.5,0.2]
+	,[22.26,1.35,0.7,1.0,6.0,1.3,4.0,1.0,47.9,0.3]
+	,[24.39,1.48,0.7,1.0,6.0,1.3,4.0,1.0,47.4,0.3]
+	,[24.25,1.48,0.7,1.0,6.0,1.3,4.0,1.0,44.7,0.3]
+	,[24.97,1.52,0.7,1.0,6.0,1.3,4.0,1.0,44.2,0.3]
+	,[29.03,1.77,0.7,1.0,6.0,1.3,4.0,1.0,41.2,0.4]
+	,[28.87,1.76,0.7,1.0,6.0,1.3,4.0,1.0,40.7,0.4]
+	,[32.72,1.98,0.7,1.0,6.0,1.3,4.0,1.0,37.5,0.5]
+	,[32.57,1.97,0.7,1.0,6.0,1.3,4.0,1.0,37.0,0.5]
+	,[37.38,2.26,0.7,1.0,6.0,1.3,4.0,1.0,33.6,0.5]
+	,[37.99,2.3,0.7,1.0,6.0,1.3,4.0,1.0,33.1,0.5]
+	,[40.31,2.44,0.7,1.0,6.0,1.3,4.0,1.0,29.3,0.6]
+	,[43.34,2.62,0.7,1.0,6.0,1.3,4.0,1.0,28.7,0.6]
+	,[58.89,3.56,0.7,1.0,6.0,1.3,4.0,1.0,24.3,0.7]
+	,[61.02,3.69,0.7,1.0,6.0,1.3,4.0,1.0,23.6,0.7]
+	,[119.41,7.19,0.7,1.0,6.0,1.3,4.0,1.0,19.6,1.0]
+	,[141.52,8.52,0.7,1.0,6.0,1.3,4.0,1.0,18.7,1.0]
+	,[318.81,19.15,0.7,1.0,6.0,1.3,4.0,1.0,13.8,1.2]
+	,[336.66,20.22,0.7,1.0,6.0,1.3,4.0,1.0,12.5,1.2]
+	,[33.73,2.06,0.7,1.0,6.0,1.3,4.0,1.0,5.4,1.9]
+	,[11.95,0.77,0.7,1.0,6.0,1.3,4.0,1.0,3.7,1.9]
+   ]
+ }
+,
+ {"id":"O0076004"
+  ,"subent": {"id":"O0076004", "updated":"20190206" }
+  ,"entry": {"id":"O0076", "updated":"20190206" }
+  ,"author1":"A.E.Antropov+"
+  ,"year":"1985"
+  ,"ref1":{ "code":"C,85LENING,,369,1985" ,"std":"C,85LENING,,369,1985"
+            ,"exp":"Conf: 35.Conf.Nucl.Spectr.and Nucl.Struct.,Leningrad 1985, p.369 (1985)"
+          }
+  ,"reaction": {
+     "code": "22-TI-48(P,N)23-V-48,,SIG"
+    ,"C4Reaction":"(P,N),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"22-TI-48" ,"TargZA":"22048"
+    ,"MF": 3 ,"MT": 4
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 3
+    ,"row": 1
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":1   ,"minval":"270."   ,"maxval":"270."
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"004" ,"expansion":"Data: data"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":1   ,"minval":"10."   ,"maxval":"10."
+    ,"varSorted":"0.911" ,"what":"Y.Err+-"
+    ,"dataType":"21"  ,"numVar":"0.911"
+    ,"x4Header":"DATA-ERR" ,"SAN":"004" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":3 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":1   ,"minval":"6.24"   ,"maxval":"6.24"
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"004" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+   ]
+  ,"data": [
+	 [270.0,10.0,6.24]
+   ]
+ }
+,
+ {"id":"S0212007"
+  ,"subent": {"id":"S0212007", "updated":"20181120" }
+  ,"entry": {"id":"S0212", "updated":"20181120" }
+  ,"author1":"Zhao Wenrong+"
+  ,"year":"1998"
+  ,"ref1":{ "code":"R,INDC(CPR)-44,17,1998" ,"std":"R,INDC(CPR)-44,17,1998"
+            ,"exp":"Rept: Chinese report to the I.N.D.C., No.44, p.17 (1998)"
+          }
+  ,"reaction": {
+     "code": "22-TI-0(P,X)23-V-48,,SIG"
+    ,"C4Reaction":"(P,X),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"22-TI-0" ,"TargZA":"22000"
+    ,"MF": 3 ,"MT": 9000
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 10
+    ,"row": 17
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":17   ,"minval":"71.4"   ,"maxval":"415.4"
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"007" ,"expansion":"Data: data"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":17   ,"minval":"3.2"   ,"maxval":"23."
+    ,"varSorted":"0.911" ,"what":"Y.Err+-"
+    ,"dataType":"21"  ,"numVar":"0.911"
+    ,"x4Header":"ERR-T" ,"SAN":"007" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":3 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"0.4"   ,"maxval":"0.4"
+    ,"varSorted":"0.944" ,"what":"Y.sErr+-"
+    ,"dataType":"21"  ,"numVar":"0.944"
+    ,"x4Header":"ERR-S" ,"SAN":"007" ,"expansion":"Uncertainty: +-statistical error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":4 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"1.5"   ,"maxval":"1.5"
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-1" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":5 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"2."   ,"maxval":"2."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-2" ,"SAN":"007" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":6 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"1."   ,"maxval":"1."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-3" ,"SAN":"007" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":7 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"1.5"   ,"maxval":"1.5"
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-4" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":8 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"1.5"   ,"maxval":"1.5"
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-5" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":9 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":17   ,"minval":"7.53"   ,"maxval":"21.86"
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"007" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+
+   , { "ii":10 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":9   ,"minval":"0.04"   ,"maxval":"0.15"
+    ,"varSorted":"1.911" ,"what":"X1.Err+-"
+    ,"dataType":"41"  ,"numVar":"2.911"
+    ,"x4Header":"EN-ERR" ,"SAN":"007" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+   ]
+  ,"data": [
+	 [71.4,3.2,0.4,1.5,2.0,1.0,1.5,1.5,21.86,0.05]
+	,[75.0,3.5,0.4,1.5,2.0,1.0,1.5,1.5,21.23,0.04]
+	,[81.7,3.8,0.4,1.5,2.0,1.0,1.5,1.5,20.6,0.05]
+	,[90.4,4.2,0.4,1.5,2.0,1.0,1.5,1.5,19.93,0.06]
+	,[105.6,4.9,0.4,1.5,2.0,1.0,1.5,1.5,19.24,0.06]
+	,[122.1,5.8,0.4,1.5,2.0,1.0,1.5,1.5,18.54,0.06]
+	,[182.0,8.2,0.4,1.5,2.0,1.0,1.5,1.5,16.85,0.07]
+	,[232.5,10.8,0.4,1.5,2.0,1.0,1.5,1.5,16.06,0.07]
+	,[298.3,13.9,0.4,1.5,2.0,1.0,1.5,1.5,15.22,0.08]
+	,[371.4,18.6,0.4,1.5,2.0,1.0,1.5,1.5,14.36,0.07]
+	,[409.3,20.9,0.4,1.5,2.0,1.0,1.5,1.5,13.46,0.08]
+	,[415.3,21.0,0.4,1.5,2.0,1.0,1.5,1.5,12.52,0.06]
+	,[415.4,23.0,0.4,1.5,2.0,1.0,1.5,1.5,12.28,0.07]
+	,[382.4,19.0,0.4,1.5,2.0,1.0,1.5,1.5,11.26,0.09]
+	,[371.8,19.3,0.4,1.5,2.0,1.0,1.5,1.5,10.14,0.1]
+	,[347.2,18.4,0.4,1.5,2.0,1.0,1.5,1.5,8.91,0.11]
+	,[275.0,16.5,0.4,1.5,2.0,1.0,1.5,1.5,7.53,0.15]
+   ]
+ }
+]
+}

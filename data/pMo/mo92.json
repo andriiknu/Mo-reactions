@@ -1,0 +1,305 @@
+{
+ "format":"X4JSON.0.1.2" 
+ ,"now":"2025-12-18T11:24:48.000Z" 
+ ,"program":"EXFOR converter, by V.Zerkin, IAEA-NDS, 2007-2019 (ver.2020-05-11)" 
+ ,"input": {  "files": [ { "name":"X4R70753_x4.txt"  ,"format":"EXFOR"  ,"created":"2025-12-18T11:22:36.000Z"  } ] }
+ ,"output": { "files": [ { "name":"X4R70753_x4.txt.x4t"  ,"format":"JSON"  ,"outBib":"0"  ,"created":"2025-12-18T11:24:48.000Z"  } ] }
+ ,"datasets": [
+ 
+ {"id":"A0653003"
+  ,"subent": {"id":"A0653003", "updated":"20180419" }
+  ,"entry": {"id":"A0653", "updated":"20180419" }
+  ,"author1":"T.Sauter+"
+  ,"year":"1997"
+  ,"ref1":{ "code":"J,PR/C,55,3127,1997" ,"std":"J,PR_C,55,3127,1997"
+            ,"exp":"Jour: Physical Review, Part C, Nuclear Physics, Vol.55, p.3127 (1997)"
+          }
+  ,"reaction": {
+     "code": "42-MO-92(P,G)43-TC-93,,SIG"
+    ,"C4Reaction":"(P,G),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"42-MO-92" ,"TargZA":"42092"
+    ,"MF": 3 ,"MT": 102
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 14
+    ,"row": 31
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":30   ,"minval":"0.139"   ,"maxval":"116."
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"003" ,"expansion":"Data: data"
+    ,"x4Units":"MICRO-B" ,"hlpUnits":"microbarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"1.e-06"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":26   ,"minval":"0.022"   ,"maxval":"6."
+    ,"varSorted":"0.911" ,"what":"Y.Err+-"
+    ,"dataType":"21"  ,"numVar":"0.911"
+    ,"x4Header":"ERR-T" ,"SAN":"003" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MICRO-B" ,"hlpUnits":"microbarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"1.e-06"
+    }
+
+   , { "ii":3 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"1.5"   ,"maxval":"1.5"
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-1" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":4 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"3."   ,"maxval":"3."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-2" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":5 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"1."   ,"maxval":"1."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-3" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":6 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"2.3"   ,"maxval":"2.3"
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-4" ,"SAN":"003" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":7 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"1.6"   ,"maxval":"1.6"
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-5" ,"SAN":"003" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":8 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"1.4"   ,"maxval":"1.4"
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-6" ,"SAN":"003" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":9 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"2."   ,"maxval":"2."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-7" ,"SAN":"003" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":10 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"1.4"   ,"maxval":"1.4"
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-8" ,"SAN":"003" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":11 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"1.1"   ,"maxval":"1.1"
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-9" ,"SAN":"003" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":12 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"0.4"   ,"maxval":"0.4"
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-10" ,"SAN":"003" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":13 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":30   ,"minval":"1480."   ,"maxval":"2998."
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"003" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"KEV" ,"hlpUnits":"keV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1000."
+    }
+
+   , { "ii":14 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":11   ,"minval":"5."   ,"maxval":"20."
+    ,"varSorted":"1.933" ,"what":"X1.hRes+-"
+    ,"dataType":"41"  ,"numVar":"2.933"
+    ,"x4Header":"EN-RSL-HW" ,"SAN":"003" ,"expansion":"Uncertainty: +-half resolution"
+    ,"x4Units":"KEV" ,"hlpUnits":"keV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1000."
+    }
+   ]
+  ,"data": [
+	 [0.139,0.022,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,1480.0,20.0]
+	,[0.455,0.027,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,1585.0,15.0]
+	,[0.206,0.186,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,1695.0,6.0]
+	,[1.5,0.07,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,1785.0,17.0]
+	,[2.09,0.08,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,1836.0,14.0]
+	,[3.4,0.12,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,1888.0,14.0]
+	,[6.17,0.22,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,1937.0,13.0]
+	,[3.4,0.13,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,1988.0,13.0]
+	,[10.9,0.4,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,2038.0,12.0]
+	,[8.64,0.33,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,2088.0,12.0]
+	,[8.69,0.34,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,2088.0,12.0]
+	,[6.3,0.22,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,2141.0,10.0]
+	,[24.5,0.9,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,2180.0,10.0]
+	,[6.74,0.23,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,2241.0,10.0]
+	,[18.5,0.6,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,2290.0,10.0]
+	,[14.1,0.5,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,2343.0,8.0]
+	,[51.6,2.1,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,2392.0,8.0]
+	,[34.3,1.4,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,2440.0,8.0]
+	,[54.0,2.2,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,2467.0,8.0]
+	,[27.9,1.0,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,2494.0,7.0]
+	,[34.2,1.2,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,2544.0,7.0]
+	,[38.7,1.5,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,2592.0,8.0]
+	,[31.2,1.2,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,2644.0,5.0]
+	,[55.7,2.2,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,2673.0,7.0]
+	,[31.5,1.5,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,2695.0,6.0]
+	,[65.1,2.7,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,2744.0,6.0]
+	,[81.1,3.3,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,2795.0,5.0]
+	,[110.0,6.0,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,2846.0,5.0]
+	,[53.3,2.3,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,2895.0,5.0]
+	,[109.0,4.0,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,2945.0,5.0]
+	,[116.0,4.0,1.5,3.0,1.0,2.3,1.6,1.4,2.0,1.4,1.1,0.4,2998.0,5.0]
+   ]
+ }
+,
+ {"id":"O24480041" ,"pointer":"1"
+  ,"subent": {"id":"O2448004", "updated":"20200311" }
+  ,"entry": {"id":"O2448", "updated":"20200311" }
+  ,"author1":"V.Foteinou+"
+  ,"year":"2019"
+  ,"ref1":{ "code":"J,EPJ/A,55,67,2019" ,"std":"J,EPJ_A,55,67,2019"
+            ,"exp":"Jour: European Physical Journal A: Hadrons and Nuclei, Vol.55, p.67 (2019)"
+          }
+  ,"reaction": {
+     "code": "42-MO-92(P,G)43-TC-93,,SIG"
+    ,"C4Reaction":"(P,G),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"42-MO-92" ,"TargZA":"42092"
+    ,"MF": 3 ,"MT": 102
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 9
+    ,"row": 10
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":10   ,"minval":"4.85"   ,"maxval":"1899."
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"004" ,"expansion":"Data: data"
+    ,"x4Units":"MICRO-B" ,"hlpUnits":"microbarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"1.e-06"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":10   ,"minval":"0.82"   ,"maxval":"212."
+    ,"varSorted":"0.911" ,"what":"Y.Err+-"
+    ,"dataType":"21"  ,"numVar":"0.911"
+    ,"x4Header":"ERR-T" ,"SAN":"004" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MICRO-B" ,"hlpUnits":"microbarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"1.e-06"
+    }
+
+   , { "ii":3 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"5."   ,"maxval":"5."
+    ,"varSorted":"0.944" ,"what":"Y.sErr+-"
+    ,"dataType":"21"  ,"numVar":"0.944"
+    ,"x4Header":"ERR-S" ,"SAN":"004" ,"expansion":"Uncertainty: +-statistical error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":4 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"7."   ,"maxval":"7."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-1" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":5 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"3."   ,"maxval":"3."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-2" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":6 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"8."   ,"maxval":"8."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-3" ,"SAN":"004" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":7 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":10   ,"minval":"1941."   ,"maxval":"6114."
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN-CM" ,"SAN":"004" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"KEV" ,"hlpUnits":"keV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1000."
+    ,"flagCM":"1" ,"hlpCM":"center of mass system"
+    }
+
+   , { "ii":8 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"5."   ,"maxval":"5."
+    ,"varSorted":"1.911" ,"what":"X1.Err+-"
+    ,"dataType":"41"  ,"numVar":"2.911"
+    ,"x4Header":"EN-ERR" ,"SAN":"001" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"KEV" ,"hlpUnits":"keV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1000."
+    }
+
+   , { "ii":9 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":10   ,"minval":"1.017"   ,"maxval":"1.101"
+    ,"varSorted":"" ,"what":"ZZZ"
+    ,"dataType":"09"  ,"numVar":"ZZZ"
+    ,"x4Header":"MISC" ,"SAN":"004" ,"expansion":"Flags, etc."
+    ,"x4Units":"NO-DIM" ,"hlpUnits":"no Dimensions"
+    }
+   ]
+  ,"data": [
+	 [4.85,0.82,5.0,7.0,3.0,8.0,1941.0,5.0,1.101]
+	,[21.2,2.4,5.0,7.0,3.0,8.0,2340.0,5.0,1.076]
+	,[57.7,6.5,5.0,7.0,3.0,8.0,2739.0,5.0,1.059]
+	,[325.0,37.0,5.0,7.0,3.0,8.0,3733.0,5.0,1.037]
+	,[537.0,55.0,5.0,7.0,3.0,8.0,4130.0,5.0,1.032]
+	,[773.0,87.0,5.0,7.0,3.0,8.0,4527.0,5.0,1.027]
+	,[1032.0,108.0,5.0,7.0,3.0,8.0,4924.0,5.0,1.024]
+	,[1283.0,136.0,5.0,7.0,3.0,8.0,5321.0,5.0,1.021]
+	,[1736.0,184.0,5.0,7.0,3.0,8.0,5718.0,5.0,1.019]
+	,[1899.0,212.0,5.0,7.0,3.0,8.0,6114.0,5.0,1.017]
+   ]
+ }
+]
+}

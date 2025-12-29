@@ -1,0 +1,77 @@
+{
+ "format":"X4JSON.0.1.2" 
+ ,"now":"2025-11-11T10:16:33.000Z" 
+ ,"program":"EXFOR converter, by V.Zerkin, IAEA-NDS, 2007-2019 (ver.2020-05-11)" 
+ ,"input": {  "files": [ { "name":"X4R10484_x4.txt"  ,"format":"EXFOR"  ,"created":"2025-11-11T10:16:29.000Z"  } ] }
+ ,"output": { "files": [ { "name":"X4R10484_x4.txt.x4t"  ,"format":"JSON"  ,"outBib":"0"  ,"created":"2025-11-11T10:16:33.000Z"  } ] }
+ ,"datasets": [
+ 
+ {"id":"O2103008"
+  ,"subent": {"id":"O2103008", "updated":"20121028" }
+  ,"entry": {"id":"O2103", "updated":"20121101" }
+  ,"author1":"J.Delaunay-olkowsky+"
+  ,"year":"1963"
+  ,"ref1":{ "code":"J,NP,47,266,1963" ,"std":"J,NP,47,266,1963"
+            ,"exp":"Jour: Nuclear Physics, Vol.47, p.266 (1963)"
+          }
+  ,"reaction": {
+     "code": "42-MO-100(P,2N)43-TC-99,,SIG"
+    ,"C4Reaction":"(P,2N),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"42-MO-100" ,"TargZA":"42100"
+    ,"MF": 3 ,"MT": 16
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 4
+    ,"row": 1
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":1   ,"minval":"103."   ,"maxval":"103."
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"008" ,"expansion":"Data: data"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":1   ,"minval":"14."   ,"maxval":"14."
+    ,"varSorted":"0.911" ,"what":"Y.Err+-"
+    ,"dataType":"21"  ,"numVar":"0.911"
+    ,"x4Header":"DATA-ERR" ,"SAN":"008" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":3 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":1   ,"minval":"11.2"   ,"maxval":"11.2"
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"008" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+
+   , { "ii":4 ,"varType":"Data" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"750."   ,"maxval":"750."
+    ,"varSorted":"" ,"what":"ZZZ"
+    ,"dataType":"11"  ,"numVar":"ZZZ"
+    ,"x4Header":"MONIT" ,"SAN":"001" ,"expansion":"Assumed values: monitor"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+   ]
+  ,"data": [
+	 [103.0,14.0,11.2,750.0]
+   ]
+ }
+]
+}

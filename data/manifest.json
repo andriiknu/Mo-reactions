@@ -1,5 +1,20 @@
 {
   "items": [
-    { "id": "ga69_pn", "title": "69Ga(p,n)69Ge" }
+    { "id": "ga69_pn", "title": "69Ga(p,n)69Ge" },
+    { "id": "fe0_px", "title": "26Fe(p,x)Co56" },
+    { "id": "tc99_pnn", "title": "99Tc(p,n)99Tc" },
+    { "id": "mg0_px_na22", "title": "Mg(p,x)Na22" },
+    {"id":"mg_px_na24","title":"Mg(p,x)Na24"},
+    {"id": "al27(p,a)na24","title":"Al27(p,a)Na24"},
+    {"id": "22-TI-48(N,P)21-SC-48","title":"48Ti(p,n)48Sc"},
+    {"id": "ti(p,x)v48", "title":"Ti(p,x)V48"},
+    {"id": "zn_ga66", "title":"Zn(p,x)Ga66"},
+    {"id": "mo98_tc99m","title":"Mo98(p,n)Tc99m"},
+    {"id":"pMo/mo92","title":"Mo92 (p,x)"},
+    {"id":"pMo/mo94","title":"Mo94 (p,x)"},
+    {"id":"pMo/mo95","title":"Mo95 (p,x)"},
+    {"id":"pMo/mo96","title":"Mo96 (p,x)"},
+    {"id":"pMo/mo98","title":"Mo98 (p,x)"},
+    {"id":"pMo/mo100-99mtc","title":"Mo100 (p,2n) Tc99m"}
   ]
 }

@@ -1,1 +1,6 @@
 *.ipynb
+*test*
+.gitignore
+.vscode/
+__pycache__/
+.gitignore
