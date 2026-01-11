@@ -10,11 +10,11 @@
     {"id": "ti(p,x)v48", "title":"Ti(p,x)V48"},
     {"id": "zn_ga66", "title":"Zn(p,x)Ga66"},
     {"id": "mo98_tc99m","title":"Mo98(p,n)Tc99m"},
-    {"id":"pMo/mo92","title":"Mo92 (p,x)"},
-    {"id":"pMo/mo94","title":"Mo94 (p,x)"},
-    {"id":"pMo/mo95","title":"Mo95 (p,x)"},
-    {"id":"pMo/mo96","title":"Mo96 (p,x)"},
-    {"id":"pMo/mo98","title":"Mo98 (p,x)"},
-    {"id":"pMo/mo100-99mtc","title":"Mo100 (p,2n) Tc99m"}
+    {"id":"pMo/mo98-99tc", "title":"Mo98(p,g)Tc99" },
+    {"id":"pMo/mo98-99mtc", "title":"Mo98(p,g)Tc99m" },
+    {"id":"pMo/mo100-99mtc","title":"Mo100 (p,2n) Tc99m"},
+    {"id":"pMo/mo100-101tc", "title":"Mo100(p,g)Tc101" },
+    {"id":"pMo/mo100-100tc", "title":"Mo100(p,n)Tc100" }
+
   ]
 }

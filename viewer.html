@@ -49,6 +49,10 @@
 
   <div id="settingsPanel">
     <label>
+      Plot title
+      <input id="settingTitleText" type="text" placeholder="No title">
+    </label>
+    <label>
       Marker size
       <input id="settingMarkerSize" type="number" min="1" step="1" placeholder="15">
     </label>
@@ -67,6 +71,10 @@
     <label>
       Y label offset
       <input id="settingYLabelPadding" type="number" min="0" step="2" placeholder="8">
+    </label>
+    <label>
+      X label offset
+      <input id="settingXLabelPadding" type="number" min="0" step="2" placeholder="Auto">
     </label>
     <div class="settings-actions">
       <button id="settingsApply" type="button">Apply</button>
@@ -96,7 +104,15 @@
   
   
    // Глобальний стан (в межах цього замикання)
-   const defaultSettings = { markerSize:15, fontSize:22, fontFamily:'', canvasWidth:null, yLabelPadding:8 };
+   const defaultSettings = {
+     markerSize:15,
+     fontSize:22,
+     fontFamily:'',
+     canvasWidth:null,
+     yLabelPadding:8,
+     xLabelPadding:null,
+     titleText:''
+   };
    const appState = {
      traces: [],
      originalTitle: '',
@@ -194,6 +210,11 @@
     return (typeof size === 'number' && Number.isFinite(size) && size > 0) ? size : 18;
   }
 
+  function getTitleText(){
+    const title = appState.settings?.titleText;
+    return (typeof title === 'string') ? title : '';
+  }
+
   function computeAutoYLabelPadding(){
     const fontSize = getEffectiveFontSize();
     return 10 + Math.max(0, (fontSize - 18) * 2);
@@ -212,9 +233,41 @@
     return 70 + extra + Math.min(yPad, 40);
   }
 
+  function computeAutoXLabelPadding(){
+    const fontSize = getEffectiveFontSize();
+    return 10 + Math.max(0, (fontSize - 18) * 1.5);
+  }
+
+  function getXLabelPadding(){
+    const setting = appState.settings?.xLabelPadding;
+    if (typeof setting === 'number' && setting >= 0 && Number.isFinite(setting)) return setting;
+    return computeAutoXLabelPadding();
+  }
+
+  function computeAutoBottomMargin(){
+    const fontSize = getEffectiveFontSize();
+    const xPad = getXLabelPadding();
+    const extra = Math.max(0, (fontSize - 18) * 4);
+    return 70 + extra + Math.min(xPad, 40);
+  }
+
+  function enforceLogTickConsistency(axis){
+    if (!axis) return;
+    if (axis.type === 'log'){
+      axis.dtick = 1;
+      axis.tick0 = 0;
+      axis.minor = axis.minor || {};
+      axis.minor.ticks = axis.minor.ticks || 'outside';
+      axis.minor.showgrid = axis.minor.showgrid ?? false;
+    }else{
+      if (axis.dtick === 1) delete axis.dtick;
+      if (axis.tick0 === 0) delete axis.tick0;
+    }
+  }
+
   function layoutEXFOR(){
     const layout = {
-       title: { text: appState.originalTitle || '', x:0.02, xanchor:'left', font:{size:18, weight:600} },
+       title: { text: getTitleText(), x:0.02, xanchor:'left', font:{size:18, weight:600} },
       template: 'plotly_white',
       hovermode: 'closest',
       legend: {
@@ -237,9 +290,13 @@
       }]
     };
     const yLabelPadding = getYLabelPadding();
+    const xLabelPadding = getXLabelPadding();
     layout.yaxis.title = layout.yaxis.title || {};
     layout.yaxis.title.standoff = yLabelPadding;
+    layout.xaxis.title = layout.xaxis.title || {};
+    layout.xaxis.title.standoff = xLabelPadding;
     layout.margin.l = Math.max(layout.margin.l, computeAutoLeftMargin());
+    layout.margin.b = Math.max(layout.margin.b, computeAutoBottomMargin());
     const canvasWidth = appState.settings?.canvasWidth;
     if (!layout.width && typeof canvasWidth === 'number' && canvasWidth > 0) {
       layout.width = canvasWidth;
@@ -327,6 +384,8 @@
      // 1. Осі (Log/Linear)
      layout.xaxis.type = document.getElementById('xlog').checked ? 'log' : 'linear';
      layout.yaxis.type = document.getElementById('ylog').checked ? 'log' : 'linear';
+    enforceLogTickConsistency(layout.xaxis);
+    enforceLogTickConsistency(layout.yaxis);
   
      // 2. Сітка
      const grid = document.getElementById('grid').checked;
@@ -386,6 +445,9 @@
      document.getElementById('pageTitle').innerHTML = title || '';
      if(metaEl) metaEl.textContent = meta?.length ? 'Datasets included:\n' + meta.join('\n') : '';
      showRenormBadge(renormApplied);
+     if (titleTextInput){
+       titleTextInput.placeholder = title || 'No title';
+     }
   
      // Перше малювання
      Plotly.newPlot('chart', applyStyleOverrides(traces), layoutEXFOR(), configEXFOR()).then(setupLegendGroupToggle);
@@ -405,11 +467,13 @@
 
   const settingsBtn = document.getElementById('settingsBtn');
   const settingsPanel = document.getElementById('settingsPanel');
+  const titleTextInput = document.getElementById('settingTitleText');
   const markerSizeInput = document.getElementById('settingMarkerSize');
   const fontSizeInput = document.getElementById('settingFontSize');
   const fontFamilyInput = document.getElementById('settingFontFamily');
   const canvasWidthInput = document.getElementById('settingCanvasWidth');
   const yLabelPaddingInput = document.getElementById('settingYLabelPadding');
+  const xLabelPaddingInput = document.getElementById('settingXLabelPadding');
   const settingsApplyBtn = document.getElementById('settingsApply');
   const settingsResetBtn = document.getElementById('settingsReset');
 
@@ -428,23 +492,29 @@
   }
 
   function syncSettingsInputs(){
+    if (titleTextInput) titleTextInput.value = appState.settings.titleText || '';
     if (markerSizeInput) markerSizeInput.value = appState.settings.markerSize ?? '';
     if (fontSizeInput) fontSizeInput.value = appState.settings.fontSize ?? '';
     if (fontFamilyInput) fontFamilyInput.value = appState.settings.fontFamily || '';
     if (canvasWidthInput) canvasWidthInput.value = appState.settings.canvasWidth ?? '';
     if (yLabelPaddingInput) yLabelPaddingInput.value = appState.settings.yLabelPadding ?? '';
+    if (xLabelPaddingInput) xLabelPaddingInput.value = appState.settings.xLabelPadding ?? '';
   }
 
   function applySettingsFromInputs(){
     const canvasWidth = normalizePositiveNumberInput(canvasWidthInput?.value, 200);
     const yLabelPadNum = normalizeNumberInput(yLabelPaddingInput?.value);
     const yLabelPadding = (yLabelPadNum !== null && yLabelPadNum >= 0) ? yLabelPadNum : null;
+    const xLabelPadNum = normalizeNumberInput(xLabelPaddingInput?.value);
+    const xLabelPadding = (xLabelPadNum !== null && xLabelPadNum >= 0) ? xLabelPadNum : null;
     appState.settings = {
+      titleText: (titleTextInput?.value || '').trim(),
       markerSize: normalizeNumberInput(markerSizeInput?.value),
       fontSize: normalizeNumberInput(fontSizeInput?.value),
       fontFamily: (fontFamilyInput?.value || '').trim(),
       canvasWidth,
-      yLabelPadding
+      yLabelPadding,
+      xLabelPadding
     };
     repaintChart();
   }

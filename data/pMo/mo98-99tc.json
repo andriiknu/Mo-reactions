@@ -1,0 +1,128 @@
+{
+ "format":"X4JSON.0.1.2" 
+ ,"now":"2026-01-10T18:32:41.000Z" 
+ ,"program":"EXFOR converter, by V.Zerkin, IAEA-NDS, 2007-2019 (ver.2020-05-11)" 
+ ,"input": {  "files": [ { "name":"X4R3546_x4.txt"  ,"format":"EXFOR"  ,"created":"2026-01-10T18:32:38.000Z"  } ] }
+ ,"output": { "files": [ { "name":"X4R3546_x4.txt.x4t"  ,"format":"JSON"  ,"outBib":"0"  ,"created":"2026-01-10T18:32:41.000Z"  } ] }
+ ,"datasets": [
+ 
+ {"id":"O24480081" ,"pointer":"1"
+  ,"subent": {"id":"O2448008", "updated":"20200311" }
+  ,"entry": {"id":"O2448", "updated":"20200311" }
+  ,"author1":"V.Foteinou+"
+  ,"year":"2019"
+  ,"ref1":{ "code":"J,EPJ/A,55,67,2019" ,"std":"J,EPJ_A,55,67,2019"
+            ,"exp":"Jour: European Physical Journal A: Hadrons and Nuclei, Vol.55, p.67 (2019)"
+          }
+  ,"reaction": {
+     "code": "42-MO-98(P,G)43-TC-99,,SIG"
+    ,"C4Reaction":"(P,G),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"42-MO-98" ,"TargZA":"42098"
+    ,"MF": 3 ,"MT": 102
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 9
+    ,"row": 11
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":11   ,"minval":"4.17"   ,"maxval":"143."
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"008" ,"expansion":"Data: data"
+    ,"x4Units":"MICRO-B" ,"hlpUnits":"microbarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"1.e-06"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":10   ,"minval":"0.92"   ,"maxval":"31."
+    ,"varSorted":"0.911" ,"what":"Y.Err+-"
+    ,"dataType":"21"  ,"numVar":"0.911"
+    ,"x4Header":"ERR-T" ,"SAN":"008" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MICRO-B" ,"hlpUnits":"microbarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"1.e-06"
+    }
+
+   , { "ii":3 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"5."   ,"maxval":"5."
+    ,"varSorted":"0.944" ,"what":"Y.sErr+-"
+    ,"dataType":"21"  ,"numVar":"0.944"
+    ,"x4Header":"ERR-S" ,"SAN":"008" ,"expansion":"Uncertainty: +-statistical error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":4 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"7."   ,"maxval":"7."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-1" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":5 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"3."   ,"maxval":"3."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-2" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":6 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"8."   ,"maxval":"8."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-3" ,"SAN":"008" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":7 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":11   ,"minval":"1969."   ,"maxval":"4943."
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN-CM" ,"SAN":"008" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"KEV" ,"hlpUnits":"keV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1000."
+    ,"flagCM":"1" ,"hlpCM":"center of mass system"
+    }
+
+   , { "ii":8 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"5."   ,"maxval":"5."
+    ,"varSorted":"1.911" ,"what":"X1.Err+-"
+    ,"dataType":"41"  ,"numVar":"2.911"
+    ,"x4Header":"EN-ERR" ,"SAN":"001" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"KEV" ,"hlpUnits":"keV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1000."
+    }
+
+   , { "ii":9 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":11   ,"minval":"1.024"   ,"maxval":"1.099"
+    ,"varSorted":"" ,"what":"ZZZ"
+    ,"dataType":"09"  ,"numVar":"ZZZ"
+    ,"x4Header":"MISC" ,"SAN":"008" ,"expansion":"Flags, etc."
+    ,"x4Units":"NO-DIM" ,"hlpUnits":"no Dimensions"
+    }
+   ]
+  ,"data": [
+	 [4.17,0.92,5.0,7.0,3.0,8.0,1969.0,5.0,1.099]
+	,[16.2,3.5,5.0,7.0,3.0,8.0,2167.0,5.0,1.085]
+	,[50.2,10.8,5.0,7.0,3.0,8.0,2366.0,5.0,1.074]
+	,[81.3,17.8,5.0,7.0,3.0,8.0,2465.0,5.0,1.07]
+	,[68.9,14.8,5.0,7.0,3.0,8.0,2564.0,5.0,1.066]
+	,[14.3,3.1,5.0,7.0,3.0,8.0,2762.0,5.0,1.058]
+	,[14.5,3.1,5.0,7.0,3.0,8.0,2961.0,5.0,1.053]
+	,[22.7,4.9,5.0,7.0,3.0,8.0,3357.0,5.0,1.043]
+	,[45.3,9.9,5.0,7.0,3.0,8.0,3754.0,5.0,1.037]
+	,[93.9,20.3,5.0,7.0,3.0,8.0,4348.0,5.0,1.029]
+	,[143.0,31.0,5.0,7.0,3.0,8.0,4943.0,5.0,1.024]
+   ]
+ }
+]
+}
