@@ -1,0 +1,118 @@
+{
+ "format":"X4JSON.0.1.2" 
+ ,"now":"2026-01-11T19:37:17.000Z" 
+ ,"program":"EXFOR converter, by V.Zerkin, IAEA-NDS, 2007-2019 (ver.2020-05-11)" 
+ ,"input": {  "files": [ { "name":"X4R10391_x4.txt"  ,"format":"EXFOR"  ,"created":"2026-01-11T19:33:01.000Z"  } ] }
+ ,"output": { "files": [ { "name":"X4R10391_x4.txt.x4t"  ,"format":"JSON"  ,"outBib":"0"  ,"created":"2026-01-11T19:37:17.000Z"  } ] }
+ ,"datasets": [
+ 
+ {"id":"A0510245"
+  ,"subent": {"id":"A0510245", "updated":"20231226" }
+  ,"entry": {"id":"A0510", "updated":"20250804" }
+  ,"author1":"V.N.Levkovski"
+  ,"year":"1991"
+  ,"ref1":{ "code":"B,LEVKOVSKIJ,,,1991" ,"std":"C,LEVKOVSKIJ,,,1991"
+            ,"exp":"Book: Levkovskij,Act.Cs.By Protons and Alphas,Moscow 1991,  (1991)"
+          }
+  ,"reaction": {
+     "code": "42-MO-98(P,X)41-NB-95,,SIG"
+    ,"C4Reaction":"(P,X),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"42-MO-98" ,"TargZA":"42098"
+    ,"MF": 3 ,"MT": 9000
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 6
+    ,"row": 25
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":23   ,"minval":"1.5"   ,"maxval":"11.5"
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"245" ,"expansion":"Data: data"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"10."   ,"maxval":"10."
+    ,"varSorted":"0.911" ,"what":"Y.Err+-"
+    ,"dataType":"21"  ,"numVar":"0.911"
+    ,"x4Header":"DATA-ERR" ,"SAN":"001" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":3 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"10."   ,"maxval":"10."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"MONIT-ERR" ,"SAN":"245" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":4 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":25   ,"minval":"7.7"   ,"maxval":"29.5"
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"245" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+
+   , { "ii":5 ,"varType":"Data" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"30."   ,"maxval":"30."
+    ,"varSorted":"" ,"what":"ZZZ"
+    ,"dataType":"1"  ,"numVar":"ZZZ"
+    ,"x4Header":"EN-NRM" ,"SAN":"245" ,"expansion":"Assumed values"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+
+   , { "ii":6 ,"varType":"Data" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"250."   ,"maxval":"250."
+    ,"varSorted":"" ,"what":"ZZZ"
+    ,"dataType":"11"  ,"numVar":"ZZZ"
+    ,"x4Header":"MONIT" ,"SAN":"245" ,"expansion":"Assumed values: monitor"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+   ]
+  ,"data": [
+	 [1.5,10.0,10.0,7.7,30.0,250.0]
+	,[1.6,10.0,10.0,8.6,30.0,250.0]
+	,[3.4,10.0,10.0,9.5,30.0,250.0]
+	,[3.6,10.0,10.0,10.4,30.0,250.0]
+	,[5.6,10.0,10.0,11.3,30.0,250.0]
+	,[6.2,10.0,10.0,12.1,30.0,250.0]
+	,[6.6,10.0,10.0,12.8,30.0,250.0]
+	,[9.1,10.0,10.0,13.8,30.0,250.0]
+	,[10.8,10.0,10.0,14.8,30.0,250.0]
+	,[10.7,10.0,10.0,15.8,30.0,250.0]
+	,[11.5,10.0,10.0,16.7,30.0,250.0]
+	,[10.4,10.0,10.0,17.5,30.0,250.0]
+	,[10.2,10.0,10.0,18.3,30.0,250.0]
+	,[9.8,10.0,10.0,19.3,30.0,250.0]
+	,[9.3,10.0,10.0,20.3,30.0,250.0]
+	,[9.3,10.0,10.0,21.4,30.0,250.0]
+	,[8.1,10.0,10.0,22.2,30.0,250.0]
+	,[7.0,10.0,10.0,23.1,30.0,250.0]
+	,[6.4,10.0,10.0,24.0,30.0,250.0]
+	,[6.3,10.0,10.0,24.8,30.0,250.0]
+	,[5.8,10.0,10.0,25.7,30.0,250.0]
+	,[5.7,10.0,10.0,26.6,30.0,250.0]
+	,[5.6,10.0,10.0,27.6,30.0,250.0]
+	,[5.3,10.0,10.0,28.5,30.0,250.0]
+	,[5.2,10.0,10.0,29.5,30.0,250.0]
+   ]
+ }
+]
+}

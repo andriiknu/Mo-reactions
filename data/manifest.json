@@ -9,10 +9,27 @@
     {"id": "22-TI-48(N,P)21-SC-48","title":"48Ti(p,n)48Sc"},
     {"id": "ti(p,x)v48", "title":"Ti(p,x)V48"},
     {"id": "zn_ga66", "title":"Zn(p,x)Ga66"},
-    {"id": "mo98_tc99m","title":"Mo98(p,n)Tc99m"},
+    {"id": "pMo/mo98_tc98", "title":"Mo98(p,n)Tc98"},
+    {"id":"pMo/mo98-nb95", "title":"Mo98(p,x)Nb95" }, 
     {"id":"pMo/mo98-99tc", "title":"Mo98(p,g)Tc99" },
     {"id":"pMo/mo98-99mtc", "title":"Mo98(p,g)Tc99m" },
-    {"id":"pMo/mo100-99mtc","title":"Mo100 (p,2n) Tc99m"},
+    {
+      "id":"pMo/mo100-99mtc",
+      "title":"Mo100 (p,2n) Tc99m",
+      "variants":[
+        {
+          "label":"EXFOR JSON",
+          "fmt":"json",
+          "title":"Mo100 (p,2n) Tc99m — EXFOR"
+        },
+        {
+          "label":"Padé fit (TXT)",
+          "fmt":"txt",
+          "trace":"Padé fit",
+          "title":"Mo100 (p,2n) 99mTc — Padé fit"
+        }
+      ]
+    },
     {"id":"pMo/mo100-101tc", "title":"Mo100(p,g)Tc101" },
     {"id":"pMo/mo100-100tc", "title":"Mo100(p,n)Tc100" }
 

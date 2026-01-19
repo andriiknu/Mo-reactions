@@ -101,6 +101,140 @@
       .then(j => { renormMap = j || {}; return renormMap; })
       .catch(()=>{ renormMap = {}; return renormMap; });
   }
+
+  // --- TXT helpers ---
+  function normalizeUnitToken(unit){
+    return String(unit || '').trim().toLowerCase().replace(/[^a-z]/g, '');
+  }
+
+  function unitToMeV(unit){
+    switch(normalizeUnitToken(unit)){
+      case 'ev': return 1e-6;
+      case 'kev': return 1e-3;
+      case 'mev': return 1;
+      case 'gev': return 1e3;
+      case 'tev': return 1e6;
+      default: return 1;
+    }
+  }
+
+  function unitToBarn(unit){
+    switch(normalizeUnitToken(unit)){
+      case 'b':
+      case 'barn':
+        return 1;
+      case 'kb':
+        return 1e3;
+      case 'mb':
+        return 1e-3;
+      case 'ub':
+      case 'microb':
+      case 'microbarn':
+        return 1e-6;
+      case 'nb':
+        return 1e-9;
+      case 'pb':
+        return 1e-12;
+      default:
+        return 1;
+    }
+  }
+
+  function parseNumericToken(token){
+    if (token === null || token === undefined) return NaN;
+    const normalized = String(token).trim().replace(',', '.');
+    if (!normalized) return NaN;
+    const num = Number(normalized);
+    return Number.isFinite(num) ? num : NaN;
+  }
+
+  function parseTxtDataset(text, opts={}){
+    if (!text || !text.trim()) throw new Error('TXT file is empty');
+    const rawLines = text.split(/\r?\n/);
+    const nonEmpty = rawLines.map(l => l.trim()).filter(Boolean);
+    if (!nonEmpty.length) throw new Error('TXT file has no content');
+
+    const titleGuess = nonEmpty[0];
+    let headerIdx = rawLines.findIndex(line => /\bENERGY\b/i.test(line));
+    let unitIdx = -1;
+    if (headerIdx >= 0){
+      for (let i = headerIdx + 1; i < rawLines.length; i++){
+        if (rawLines[i] && rawLines[i].trim()){
+          unitIdx = i;
+          break;
+        }
+      }
+    }
+    if (unitIdx < 0){
+      unitIdx = rawLines.findIndex(line => /\bMEV\b/i.test(line));
+    }
+
+    const headerTokens = headerIdx >= 0 ? rawLines[headerIdx].trim().split(/\s+/) : [];
+    const unitTokens = unitIdx >= 0 ? rawLines[unitIdx].trim().split(/\s+/) : [];
+    const energyUnit = unitTokens[0] || 'MeV';
+    const sigmaUnit = unitTokens[1] || 'barn';
+    const traceLabel = headerTokens[1] || 'Column 2';
+
+    const dataStart = unitIdx >= 0 ? unitIdx + 1 : (headerIdx >= 0 ? headerIdx + 1 : 0);
+    const xs = [], ys = [], errs = [];
+    for (let i = dataStart; i < rawLines.length; i++){
+      const line = rawLines[i];
+      if (!line) continue;
+      const trimmed = line.trim();
+      if (!trimmed || /^[A-Za-z#]/.test(trimmed)) continue;
+      const parts = trimmed.split(/\s+/);
+      if (parts.length < 2) continue;
+      const energy = parseNumericToken(parts[0]);
+      const sigma = parseNumericToken(parts[1]);
+      if (!Number.isFinite(energy) || !Number.isFinite(sigma)) continue;
+      xs.push(energy);
+      ys.push(sigma);
+      errs.push(parts.length > 2 ? parseNumericToken(parts[2]) : NaN);
+    }
+
+    if (!xs.length) throw new Error('TXT parser did not detect numeric rows');
+
+    const energyFactor = unitToMeV(energyUnit);
+    const sigmaFactor = unitToBarn(sigmaUnit);
+    const xMeV = xs.map(val => val * energyFactor);
+    const yBarn = ys.map(val => val * sigmaFactor);
+    const yErrBarn = errs.map(val => Number.isFinite(val) ? val * sigmaFactor : NaN);
+    const hasErrors = yErrBarn.some(val => Number.isFinite(val));
+
+    const displayName = opts.traceName || `${traceLabel} (TXT)`;
+    const trace = {
+      x: xMeV,
+      y: yBarn,
+      mode: 'lines+markers',
+      name: displayName,
+      line: { color: '#1f77b4', width: 2 },
+      marker: { size: 6, color: '#1f77b4' },
+      hovertemplate: '<b>'+displayName+'</b><br>E = %{x:.3f} MeV<br>σ = %{y:.5f} b<extra></extra>'
+    };
+    if (hasErrors){
+      trace.error_y = {
+        type: 'data',
+        array: yErrBarn,
+        visible: true,
+        thickness: 1,
+        width: 2,
+        color: 'rgba(0,0,0,.35)'
+      };
+    }
+
+    const meta = [];
+    const sourceId = opts.sourceId ? `Source: ${opts.sourceId}` : 'Source: TXT file';
+    meta.push(`${sourceId} — using first two columns`);
+    meta.push(`Energy unit: ${energyUnit} → MeV, cross-section unit: ${sigmaUnit} → barn`);
+    meta.push(`Points parsed: ${xMeV.length}`);
+    if (hasErrors) meta.push('Uncertainties detected in 3rd column and plotted as error bars');
+
+    return {
+      traces: [trace],
+      title: opts.title || titleGuess || 'TXT dataset',
+      meta
+    };
+  }
   
   
    // Глобальний стан (в межах цього замикання)
@@ -265,6 +399,22 @@
     }
   }
 
+  function updateLegendPresence(layout, showLegend){
+    if (!layout) return layout;
+    layout.legend = layout.legend || {};
+    layout.margin = layout.margin || {};
+    if (showLegend){
+      layout.margin.r = Math.max(layout.margin.r ?? 0, 140);
+      layout.legend.x = 1.02;
+      layout.legend.y = 1;
+    }else{
+      layout.legend.x = 1;
+      layout.margin.r = 40;
+    }
+    layout.showlegend = showLegend;
+    return layout;
+  }
+
   function layoutEXFOR(){
     const layout = {
        title: { text: getTitleText(), x:0.02, xanchor:'left', font:{size:18, weight:600} },
@@ -301,6 +451,8 @@
     if (!layout.width && typeof canvasWidth === 'number' && canvasWidth > 0) {
       layout.width = canvasWidth;
     }
+    const initialLegendState = document.getElementById('legend')?.checked ?? true;
+    updateLegendPresence(layout, initialLegendState);
     return applyFontSettingsToLayout(layout);
   }
 
@@ -410,7 +562,8 @@
      if (h) layout.height = h;
   
      // 5. Легенда
-     layout.showlegend = document.getElementById('legend').checked;
+     const showLegend = document.getElementById('legend').checked;
+     updateLegendPresence(layout, showLegend);
   
      // Виконуємо реактивне оновлення (швидше за newPlot)
      Plotly.react('chart', applyStyleOverrides(tracesToUse), layout, configEXFOR())
@@ -455,7 +608,9 @@
    }
   
    // --- Прив'язка подій ---
-   document.getElementById('apply').addEventListener('click', repaintChart);
+  document.getElementById('apply').addEventListener('click', repaintChart);
+  const legendToggle = document.getElementById('legend');
+  if (legendToggle) legendToggle.addEventListener('change', repaintChart);
    
    const btnCsv = document.getElementById('csv');
    if(btnCsv) {
@@ -568,12 +723,40 @@
     metaEl.textContent = 'Invalid dataset id. Allowed characters: letters, digits, _, -, ., /, (, ), ,';
     return;
   }
-  const url = `data/${safeId}.json`;
+  const fileParamRaw = params.get('file');
+  const fileParam = fileParamRaw ? fileParamRaw.trim() : '';
+  if (fileParam && !/^[\w(),.\-\/]+$/.test(fileParam)){
+    metaEl.textContent = 'Invalid file parameter.';
+    return;
+  }
+  const fmtParam = (params.get('fmt') || '').trim().toLowerCase();
+  const requestedTitle = params.get('title') || '';
+  const traceNameParam = params.get('trace') || params.get('label') || '';
 
-  fetch(url, { cache: 'no-store' }).then(r => {
+  const idHasExtension = /\.[A-Za-z0-9]+$/.test(safeId);
+  const defaultPath = idHasExtension ? `data/${safeId}` : `data/${safeId}.json`;
+  const dataPath = fileParam ? `data/${fileParam}` : defaultPath;
+  const extMatch = dataPath.match(/\.([a-z0-9]+)$/i);
+  const inferredFormat = fmtParam || (extMatch ? extMatch[1].toLowerCase() : 'json');
+  const isTxt = inferredFormat === 'txt';
+
+  fetch(dataPath, { cache: 'no-store' }).then(r => {
     if(!r.ok) throw new Error('HTTP '+r.status);
-    return r.json();
-  }).then(x4 => {
+    return isTxt ? r.text() : r.json();
+  }).then(payload => {
+    if (isTxt){
+      dbgLog('✓ TXT loaded, bytes=' + payload.length);
+      const parsed = parseTxtDataset(payload, {
+        title: requestedTitle || safeId,
+        traceName: traceNameParam || requestedTitle || safeId,
+        sourceId: fileParam || safeId
+      });
+      initData(parsed.traces, parsed.title, parsed.meta, []);
+      dbgLog('✓ TXT dataset parsed, traces=' + parsed.traces.length);
+      return;
+    }
+
+    const x4 = payload;
     dbgLog('✓ JSON loaded, type=' + (Array.isArray(x4) ? 'array' : 'object'));
     dbgLog('✓ x4 keys: ' + Object.keys(x4).join(', '));
     if (x4.datasets) dbgLog('✓ datasets.length = ' + x4.datasets.length);
@@ -592,7 +775,7 @@
     dbgLog('✓ Chart initialized via initData');
   }).catch(err => {
     console.error('Error:', err);
-    const msg = 'Failed to load '+url+': '+(err && err.message ? err.message : String(err));
+    const msg = 'Failed to load '+dataPath+': '+(err && err.message ? err.message : String(err));
     dbgLog('✗ ' + msg);
     metaEl.textContent = msg;
   });

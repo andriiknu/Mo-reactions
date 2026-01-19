@@ -1,19 +1,111 @@
-<!doctype html><meta charset="utf-8">
+<!doctype html>
+<meta charset="utf-8">
 <title>Interactive Cross-Sections — Index</title>
-<h1 style="font-family:system-ui;margin:20px 24px;">Reactions</h1>
-<ul id="list" style="font-family:system-ui;font-size:16px;line-height:1.7;margin:0 24px 24px;"></ul>
+<style>
+  body{ font-family:system-ui,Segoe UI,Roboto; margin:20px 24px; background:#fafafa; }
+  h1{ margin:0 0 16px; font-size:24px; }
+  #list{ list-style:none; padding:0; margin:0; font-size:16px; line-height:1.6; }
+  #list>li{ margin:0 0 12px; }
+  #list a{ color:#0b63c5; text-decoration:none; }
+  #list a:hover{ text-decoration:underline; }
+  .item-row{ display:inline-flex; align-items:center; gap:8px; font-weight:400; }
+  .item-title{ color:#0b63c5; }
+  .toggle-btn{ border:none; background:none; cursor:pointer; font-size:18px; line-height:1; color:#0b63c5; padding:0 4px; }
+  .toggle-btn:focus{ outline:2px solid #0b63c5; border-radius:4px; }
+  .variant-list{ list-style:disc; margin:6px 0 0 36px; padding:0; }
+  .variant-list li{ margin:0 0 6px; font-weight:400; }
+</style>
+<body>
+<h1>Reactions</h1>
+<ul id="list"></ul>
 <script>
 (async function(){
   const ul = document.getElementById('list');
+
+  function buildHref(item, overrides){
+    const params = new URLSearchParams();
+    const variant = overrides ? { ...overrides } : {};
+    const fmt = variant.fmt;
+    if (!variant.id && fmt){
+      variant.id = `${item.id}.${fmt}`;
+    }
+    const idParam = variant.id || item.id;
+    params.set('id', idParam);
+    ['fmt','trace','title'].forEach(key=>{
+      const val = Object.prototype.hasOwnProperty.call(variant, key)
+        ? variant[key]
+        : item[key];
+      if (val) params.set(key, val);
+    });
+    return `viewer.html?${params.toString()}`;
+  }
+
+  function renderSimpleItem(it){
+    const li = document.createElement('li');
+    const link = document.createElement('a');
+    link.href = buildHref(it);
+    link.textContent = it.title || it.id;
+    li.appendChild(link);
+    ul.appendChild(li);
+  }
+
+  function renderMultiItem(it){
+    const li = document.createElement('li');
+    const row = document.createElement('div');
+    row.className = 'item-row';
+
+    const titleSpan = document.createElement('span');
+    titleSpan.className = 'item-title';
+    titleSpan.textContent = it.title || it.id;
+
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'toggle-btn';
+    toggle.textContent = '+';
+    toggle.setAttribute('aria-label', 'Show variants');
+    toggle.setAttribute('aria-expanded', 'false');
+
+    row.appendChild(titleSpan);
+    row.appendChild(toggle);
+    li.appendChild(row);
+
+    const subList = document.createElement('ul');
+    subList.className = 'variant-list';
+    subList.hidden = true;
+
+    (it.variants || []).forEach(variant=>{
+      const subLi = document.createElement('li');
+      const link = document.createElement('a');
+      link.href = buildHref(it, variant);
+      link.textContent = variant.label || variant.title || variant.id || 'Variant';
+      subLi.appendChild(link);
+      subList.appendChild(subLi);
+    });
+
+    li.appendChild(subList);
+
+    toggle.addEventListener('click', ()=>{
+      const isHidden = subList.hidden;
+      subList.hidden = !isHidden;
+      toggle.textContent = isHidden ? '−' : '+';
+      toggle.setAttribute('aria-expanded', String(isHidden));
+    });
+
+    ul.appendChild(li);
+  }
+
   try {
     const m = await (await fetch('data/manifest.json')).json();
-    m.items.forEach(it=>{
-      const li = document.createElement('li');
-      li.innerHTML = `<a href="viewer.html?id=${encodeURIComponent(it.id)}">${it.title||it.id}</a>`;
-      ul.appendChild(li);
+    (m.items || []).forEach(it=>{
+      if (Array.isArray(it.variants) && it.variants.length){
+        renderMultiItem(it);
+      } else {
+        renderSimpleItem(it);
+      }
     });
   } catch(e){
     ul.innerHTML = `<li><a href="viewer.html?id=ga69_pn">69Ga(p,n)69Ge</a></li>`;
   }
 })();
 </script>
+</body>
