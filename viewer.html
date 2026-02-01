@@ -65,6 +65,22 @@
       <input id="settingFontFamily" type="text" placeholder="e.g. Segoe UI">
     </label>
     <label>
+      X Label Font Size
+      <input id="settingXFontSize" type="number" min="8" step="1" placeholder="Auto">
+    </label>
+    <label>
+      X Label Font Family
+      <input id="settingXFontFamily" type="text" placeholder="Auto">
+    </label>
+    <label>
+      Y Label Font Size
+      <input id="settingYFontSize" type="number" min="8" step="1" placeholder="Auto">
+    </label>
+    <label>
+      Y Label Font Family
+      <input id="settingYFontFamily" type="text" placeholder="Auto">
+    </label>
+    <label>
       Canvas width
       <input id="settingCanvasWidth" type="number" min="300" step="20" placeholder="Auto">
     </label>
@@ -75,6 +91,10 @@
     <label>
       X label offset
       <input id="settingXLabelPadding" type="number" min="0" step="2" placeholder="Auto">
+    </label>
+    <label>
+      Image DPI scale
+      <input id="settingDpiScale" type="number" min="1" step="0.5" placeholder="2">
     </label>
     <div class="settings-actions">
       <button id="settingsApply" type="button">Apply</button>
@@ -100,6 +120,34 @@
       .then(r => r.ok ? r.json() : {})
       .then(j => { renormMap = j || {}; return renormMap; })
       .catch(()=>{ renormMap = {}; return renormMap; });
+  }
+
+  // load viewer config (yaml-like)
+  function loadConfig(){
+    return fetch('viewer_config.yaml', { cache: 'no-store' })
+      .then(r => r.ok ? r.text() : '')
+      .then(text => {
+        const c = {};
+        if(!text) return c;
+        text.split('\n').forEach(line => {
+          const t = line.trim();
+          if(!t || t.startsWith('#')) return;
+          const separatorIndex = t.indexOf(':');
+          if (separatorIndex > 0) {
+             const k = t.substring(0, separatorIndex).trim();
+             const v_str = t.substring(separatorIndex + 1).trim();
+             const v_num = parseFloat(v_str);
+
+             if (String(v_num) === v_str) { // It's a number
+                 c[k] = v_num;
+             } else { // It's a string, remove quotes
+                 c[k] = v_str.replace(/^['"]|['"]$/g, '');
+             }
+          }
+        });
+        return c;
+      })
+      .catch(() => ({}));
   }
 
   // --- TXT helpers ---
@@ -242,10 +290,16 @@
      markerSize:15,
      fontSize:22,
      fontFamily:'',
+     fontColor: '',
      canvasWidth:null,
      yLabelPadding:8,
      xLabelPadding:null,
-     titleText:''
+     titleText:'',
+     xFontSize:null,
+     xFontFamily:'',
+     yFontSize:null,
+     yFontFamily:'',
+     dpiScale: 2
    };
    const appState = {
      traces: [],
@@ -322,25 +376,36 @@
   // --- Конфігурація Plotly ---
   function applyFontSettingsToLayout(layout){
     if (!layout) return layout;
-    const { fontFamily, fontSize } = appState.settings || {};
-    const fontUpdates = {};
-    if (fontFamily) fontUpdates.family = fontFamily;
-    if (typeof fontSize === 'number' && !Number.isNaN(fontSize)) fontUpdates.size = fontSize;
-    const hasUpdates = Object.keys(fontUpdates).length > 0;
-    if (!hasUpdates) return layout;
-    layout.title.font = { ...(layout.title?.font || {}), ...fontUpdates };
-    layout.legend.font = { ...(layout.legend?.font || {}), ...fontUpdates };
+    const s = appState.settings || {};
+    const globalFont = {};
+    if (s.fontFamily) globalFont.family = s.fontFamily;
+    if (s.fontColor) globalFont.color = s.fontColor;
+    if (typeof s.fontSize === 'number' && !Number.isNaN(s.fontSize)) globalFont.size = s.fontSize;
+
+    layout.title.font = { ...(layout.title?.font || {}), ...globalFont };
+    layout.legend.font = { ...(layout.legend?.font || {}), ...globalFont };
+
     ['xaxis','yaxis'].forEach(axis => {
       layout[axis] = layout[axis] || {};
       layout[axis].title = layout[axis].title || {};
-      layout[axis].title.font = { ...(layout[axis].title.font || {}), ...fontUpdates };
-      layout[axis].tickfont = { ...(layout[axis].tickfont || {}), ...fontUpdates };
+      layout[axis].tickfont = { ...(layout[axis].tickfont || {}), ...globalFont };
+
+      const specificSize = axis === 'xaxis' ? s.xFontSize : s.yFontSize;
+      const specificFamily = axis === 'xaxis' ? s.xFontFamily : s.yFontFamily;
+      const axisFont = { ...globalFont };
+      if (specificFamily) axisFont.family = specificFamily;
+      if (typeof specificSize === 'number' && !Number.isNaN(specificSize)) axisFont.size = specificSize;
+
+      layout[axis].title.font = { ...(layout[axis].title.font || {}), ...axisFont };
     });
     return layout;
   }
 
-  function getEffectiveFontSize(){
-    const size = appState.settings?.fontSize;
+  function getEffectiveFontSize(axis){
+    const s = appState.settings || {};
+    let size = s.fontSize;
+    if (axis === 'x' && typeof s.xFontSize === 'number') size = s.xFontSize;
+    if (axis === 'y' && typeof s.yFontSize === 'number') size = s.yFontSize;
     return (typeof size === 'number' && Number.isFinite(size) && size > 0) ? size : 18;
   }
 
@@ -350,7 +415,7 @@
   }
 
   function computeAutoYLabelPadding(){
-    const fontSize = getEffectiveFontSize();
+    const fontSize = getEffectiveFontSize('y');
     return 10 + Math.max(0, (fontSize - 18) * 2);
   }
 
@@ -368,7 +433,7 @@
   }
 
   function computeAutoXLabelPadding(){
-    const fontSize = getEffectiveFontSize();
+    const fontSize = getEffectiveFontSize('x');
     return 10 + Math.max(0, (fontSize - 18) * 1.5);
   }
 
@@ -466,7 +531,7 @@
       alert('Clipboard copy is not supported in this browser');
       return;
     }
-    const exportOpts = { format:'png', scale:2 };
+    const exportOpts = { format:'png', scale: appState.settings.dpiScale || 2 };
     const layout = graphDiv._fullLayout;
     if (layout){
       exportOpts.width = layout.width;
@@ -500,9 +565,25 @@
   }
 
   function configEXFOR(){
+    const userDefinedFilename = getTitleText();
+    const defaultFilename = appState.originalTitle;
+
+    const rawFilename = userDefinedFilename || defaultFilename || 'plot';
+    const cleanFilename = rawFilename.replace(/<[^>]*>/g, ''); // Strip HTML tags
+
+    // Remove the observable part, like "— SIG"
+    const coreFilename = cleanFilename.split(' — ')[0];
+
+    const filename = coreFilename
+      .replace(/[^a-z0-9_ -]/gi, '_').replace(/ /g, '_');
+
     return {
       responsive:true,
       displaylogo:false,
+      toImageButtonOptions: {
+        filename: filename,
+        scale: appState.settings.dpiScale || 2
+      },
       modeBarButtonsToRemove:[
         'select2d','lasso2d','zoomIn2d','zoomOut2d','autoScale2d',
        'toggleSpikelines','hoverClosestCartesian','hoverCompareCartesian'
@@ -626,9 +707,14 @@
   const markerSizeInput = document.getElementById('settingMarkerSize');
   const fontSizeInput = document.getElementById('settingFontSize');
   const fontFamilyInput = document.getElementById('settingFontFamily');
+  const xFontSizeInput = document.getElementById('settingXFontSize');
+  const xFontFamilyInput = document.getElementById('settingXFontFamily');
+  const yFontSizeInput = document.getElementById('settingYFontSize');
+  const yFontFamilyInput = document.getElementById('settingYFontFamily');
   const canvasWidthInput = document.getElementById('settingCanvasWidth');
   const yLabelPaddingInput = document.getElementById('settingYLabelPadding');
   const xLabelPaddingInput = document.getElementById('settingXLabelPadding');
+  const dpiScaleInput = document.getElementById('settingDpiScale');
   const settingsApplyBtn = document.getElementById('settingsApply');
   const settingsResetBtn = document.getElementById('settingsReset');
 
@@ -651,9 +737,14 @@
     if (markerSizeInput) markerSizeInput.value = appState.settings.markerSize ?? '';
     if (fontSizeInput) fontSizeInput.value = appState.settings.fontSize ?? '';
     if (fontFamilyInput) fontFamilyInput.value = appState.settings.fontFamily || '';
+    if (xFontSizeInput) xFontSizeInput.value = appState.settings.xFontSize ?? '';
+    if (xFontFamilyInput) xFontFamilyInput.value = appState.settings.xFontFamily || '';
+    if (yFontSizeInput) yFontSizeInput.value = appState.settings.yFontSize ?? '';
+    if (yFontFamilyInput) yFontFamilyInput.value = appState.settings.yFontFamily || '';
     if (canvasWidthInput) canvasWidthInput.value = appState.settings.canvasWidth ?? '';
     if (yLabelPaddingInput) yLabelPaddingInput.value = appState.settings.yLabelPadding ?? '';
     if (xLabelPaddingInput) xLabelPaddingInput.value = appState.settings.xLabelPadding ?? '';
+    if (dpiScaleInput) dpiScaleInput.value = appState.settings.dpiScale ?? '';
   }
 
   function applySettingsFromInputs(){
@@ -667,9 +758,14 @@
       markerSize: normalizeNumberInput(markerSizeInput?.value),
       fontSize: normalizeNumberInput(fontSizeInput?.value),
       fontFamily: (fontFamilyInput?.value || '').trim(),
+      xFontSize: normalizeNumberInput(xFontSizeInput?.value),
+      xFontFamily: (xFontFamilyInput?.value || '').trim(),
+      yFontSize: normalizeNumberInput(yFontSizeInput?.value),
+      yFontFamily: (yFontFamilyInput?.value || '').trim(),
       canvasWidth,
       yLabelPadding,
-      xLabelPadding
+      xLabelPadding,
+      dpiScale: normalizePositiveNumberInput(dpiScaleInput?.value, 0.5)
     };
     repaintChart();
   }
@@ -696,7 +792,20 @@
     });
   }
   
-  loadRenorm().finally(()=>{
+  Promise.all([loadRenorm(), loadConfig()]).then(([_, config]) => {
+    // Apply YAML config to defaults
+    if(config.marker_size) defaultSettings.markerSize = config.marker_size;
+    if(config.font_size) defaultSettings.fontSize = config.font_size;
+    if(config.font_family) defaultSettings.fontFamily = config.font_family;
+    if(config.font_color) defaultSettings.fontColor = config.font_color;
+    if(config.x_label_offset) defaultSettings.xLabelPadding = config.x_label_offset;
+    if(config.y_label_offset) defaultSettings.yLabelPadding = config.y_label_offset;
+    if(config.dpi_scale) defaultSettings.dpiScale = config.dpi_scale;
+    
+    // Update current state
+    appState.settings = { ...defaultSettings };
+    syncSettingsInputs();
+
     dbgLog('🔧 viewer.html script loaded, window.__renderX4 type: ' + (typeof window.__renderX4));
 
     // --- Логіка завантаження (Embedded vs Fetch) ---

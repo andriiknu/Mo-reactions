@@ -1,0 +1,13 @@
+# Налаштування відображення за замовчуванням
+dpi_scale: 3
+marker_size: 22
+font_size: 36
+font_family: "Times New Roman", serif
+font_color: "#000000"
+x_label_offset: 20
+y_label_offset: 20
+margin:
+  l: 78
+  r: 160
+  t: 64
+  b: 72

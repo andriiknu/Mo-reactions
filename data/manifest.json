@@ -31,7 +31,7 @@
       ]
     },
     {"id":"pMo/mo100-101tc", "title":"Mo100(p,g)Tc101" },
-    {"id":"pMo/mo100-100tc", "title":"Mo100(p,n)Tc100" }
-
+    {"id":"pMo/mo100-100tc", "title":"Mo100(p,n)Tc100" },
+    {"id":"pMo/mo100_6MeV", "title":"CS of reactions on Mo100" }
   ]
 }

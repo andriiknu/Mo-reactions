@@ -1,9 +1,9 @@
 {
  "format":"X4JSON.0.1.2" 
- ,"now":"2026-01-10T18:42:12.000Z" 
+ ,"now":"2026-01-28T10:42:41.000Z" 
  ,"program":"EXFOR converter, by V.Zerkin, IAEA-NDS, 2007-2019 (ver.2020-05-11)" 
- ,"input": {  "files": [ { "name":"X4R3546_x4.txt"  ,"format":"EXFOR"  ,"created":"2026-01-10T18:39:24.000Z"  } ] }
- ,"output": { "files": [ { "name":"X4R3546_x4.txt.x4t"  ,"format":"JSON"  ,"outBib":"0"  ,"created":"2026-01-10T18:42:12.000Z"  } ] }
+ ,"input": {  "files": [ { "name":"X4R58768_x4.txt"  ,"format":"EXFOR"  ,"created":"2026-01-28T10:42:40.000Z"  } ] }
+ ,"output": { "files": [ { "name":"X4R58768_x4.txt.x4t"  ,"format":"JSON"  ,"outBib":"0"  ,"created":"2026-01-28T10:42:41.000Z"  } ] }
  ,"datasets": [
  
  {"id":"A0653007"
@@ -142,6 +142,148 @@
 	,[8.89,0.32,1.5,3.0,1.0,0.2,0.3,2895.0,5.0]
 	,[9.87,0.36,1.5,3.0,1.0,0.2,0.3,2945.0,6.0]
 	,[9.64,0.35,1.5,3.0,1.0,0.2,0.3,2998.0,5.0]
+   ]
+ }
+,
+ {"id":"C2413030"
+  ,"subent": {"id":"C2413030", "updated":"20191030" }
+  ,"entry": {"id":"C2413", "updated":"20241014" }
+  ,"author1":"E.Lamere+"
+  ,"year":"2019"
+  ,"ref1":{ "code":"J,PR/C,100,034614,2019" ,"std":"J,PR_C,100,034614,2019"
+            ,"exp":"Jour: Physical Review, Part C, Nuclear Physics, Vol.100, p.034614 (2019)"
+          }
+  ,"reaction": {
+     "code": "42-MO-98(P,G)43-TC-99-M,,SIG"
+    ,"C4Reaction":"(P,G),SIG"
+    ,"Proj":"P" ,"ProjZA":"1001"
+    ,"Target":"42-MO-98" ,"TargZA":"42098"
+    ,"ProdMeta":"M"
+    ,"MF": 3 ,"MT": 102
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 12
+    ,"row": 10
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":8   ,"minval":"0.13"   ,"maxval":"0.35"
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"030" ,"expansion":"Data: data"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":5   ,"minval":"0.09"   ,"maxval":"0.13"
+    ,"varSorted":"0.911" ,"what":"Y.Err+-"
+    ,"dataType":"21"  ,"numVar":"0.911"
+    ,"x4Header":"ERR-T" ,"SAN":"030" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":3 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"1."   ,"maxval":"1."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-1" ,"SAN":"030" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":4 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"2."   ,"maxval":"2."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-2" ,"SAN":"030" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":5 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"0.5"   ,"maxval":"0.5"
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-3" ,"SAN":"030" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":6 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"2."   ,"maxval":"2."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-4" ,"SAN":"030" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":7 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"10."   ,"maxval":"10."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-5" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":8 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"0.25"   ,"maxval":"0.25"
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-6" ,"SAN":"030" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":9 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"10."   ,"maxval":"10."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-7" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":10 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"1."   ,"maxval":"1."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-8" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":11 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":10   ,"minval":"10.06"   ,"maxval":"19.05"
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"030" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+
+   , { "ii":12 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":3   ,"minval":"0.02"   ,"maxval":"0.04"
+    ,"varSorted":"1.922" ,"what":"X1.Resl+-"
+    ,"dataType":"41"  ,"numVar":"2.922"
+    ,"x4Header":"EN-RSL" ,"SAN":"030" ,"expansion":"Uncertainty: +-resolution"
+    ,"x4Units":"MEV" ,"hlpUnits":"MeV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1.e+06"
+    }
+   ]
+  ,"data": [
+	 [0.33,0.1,1.0,2.0,0.5,2.0,10.0,0.25,10.0,1.0,10.06,0.03]
+	,[0.13,0.09,1.0,2.0,0.5,2.0,10.0,0.25,10.0,1.0,11.06,0.03]
+	,[0.25,0.12,1.0,2.0,0.5,2.0,10.0,0.25,10.0,1.0,12.05,0.04]
+	,[0.17,0.11,1.0,2.0,0.5,2.0,10.0,0.25,10.0,1.0,13.06,0.03]
+	,[0.33,0.13,1.0,2.0,0.5,2.0,10.0,0.25,10.0,1.0,14.05,0.03]
+	,[0.35,0.13,1.0,2.0,0.5,2.0,10.0,0.25,10.0,1.0,15.05,0.03]
+	,[0.33,0.13,1.0,2.0,0.5,2.0,10.0,0.25,10.0,1.0,16.06,0.03]
+	,[0.22,0.11,1.0,2.0,0.5,2.0,10.0,0.25,10.0,1.0,17.06,0.03]
+	,[0.15,0.09,1.0,2.0,0.5,2.0,10.0,0.25,10.0,1.0,18.02,0.02]
+	,[0.24,0.09,1.0,2.0,0.5,2.0,10.0,0.25,10.0,1.0,19.05,0.04]
    ]
  }
 ,
