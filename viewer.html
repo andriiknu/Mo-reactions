@@ -895,10 +895,22 @@
      };
   
      const xmin = getVal('xmin'), xmax = getVal('xmax');
-     if (xmin !== null || xmax !== null) layout.xaxis.range = [xmin, xmax];
+     if (xmin !== null || xmax !== null) {
+       layout.xaxis.range = [xmin, xmax];
+       layout.xaxis.autorange = false;
+     } else {
+       delete layout.xaxis.range;
+       layout.xaxis.autorange = true;
+     }
   
      const ymin = getVal('ymin'), ymax = getVal('ymax');
-     if (ymin !== null || ymax !== null) layout.yaxis.range = [ymin, ymax];
+     if (ymin !== null || ymax !== null) {
+       layout.yaxis.range = [ymin, ymax];
+       layout.yaxis.autorange = false;
+     } else {
+       delete layout.yaxis.range;
+       layout.yaxis.autorange = true;
+     }
   
      // 4. Розміри
      const w = getVal('w'), h = getVal('h');

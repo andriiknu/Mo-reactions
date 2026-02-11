@@ -1,5 +1,6 @@
 <!doctype html>
 <meta charset="utf-8">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <title>Interactive Cross-Sections — Index</title>
 <style>
   body{ font-family:system-ui,Segoe UI,Roboto; margin:20px 24px; background:#fafafa; }
@@ -104,7 +105,11 @@
       }
     });
   } catch(e){
-    ul.innerHTML = `<li><a href="viewer.html?id=ga69_pn">69Ga(p,n)69Ge</a></li>`;
+    console.error("Failed to load manifest.json:", e);
+    ul.innerHTML = `<li><strong style="color: red;">Error:</strong> Could not load <code>data/manifest.json</code>.</li>
+                    <li>Please ensure the file exists and is valid JSON.</li>
+                    <br>
+                    <li>You can try to access a viewer page directly, e.g., <a href="viewer.html?id=mg_px_na24">viewer.html?id=mg_px_na24</a></li>`;
   }
 })();
 </script>
