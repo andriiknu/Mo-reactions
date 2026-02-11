@@ -1,6 +1,7 @@
 # Налаштування відображення за замовчуванням
 dpi_scale: 3
 marker_size: 22
+line_width: 3
 font_size: 36
 font_family: "Times New Roman", serif
 font_color: "#000000"

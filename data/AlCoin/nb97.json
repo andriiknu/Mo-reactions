@@ -1,0 +1,188 @@
+{
+ "format":"X4JSON.0.1.2" 
+ ,"now":"2026-02-09T19:03:42.000Z" 
+ ,"program":"EXFOR converter, by V.Zerkin, IAEA-NDS, 2007-2019 (ver.2020-05-11)" 
+ ,"input": {  "files": [ { "name":"X4R38054_x4.txt"  ,"format":"EXFOR"  ,"created":"2026-02-09T18:48:43.000Z"  } ] }
+ ,"output": { "files": [ { "name":"X4R38054_x4.txt.x4t"  ,"format":"JSON"  ,"outBib":"0"  ,"created":"2026-02-09T19:03:42.000Z"  } ] }
+ ,"datasets": [
+ 
+ {"id":"21990005"
+  ,"subent": {"id":"21990005", "updated":"20080829" }
+  ,"entry": {"id":"21990", "updated":"20151213" }
+  ,"author1":"M.M.Rahman+"
+  ,"year":"1985"
+  ,"ref1":{ "code":"J,NP/A,435,43,198503" ,"std":"J,NP_A,435,43,1985"
+            ,"exp":"Jour: Nuclear Physics, Section A, Vol.435, p.43 (1985)"
+          }
+  ,"reaction": {
+     "code": "42-MO-97(N,P)41-NB-97,,SIG"
+    ,"C4Reaction":"(N,P),SIG"
+    ,"Proj":"N" ,"ProjZA":"1"
+    ,"Target":"42-MO-97" ,"TargZA":"42097"
+    ,"MF": 3 ,"MT": 103
+    ,"ReactionType":"CS"
+    ,"Quantity":"Cross section"
+    ,"IndVarFamCode":"0 2"
+    ,"ExpectedUnits":"B"
+  }
+  ,"datasect": {
+    "xVariables": 1
+    ,"formula":"Y = Y(X1)"
+    ,"col": 17
+    ,"row": 8
+  }
+  ,"headers": [
+
+     { "ii":1 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":8   ,"minval":"0.05"   ,"maxval":"2.79"
+    ,"varSorted":"0.1" ,"what":"Y.Value"
+    ,"dataType":"21"  ,"numVar":"0.1"
+    ,"x4Header":"DATA" ,"SAN":"005" ,"expansion":"Data: data"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":2 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":8   ,"minval":"0.009"   ,"maxval":"0.42"
+    ,"varSorted":"0.911" ,"what":"Y.Err+-"
+    ,"dataType":"21"  ,"numVar":"0.911"
+    ,"x4Header":"ERR-T" ,"SAN":"005" ,"expansion":"Uncertainty: +-error"
+    ,"x4Units":"MB" ,"hlpUnits":"millibarns"
+    ,"BasicUnits":"B" ,"ConvFactor":"0.001"
+    }
+
+   , { "ii":3 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"0.1"   ,"maxval":"0.1"
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-1" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":4 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"0.1"   ,"maxval":"0.1"
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-2" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":5 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"1."   ,"maxval":"1."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-3" ,"SAN":"005" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":6 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"3."   ,"maxval":"3."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-4" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":7 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"3."   ,"maxval":"3."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-5" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":8 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"1."   ,"maxval":"1."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-6" ,"SAN":"005" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":9 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"4."   ,"maxval":"4."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-7" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":10 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"8."   ,"maxval":"8."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-8" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":11 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"2."   ,"maxval":"2."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-9" ,"SAN":"005" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":12 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"1."   ,"maxval":"1."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-10" ,"SAN":"005" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":13 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"3."   ,"maxval":"3."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-11" ,"SAN":"001" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":14 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"2."   ,"maxval":"2."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-12" ,"SAN":"005" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":15 ,"varType":"Error" ,"varVar":"constant"
+    ,"nval":1   ,"minval":"1."   ,"maxval":"1."
+    ,"varSorted":"0.955" ,"what":"Y.pErr+-"
+    ,"dataType":"21"  ,"numVar":"0.955"
+    ,"x4Header":"ERR-13" ,"SAN":"005" ,"expansion":"Uncertainty: +-partial error"
+    ,"x4Units":"PER-CENT" ,"hlpUnits":"per-cent"
+    }
+
+   , { "ii":16 ,"varType":"Data" ,"varVar":"variable"
+    ,"nval":8   ,"minval":"5911."   ,"maxval":"9577."
+    ,"varSorted":"1.1" ,"what":"X1.Value"
+    ,"dataType":"41"  ,"numVar":"2.1"
+    ,"x4Header":"EN" ,"SAN":"005" ,"expansion":"Incident energy: energy"
+    ,"x4Units":"KEV" ,"hlpUnits":"keV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1000."
+    }
+
+   , { "ii":17 ,"varType":"Error" ,"varVar":"variable"
+    ,"nval":7   ,"minval":"109."   ,"maxval":"215."
+    ,"varSorted":"1.922" ,"what":"X1.Resl+-"
+    ,"dataType":"41"  ,"numVar":"2.922"
+    ,"x4Header":"EN-RSL" ,"SAN":"005" ,"expansion":"Uncertainty: +-resolution"
+    ,"x4Units":"KEV" ,"hlpUnits":"keV"
+    ,"BasicUnits":"EV" ,"ConvFactor":"1000."
+    }
+   ]
+  ,"data": [
+	 [0.05,0.009,0.1,0.1,1.0,3.0,3.0,1.0,4.0,8.0,2.0,1.0,3.0,2.0,1.0,5911.0,178.0]
+	,[0.13,0.05,0.1,0.1,1.0,3.0,3.0,1.0,4.0,8.0,2.0,1.0,3.0,2.0,1.0,6474.0,181.0]
+	,[0.25,0.04,0.1,0.1,1.0,3.0,3.0,1.0,4.0,8.0,2.0,1.0,3.0,2.0,1.0,7032.0,163.0]
+	,[0.48,0.06,0.1,0.1,1.0,3.0,3.0,1.0,4.0,8.0,2.0,1.0,3.0,2.0,1.0,7549.0,185.0]
+	,[0.68,0.08,0.1,0.1,1.0,3.0,3.0,1.0,4.0,8.0,2.0,1.0,3.0,2.0,1.0,8132.0,109.0]
+	,[1.72,0.15,0.1,0.1,1.0,3.0,3.0,1.0,4.0,8.0,2.0,1.0,3.0,2.0,1.0,8632.0,123.0]
+	,[2.05,0.28,0.1,0.1,1.0,3.0,3.0,1.0,4.0,8.0,2.0,1.0,3.0,2.0,1.0,9153.0,123.0]
+	,[2.79,0.42,0.1,0.1,1.0,3.0,3.0,1.0,4.0,8.0,2.0,1.0,3.0,2.0,1.0,9577.0,215.0]
+   ]
+ }
+]
+}

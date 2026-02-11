@@ -8,8 +8,6 @@
   h1{ font-weight:600; font-size:22px; margin:0 0 8px; }
   .sub{ color:#555; font-size:13px; margin:0 0 16px; }
   #chart{ height:640px; background:#fff; border:1px solid #eee; border-radius:8px; }
-  #meta{ white-space:pre-wrap; font:12px/1.4 system-ui; color:#444; background:#fff;
-         border:1px solid #eee; border-radius:8px; padding:10px; margin-top:12px;}
   #renormBadge{ font:11px system-ui; color:#666; background:#ffe6e6; border:1px solid #ffcccc; border-radius:4px; padding:6px 8px; margin-top:8px; display:none; }
   #renormBadge strong{ color:#c00; }
   #settingsPanel{ display:none; background:#fff; border:1px solid #eee; border-radius:8px;
@@ -18,6 +16,29 @@
   #settingsPanel label{ display:flex; flex-direction:column; font-size:12px; color:#555; gap:4px; min-width:160px; }
   #settingsPanel input{ padding:4px 6px; border:1px solid #ccc; border-radius:4px; font:13px system-ui; }
   #settingsPanel .settings-actions{ display:flex; gap:8px; align-items:center; }
+  #datasetManager { background:#fff; border:1px solid #eee; border-radius:8px; padding:10px 12px; margin-top:12px; }
+  #datasetManager h4 { margin:0 0 8px; font-weight:600; font-size:14px; }
+  #datasetManager ul { list-style:none; padding:0; margin:0; }
+  #datasetManager li {
+    display:flex; align-items:center; gap:8px; padding:5px 0;
+    font:12px/1.4 system-ui; color:#444; border-bottom:1px solid #f5f5f5;
+  }
+  #datasetManager li:last-child { border-bottom:none; }
+  #datasetManager button {
+    cursor:pointer; border-radius:4px; width:22px; height:22px;
+    line-height:20px; padding:0; font-weight:bold; flex-shrink:0;
+    transition: background-color .1s ease-in-out;
+  }
+  #datasetManager .remove-btn { border:1px solid #fbb; background:#fee; color:#c00; }
+  #datasetManager .remove-btn:hover { background:#fdd; }
+  #removedTracesPanel {
+    display:none; margin-top:12px; padding-top:12px;
+    border-top:1px dashed #ccc;
+  }
+  #removedTracesPanel h5 { margin:0 0 8px; font-weight:500; font-size:13px; color:#555; }
+  #removedTracesPanel button { border:1px solid #8c8; background:#dfd; color:#050; }
+  #removedTracesPanel button:hover { background:#cfc; border-color:#6a6; }
+  #removedTracesPanel li span { color:#777; }
 </style>
 
 <div class="wrap">
@@ -45,6 +66,9 @@
 
     <span>Legend:</span>
     <label><input id="legend" type="checkbox" checked>on</label>
+    <span style="border-left:1px solid #ccc; margin-left:4px; padding-left:12px;">Ref. line:</span>
+    <label><input id="refLineToggle" type="checkbox"> on</label>
+    <input id="refLineX" type="number" step="any" style="width:88px" placeholder="x-value">
   </div>
 
   <div id="settingsPanel">
@@ -55,6 +79,10 @@
     <label>
       Marker size
       <input id="settingMarkerSize" type="number" min="1" step="1" placeholder="15">
+    </label>
+    <label>
+      Line width
+      <input id="settingLineWidth" type="number" min="0.5" step="0.5" placeholder="2">
     </label>
     <label>
       Font size
@@ -102,16 +130,22 @@
     </div>
   </div>
   <div id="chart"></div>
+  <div id="datasetManager">
+    <h4>Datasets</h4>
+    <ul id="datasetList"></ul>
+    <div id="removedTracesPanel">
+      <h5>Removed Datasets</h5>
+      <ul id="removedTracesList"></ul>
+    </div>
+  </div>
   <div id="renormBadge"></div>
-  <pre id="meta"></pre>
 </div>
 
 <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
-<script src="lib/parser.js"></script>
+<script src="lib/parser.js?v=2"></script>
 <script>
 (function(){
   const embedded = document.getElementById('x4json');
-  const metaEl = document.getElementById('meta');
 
   // load renormalization map (optional)
   let renormMap = {};
@@ -288,6 +322,7 @@
    // Глобальний стан (в межах цього замикання)
    const defaultSettings = {
      markerSize:15,
+     lineWidth: 2,
      fontSize:22,
      fontFamily:'',
      fontColor: '',
@@ -303,6 +338,8 @@
    };
    const appState = {
      traces: [],
+     refLine: { x: null, visible: false },
+     removedTraces: [],
      originalTitle: '',
      meta: [],
      settings: { ...defaultSettings }
@@ -311,11 +348,6 @@
    // Debug: логуємо на сторінку
    function dbgLog(msg) {
      console.log(msg);
-     if (!metaEl) return;
-     const line = document.createElement('div');
-     line.style.cssText = 'font-size:11px;color:#666;font-family:monospace;margin:4px 0';
-     line.textContent = msg;
-     metaEl.appendChild(line);
    }
   
   function toggleLegendGroup(gd, groupName){
@@ -371,6 +403,187 @@
         el.addEventListener('click', handler);
       });
     });
+  }
+
+  // --- UI for dataset manager ---
+  function updateDatasetManager() {
+    const activeList = document.getElementById('datasetList');
+    const removedPanel = document.getElementById('removedTracesPanel');
+    const removedList = document.getElementById('removedTracesList');
+
+    if (!activeList || !removedPanel || !removedList) return;
+
+    // Clear lists
+    activeList.innerHTML = '';
+    removedList.innerHTML = '';
+
+    // Populate active traces
+    appState.traces.forEach((trace) => {
+        const li = document.createElement('li');
+        
+        const removeBtn = document.createElement('button');
+        removeBtn.className = 'remove-btn';
+        removeBtn.textContent = '−';
+        removeBtn.title = 'Remove trace from plot';
+        removeBtn.dataset.traceIndex = trace._traceIndex; // Use the permanent index
+        removeBtn.addEventListener('click', handleRemoveTrace);
+
+        const traceName = document.createElement('span');
+        const description = appState.meta[trace._traceIndex] || trace.name;
+        traceName.textContent = description;
+        traceName.style.color = trace.marker?.color || trace.line?.color || '#333';
+
+        li.appendChild(removeBtn);
+        li.appendChild(traceName);
+        activeList.appendChild(li);
+    });
+
+    // Populate removed traces
+    if (appState.removedTraces.length === 0) {
+        removedPanel.style.display = 'none';
+    } else {
+        removedPanel.style.display = 'block';
+        appState.removedTraces.forEach((trace) => {
+            const li = document.createElement('li');
+            
+            const restoreBtn = document.createElement('button');
+            restoreBtn.className = 'restore-btn';
+            restoreBtn.textContent = '+';
+            restoreBtn.title = 'Restore trace to plot';
+            restoreBtn.dataset.traceIndex = trace._traceIndex; // Use the permanent index
+            restoreBtn.addEventListener('click', handleRestoreTrace);
+
+            const traceName = document.createElement('span');
+            const description = appState.meta[trace._traceIndex] || trace.name;
+            traceName.textContent = description;
+
+            li.appendChild(restoreBtn);
+            li.appendChild(traceName);
+            removedList.appendChild(li);
+        });
+    }
+  }
+
+  function handleRemoveTrace(event) {
+      const traceIndexToRemove = parseInt(event.target.dataset.traceIndex, 10);
+      const indexInActiveArray = appState.traces.findIndex(t => t._traceIndex === traceIndexToRemove);
+      if (indexInActiveArray > -1) {
+          const [removedTrace] = appState.traces.splice(indexInActiveArray, 1);
+          appState.removedTraces.push(removedTrace);
+          appState.removedTraces.sort((a, b) => a._traceIndex - b._traceIndex);
+          repaintChart();
+      }
+  }
+
+  function handleRestoreTrace(event) {
+      const traceIndexToRestore = parseInt(event.target.dataset.traceIndex, 10);
+      const indexInRemovedArray = appState.removedTraces.findIndex(t => t._traceIndex === traceIndexToRestore);
+      if (indexInRemovedArray > -1) {
+          const [restoredTrace] = appState.removedTraces.splice(indexInRemovedArray, 1);
+          appState.traces.push(restoredTrace);
+          appState.traces.sort((a, b) => a._traceIndex - b._traceIndex);
+          repaintChart();
+      }
+  }
+
+  // --- Reference Line and Intersections ---
+
+  function interpolateY(trace, x, isXLog, isYLog) {
+      const traceX = trace.x;
+      const traceY = trace.y;
+      if (!traceX || !traceY || traceX.length < 2) return null;
+
+      // Find the segment where x is located. Assumes trace.x is sorted.
+      let i = traceX.findIndex(val => val > x);
+
+      // Handle edge cases
+      if (i === -1) { // x is greater than all values
+          if (x === traceX[traceX.length - 1]) return traceY[traceY.length - 1];
+          return null;
+      }
+      if (i === 0) { // x is smaller than all values
+          if (x === traceX[0]) return traceY[0];
+          return null;
+      }
+
+      const x1 = traceX[i - 1];
+      const x2 = traceX[i];
+      const y1 = traceY[i - 1];
+      const y2 = traceY[i];
+
+      if (isXLog) {
+          if (isYLog) { // log-log
+              const logX = Math.log(x), logX1 = Math.log(x1), logX2 = Math.log(x2);
+              const logY1 = Math.log(y1), logY2 = Math.log(y2);
+              if (!isFinite(logY1) || !isFinite(logY2)) return null;
+              const logY = logY1 + (logY2 - logY1) * (logX - logX1) / (logX2 - logX1);
+              return Math.exp(logY);
+          } else { // semilog-x
+              const logX = Math.log(x), logX1 = Math.log(x1), logX2 = Math.log(x2);
+              return y1 + (y2 - y1) * (logX - logX1) / (logX2 - logX1);
+          }
+      } else {
+          if (isYLog) { // semilog-y
+              const logY1 = Math.log(y1), logY2 = Math.log(y2);
+              if (!isFinite(logY1) || !isFinite(logY2)) return null;
+              const logY = logY1 + (logY2 - logY1) * (x - x1) / (x2 - x1);
+              return Math.exp(logY);
+          } else { // linear-linear
+              return y1 + (y2 - y1) * (x - x1) / (x2 - x1);
+          }
+      }
+  }
+
+  function drawRefLine(xPos) {
+      const gd = document.getElementById('chart');
+      if (xPos === null || !appState.refLine.visible || !gd) {
+          Plotly.relayout(gd, { shapes: [], annotations: [] });
+          return;
+      }
+
+      const isXLog = gd.layout.xaxis.type === 'log';
+      const isYLog = gd.layout.yaxis.type === 'log';
+
+      const newAnnotations = [];
+      const visibleTraces = appState.traces.filter(t => t.visible !== 'legendonly');
+
+      visibleTraces.forEach(trace => {
+          const isLinePlot = trace.mode && trace.mode.includes('lines');
+          if (!isLinePlot) return;
+
+          const yPos = interpolateY(trace, xPos, isXLog, isYLog);
+          if (yPos !== null && isFinite(yPos)) {
+              newAnnotations.push({
+                  x: xPos, y: yPos, xref: 'x', yref: 'y',
+                  text: yPos.toPrecision(4), showarrow: true, arrowhead: 0, ax: 40, ay: 0,
+                  font: { size: 10, color: '#ffffff' },
+                  bgcolor: trace.line?.color || trace.marker?.color || '#333',
+                  bordercolor: '#ffffff', borderwidth: 1, borderpad: 2, opacity: 0.9
+              });
+          }
+      });
+
+      const lineShape = {
+          type: 'line', name: 'refLine', editable: true,
+          xref: 'x', yref: 'paper',
+          x0: xPos, x1: xPos, y0: 0, y1: 1,
+          line: { color: 'rgba(255, 0, 0, 0.7)', width: 1.5, dash: 'longdash' }
+      };
+
+      Plotly.relayout(gd, { shapes: [lineShape], annotations: newAnnotations });
+  }
+
+  function setupRefLineDrag(gd) {
+      if (!gd || gd.__refLineDragHandler) return;
+      gd.on('plotly_relayout', (eventData) => {
+          const newX = eventData['shapes[0].x0'];
+          if (newX !== undefined && appState.refLine.visible) {
+              appState.refLine.x = newX;
+              document.getElementById('refLineX').value = newX.toPrecision(5);
+              drawRefLine(newX);
+          }
+      });
+      gd.__refLineDragHandler = true;
   }
 
   // --- Конфігурація Plotly ---
@@ -548,18 +761,64 @@
       });
   }
 
+  function downloadPlotWithZoom(gd) {
+    const graphDiv = gd && gd.nodeType ? gd : document.getElementById('chart');
+    if (!graphDiv) {
+      dbgLog('✗ downloadPlot: graph div not found');
+      return;
+    }
+
+    // Get filename from the 'Plot title' input field or the graph's title
+    const userDefinedFilename = getTitleText();
+    const defaultFilename = appState.originalTitle;
+    const rawFilename = userDefinedFilename || defaultFilename || 'plot';
+    const cleanFilename = rawFilename.replace(/<[^>]*>/g, '');
+    const coreFilename = cleanFilename.split(' — ')[0];
+    const filename = coreFilename
+      .replace(/[^a-z0-9_ -]/gi, '_').replace(/ /g, '_');
+
+    const imageOpts = {
+      format: 'png',
+      filename: filename,
+      scale: appState.settings.dpiScale || 2
+    };
+
+    // To preserve zoom, we must provide the current width and height.
+    if (graphDiv._fullLayout) {
+      imageOpts.width = graphDiv._fullLayout.width;
+      imageOpts.height = graphDiv._fullLayout.height;
+    }
+    Plotly.downloadImage(graphDiv, imageOpts);
+  }
+
   function applyStyleOverrides(traces){
-    const { markerSize } = appState.settings || {};
+    const { markerSize, lineWidth } = appState.settings || {};
     const numericMarkerSize = (typeof markerSize === 'number' && markerSize > 0) ? markerSize : null;
-    if (!numericMarkerSize) return traces;
+    const numericLineWidth = (typeof lineWidth === 'number' && lineWidth >= 0.5) ? lineWidth : null;
+
+    if (!numericMarkerSize && !numericLineWidth) return traces;
+
     return (traces || []).map(tr => {
       if (!tr) return tr;
-      const usesMarkers = typeof tr.mode === 'string' && tr.mode.includes('markers');
-      const hasMarkerObj = tr.marker && typeof tr.marker === 'object';
-      if (!usesMarkers && !hasMarkerObj) return tr;
       const copy = { ...tr };
-      copy.marker = { ...(tr.marker || {}) };
-      copy.marker.size = numericMarkerSize;
+
+      // Apply marker size override
+      if (numericMarkerSize) {
+        const usesMarkers = typeof copy.mode === 'string' && copy.mode.includes('markers');
+        if (usesMarkers || copy.marker) {
+          copy.marker = { ...(copy.marker || {}) };
+          copy.marker.size = numericMarkerSize;
+        }
+      }
+
+      // Apply line width override
+      if (numericLineWidth) {
+        const usesLines = typeof copy.mode === 'string' && copy.mode.includes('lines');
+        if (usesLines || copy.line) {
+          copy.line = { ...(copy.line || {}) };
+          copy.line.width = numericLineWidth;
+        }
+      }
       return copy;
     });
   }
@@ -580,18 +839,22 @@
     return {
       responsive:true,
       displaylogo:false,
-      toImageButtonOptions: {
-        filename: filename,
-        scale: appState.settings.dpiScale || 2
-      },
+      // The default 'toImage' button is removed and replaced with a custom one
+      // that correctly preserves the zoom/pan state of the axes on download.
       modeBarButtonsToRemove:[
+        'toImage',
         'select2d','lasso2d','zoomIn2d','zoomOut2d','autoScale2d',
        'toggleSpikelines','hoverClosestCartesian','hoverCompareCartesian'
       ],
       modeBarButtonsToAdd: [{
+        name:'Download plot as png',
+        title:'Download plot as png (preserves zoom)',
+        icon:Plotly.Icons.camera,
+        click:gd => downloadPlotWithZoom(gd)
+      },{
         name:'Copy to clipboard',
         title:'Copy plot PNG to clipboard',
-        icon:Plotly.Icons.camera,
+        icon:Plotly.Icons.copy,
         click:gd => copyPlotToClipboard(gd)
       }]
     };
@@ -648,7 +911,11 @@
   
      // Виконуємо реактивне оновлення (швидше за newPlot)
      Plotly.react('chart', applyStyleOverrides(tracesToUse), layout, configEXFOR())
-       .then(setupLegendGroupToggle)
+       .then(gd => {
+         setupLegendGroupToggle(gd);
+         setupRefLineDrag(gd);
+         updateDatasetManager();
+        })
        .catch(e => {
          dbgLog('❌ Plotly error: ' + e.message);
          console.error('Plotly error:', e);
@@ -669,22 +936,29 @@
    }
   
    // --- Ініціалізація даних ---
-   function initData(traces, title, meta, renormApplied) {
+   function initData(rawTraces, title, meta, renormApplied) {
+     // Add a permanent index to each trace to link it to its meta description
+     const traces = rawTraces.map((tr, i) => ({ ...tr, _traceIndex: i }));
+
      // Зберігаємо в стан
      appState.traces = traces;
+     appState.removedTraces = [];
      appState.originalTitle = title;
      appState.meta = meta;
   
      // Оновлюємо DOM
      document.getElementById('pageTitle').innerHTML = title || '';
-     if(metaEl) metaEl.textContent = meta?.length ? 'Datasets included:\n' + meta.join('\n') : '';
      showRenormBadge(renormApplied);
      if (titleTextInput){
        titleTextInput.placeholder = title || 'No title';
      }
   
      // Перше малювання
-     Plotly.newPlot('chart', applyStyleOverrides(traces), layoutEXFOR(), configEXFOR()).then(setupLegendGroupToggle);
+     Plotly.newPlot('chart', applyStyleOverrides(traces), layoutEXFOR(), configEXFOR()).then(gd => {
+        setupLegendGroupToggle(gd);
+        setupRefLineDrag(gd);
+        updateDatasetManager();
+     });
      dbgLog('✅ Chart initialized with ' + traces.length + ' traces');
    }
   
@@ -692,6 +966,28 @@
   document.getElementById('apply').addEventListener('click', repaintChart);
   const legendToggle = document.getElementById('legend');
   if (legendToggle) legendToggle.addEventListener('change', repaintChart);
+
+  const refLineToggle = document.getElementById('refLineToggle');
+  const refLineX = document.getElementById('refLineX');
+
+  refLineToggle.addEventListener('change', () => {
+      appState.refLine.visible = refLineToggle.checked;
+      if (appState.refLine.visible) {
+          if (appState.refLine.x === null) {
+              const gd = document.getElementById('chart');
+              const xRange = gd.layout.xaxis.range;
+              appState.refLine.x = (xRange[0] + xRange[1]) / 2;
+          }
+          refLineX.value = appState.refLine.x.toPrecision(5);
+          drawRefLine(appState.refLine.x);
+      } else {
+          drawRefLine(null); // Clear line and annotations
+      }
+  });
+  refLineX.addEventListener('change', () => {
+      const xVal = parseFloat(refLineX.value);
+      if (!isNaN(xVal)) { appState.refLine.x = xVal; if (appState.refLine.visible) drawRefLine(xVal); }
+  });
    
    const btnCsv = document.getElementById('csv');
    if(btnCsv) {
@@ -705,6 +1001,7 @@
   const settingsPanel = document.getElementById('settingsPanel');
   const titleTextInput = document.getElementById('settingTitleText');
   const markerSizeInput = document.getElementById('settingMarkerSize');
+  const lineWidthInput = document.getElementById('settingLineWidth');
   const fontSizeInput = document.getElementById('settingFontSize');
   const fontFamilyInput = document.getElementById('settingFontFamily');
   const xFontSizeInput = document.getElementById('settingXFontSize');
@@ -735,6 +1032,7 @@
   function syncSettingsInputs(){
     if (titleTextInput) titleTextInput.value = appState.settings.titleText || '';
     if (markerSizeInput) markerSizeInput.value = appState.settings.markerSize ?? '';
+    if (lineWidthInput) lineWidthInput.value = appState.settings.lineWidth ?? '';
     if (fontSizeInput) fontSizeInput.value = appState.settings.fontSize ?? '';
     if (fontFamilyInput) fontFamilyInput.value = appState.settings.fontFamily || '';
     if (xFontSizeInput) xFontSizeInput.value = appState.settings.xFontSize ?? '';
@@ -756,6 +1054,7 @@
     appState.settings = {
       titleText: (titleTextInput?.value || '').trim(),
       markerSize: normalizeNumberInput(markerSizeInput?.value),
+      lineWidth: normalizePositiveNumberInput(lineWidthInput?.value, 0.5),
       fontSize: normalizeNumberInput(fontSizeInput?.value),
       fontFamily: (fontFamilyInput?.value || '').trim(),
       xFontSize: normalizeNumberInput(xFontSizeInput?.value),
@@ -795,6 +1094,7 @@
   Promise.all([loadRenorm(), loadConfig()]).then(([_, config]) => {
     // Apply YAML config to defaults
     if(config.marker_size) defaultSettings.markerSize = config.marker_size;
+    if(config.line_width) defaultSettings.lineWidth = config.line_width;
     if(config.font_size) defaultSettings.fontSize = config.font_size;
     if(config.font_family) defaultSettings.fontFamily = config.font_family;
     if(config.font_color) defaultSettings.fontColor = config.font_color;
@@ -811,31 +1111,30 @@
     // --- Логіка завантаження (Embedded vs Fetch) ---
    // 1) offline вбудований JSON
    if (embedded){
-    try{
-      const x4 = JSON.parse(embedded.textContent);
-      if (typeof window.__renderX4 !== 'function') throw new Error('parser.js not loaded');
-      const {traces, title, meta, renormApplied} = window.__renderX4(x4, {returnTraces:true, renormMap});
-      initData(traces, title, meta, renormApplied);
+      try{
+        const x4 = JSON.parse(embedded.textContent);
+        if (typeof window.__renderX4 !== 'function') throw new Error('parser.js not loaded');
+        const {traces, title, meta, renormApplied} = window.__renderX4(x4, {returnTraces:true, renormMap});
+        initData(traces, title, meta, renormApplied);
+      }catch(e){
+        document.getElementById('datasetManager').textContent = 'Invalid embedded JSON: '+(e && e.message ? e.message : String(e));
+      }
       return;
-    }catch(e){
-      metaEl.textContent = 'Invalid embedded JSON: '+(e && e.message ? e.message : String(e));
-      return;
-    }
-  }
+   }
 
   // 2) online за ?id=
   const params = new URLSearchParams(location.search);
   const id = params.get('id');
-  if (!id){ metaEl.textContent = 'Add ?id=ga69_pn (expects /data/ga69_pn.json)'; return; }
+  if (!id){ document.getElementById('datasetManager').textContent = 'Add ?id=ga69_pn (expects /data/ga69_pn.json)'; return; }
   const safeId = id.trim();
   if (!/^[\w(),.\-\/]+$/.test(safeId)){
-    metaEl.textContent = 'Invalid dataset id. Allowed characters: letters, digits, _, -, ., /, (, ), ,';
+    document.getElementById('datasetManager').textContent = 'Invalid dataset id. Allowed characters: letters, digits, _, -, ., /, (, ), ,';
     return;
   }
   const fileParamRaw = params.get('file');
   const fileParam = fileParamRaw ? fileParamRaw.trim() : '';
   if (fileParam && !/^[\w(),.\-\/]+$/.test(fileParam)){
-    metaEl.textContent = 'Invalid file parameter.';
+    document.getElementById('datasetManager').textContent = 'Invalid file parameter.';
     return;
   }
   const fmtParam = (params.get('fmt') || '').trim().toLowerCase();
@@ -886,7 +1185,7 @@
     console.error('Error:', err);
     const msg = 'Failed to load '+dataPath+': '+(err && err.message ? err.message : String(err));
     dbgLog('✗ ' + msg);
-    metaEl.textContent = msg;
+    document.getElementById('datasetManager').textContent = msg;
   });
   });
 })();
